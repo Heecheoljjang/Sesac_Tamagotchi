@@ -21,9 +21,10 @@ class SelectCollectionViewCell: UICollectionViewCell {
         labelView.layer.cornerRadius = 5
         labelView.backgroundColor = .sesacBackground
         nameLabel.text = name
-        nameLabel.font = UIFont.systemFont(ofSize: 11, weight: .bold)
+        nameLabel.font = UIFont.systemFont(ofSize: 13, weight: .bold)
         nameLabel.backgroundColor = .sesacBackground
         nameLabel.textColor = .sesacBorder
+        nameLabel.adjustsFontSizeToFitWidth = true
     }
     
 }
