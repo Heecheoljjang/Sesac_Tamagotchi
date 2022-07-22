@@ -22,9 +22,9 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble" translatesAutoresizingMaskIntoConstraints="NO" id="iIP-i6-18p">
                                         <rect key="frame" x="0.0" y="0.0" width="248" height="149"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7iZ-jR-cgi">
-                                        <rect key="frame" x="114" y="58" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7iZ-jR-cgi">
+                                        <rect key="frame" x="28" y="20" width="192" height="101"/>
+                                        <string key="text">LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -33,8 +33,12 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="4KJ-p5-W1n" secondAttribute="height" multiplier="5:3" id="29G-N0-uqB"/>
+                                    <constraint firstItem="7iZ-jR-cgi" firstAttribute="leading" secondItem="4KJ-p5-W1n" secondAttribute="leading" constant="28" id="2p0-Gz-qbY"/>
+                                    <constraint firstAttribute="bottom" secondItem="7iZ-jR-cgi" secondAttribute="bottom" constant="28" id="BAN-bb-t8L"/>
+                                    <constraint firstItem="7iZ-jR-cgi" firstAttribute="top" secondItem="4KJ-p5-W1n" secondAttribute="top" constant="20" id="G3e-gN-c2V"/>
                                     <constraint firstItem="iIP-i6-18p" firstAttribute="leading" secondItem="4KJ-p5-W1n" secondAttribute="leading" id="IEQ-g7-amB"/>
                                     <constraint firstAttribute="bottom" secondItem="iIP-i6-18p" secondAttribute="bottom" id="TWU-pZ-eBM"/>
+                                    <constraint firstAttribute="trailing" secondItem="7iZ-jR-cgi" secondAttribute="trailing" constant="28" id="hed-sl-wkp"/>
                                     <constraint firstAttribute="trailing" secondItem="iIP-i6-18p" secondAttribute="trailing" id="lAN-1C-ccB"/>
                                     <constraint firstItem="iIP-i6-18p" firstAttribute="top" secondItem="4KJ-p5-W1n" secondAttribute="top" id="vLk-o3-Tc0"/>
                                 </constraints>
