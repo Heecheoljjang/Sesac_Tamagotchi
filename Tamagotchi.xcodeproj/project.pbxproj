@@ -9,21 +9,31 @@
 /* Begin PBXBuildFile section */
 		977DC769288A7B5800C0A253 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC768288A7B5800C0A253 /* AppDelegate.swift */; };
 		977DC76B288A7B5800C0A253 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC76A288A7B5800C0A253 /* SceneDelegate.swift */; };
-		977DC76D288A7B5800C0A253 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC76C288A7B5800C0A253 /* ViewController.swift */; };
-		977DC770288A7B5800C0A253 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 977DC76E288A7B5800C0A253 /* Main.storyboard */; };
 		977DC772288A7B5900C0A253 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 977DC771288A7B5900C0A253 /* Assets.xcassets */; };
 		977DC775288A7B5900C0A253 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 977DC773288A7B5900C0A253 /* LaunchScreen.storyboard */; };
+		977DC77D288A826A00C0A253 /* SelectCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC77C288A826A00C0A253 /* SelectCollectionViewController.swift */; };
+		977DC784288A84F900C0A253 /* Select.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 977DC783288A84F900C0A253 /* Select.storyboard */; };
+		977DC786288A881D00C0A253 /* SelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC785288A881D00C0A253 /* SelectCollectionViewCell.swift */; };
+		977DC78A288A89B700C0A253 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC789288A89B700C0A253 /* UIColor+Extension.swift */; };
+		977DC78E288AA5CD00C0A253 /* Tamagotchi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC78D288AA5CD00C0A253 /* Tamagotchi.swift */; };
+		977DC790288AAFD600C0A253 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 977DC78F288AAFD600C0A253 /* Detail.storyboard */; };
+		977DC792288AAFDF00C0A253 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC791288AAFDF00C0A253 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		977DC765288A7B5800C0A253 /* Tamagotchi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagotchi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		977DC768288A7B5800C0A253 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		977DC76A288A7B5800C0A253 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		977DC76C288A7B5800C0A253 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		977DC76F288A7B5800C0A253 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		977DC771288A7B5900C0A253 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		977DC774288A7B5900C0A253 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		977DC776288A7B5900C0A253 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		977DC77C288A826A00C0A253 /* SelectCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionViewController.swift; sourceTree = "<group>"; };
+		977DC783288A84F900C0A253 /* Select.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Select.storyboard; sourceTree = "<group>"; };
+		977DC785288A881D00C0A253 /* SelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionViewCell.swift; sourceTree = "<group>"; };
+		977DC789288A89B700C0A253 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		977DC78D288AA5CD00C0A253 /* Tamagotchi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tamagotchi.swift; sourceTree = "<group>"; };
+		977DC78F288AAFD600C0A253 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		977DC791288AAFDF00C0A253 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +68,74 @@
 			children = (
 				977DC768288A7B5800C0A253 /* AppDelegate.swift */,
 				977DC76A288A7B5800C0A253 /* SceneDelegate.swift */,
-				977DC76C288A7B5800C0A253 /* ViewController.swift */,
-				977DC76E288A7B5800C0A253 /* Main.storyboard */,
 				977DC771288A7B5900C0A253 /* Assets.xcassets */,
 				977DC773288A7B5900C0A253 /* LaunchScreen.storyboard */,
 				977DC776288A7B5900C0A253 /* Info.plist */,
+				977DC782288A849D00C0A253 /* Select */,
+				977DC781288A849B00C0A253 /* Detail */,
+				977DC780288A849900C0A253 /* Setting */,
+				977DC77F288A849700C0A253 /* Name */,
+				977DC77E288A849100C0A253 /* Main */,
+				977DC78B288A8C4400C0A253 /* Extension */,
+				977DC78C288AA5B600C0A253 /* Struct */,
 			);
 			path = Tamagotchi;
+			sourceTree = "<group>";
+		};
+		977DC77E288A849100C0A253 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		977DC77F288A849700C0A253 /* Name */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Name;
+			sourceTree = "<group>";
+		};
+		977DC780288A849900C0A253 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		977DC781288A849B00C0A253 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				977DC78F288AAFD600C0A253 /* Detail.storyboard */,
+				977DC791288AAFDF00C0A253 /* DetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		977DC782288A849D00C0A253 /* Select */ = {
+			isa = PBXGroup;
+			children = (
+				977DC77C288A826A00C0A253 /* SelectCollectionViewController.swift */,
+				977DC785288A881D00C0A253 /* SelectCollectionViewCell.swift */,
+				977DC783288A84F900C0A253 /* Select.storyboard */,
+			);
+			path = Select;
+			sourceTree = "<group>";
+		};
+		977DC78B288A8C4400C0A253 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				977DC789288A89B700C0A253 /* UIColor+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		977DC78C288AA5B600C0A253 /* Struct */ = {
+			isa = PBXGroup;
+			children = (
+				977DC78D288AA5CD00C0A253 /* Tamagotchi.swift */,
+			);
+			path = Struct;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,8 +197,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				977DC775288A7B5900C0A253 /* LaunchScreen.storyboard in Resources */,
+				977DC784288A84F900C0A253 /* Select.storyboard in Resources */,
 				977DC772288A7B5900C0A253 /* Assets.xcassets in Resources */,
-				977DC770288A7B5800C0A253 /* Main.storyboard in Resources */,
+				977DC790288AAFD600C0A253 /* Detail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +210,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				977DC76D288A7B5800C0A253 /* ViewController.swift in Sources */,
+				977DC786288A881D00C0A253 /* SelectCollectionViewCell.swift in Sources */,
+				977DC77D288A826A00C0A253 /* SelectCollectionViewController.swift in Sources */,
+				977DC78A288A89B700C0A253 /* UIColor+Extension.swift in Sources */,
 				977DC769288A7B5800C0A253 /* AppDelegate.swift in Sources */,
+				977DC78E288AA5CD00C0A253 /* Tamagotchi.swift in Sources */,
 				977DC76B288A7B5800C0A253 /* SceneDelegate.swift in Sources */,
+				977DC792288AAFDF00C0A253 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		977DC76E288A7B5800C0A253 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				977DC76F288A7B5800C0A253 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		977DC773288A7B5900C0A253 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,9 +360,10 @@
 				INFOPLIST_FILE = Tamagotchi/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Select;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -320,9 +389,10 @@
 				INFOPLIST_FILE = Tamagotchi/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Select;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
