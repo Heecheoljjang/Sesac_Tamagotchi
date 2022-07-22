@@ -40,11 +40,11 @@ class SelectCollectionViewController: UICollectionViewController {
         
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let sb = UIStoryboard(name: "Detail", bundle: nil)
-        guard let vc = sb.instantiateViewController(withIdentifier: DetailViewController.identity) as? DetailViewController else { return }
-        
-        vc.modalPresentationStyle = .overFullScreen
-        present(vc, animated: true)
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identity) as? MainViewController else { return }
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .overFullScreen
+        present(nav, animated: true)
     }
     
 }
