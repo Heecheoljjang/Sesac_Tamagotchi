@@ -24,6 +24,8 @@
 		977DC79A288AEDF700C0A253 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC799288AEDF700C0A253 /* SettingTableViewController.swift */; };
 		977DC79C288AF14F00C0A253 /* SettingTableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC79B288AF14F00C0A253 /* SettingTableList.swift */; };
 		977DC79E288AFBAF00C0A253 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC79D288AFBAF00C0A253 /* SettingTableViewCell.swift */; };
+		977DC7A0288B0B6A00C0A253 /* Name.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 977DC79F288B0B6A00C0A253 /* Name.storyboard */; };
+		977DC7A2288B0B7B00C0A253 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC7A1288B0B7B00C0A253 /* NameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		977DC799288AEDF700C0A253 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		977DC79B288AF14F00C0A253 /* SettingTableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableList.swift; sourceTree = "<group>"; };
 		977DC79D288AFBAF00C0A253 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		977DC79F288B0B6A00C0A253 /* Name.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Name.storyboard; sourceTree = "<group>"; };
+		977DC7A1288B0B7B00C0A253 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 		977DC77F288A849700C0A253 /* Name */ = {
 			isa = PBXGroup;
 			children = (
+				977DC79F288B0B6A00C0A253 /* Name.storyboard */,
+				977DC7A1288B0B7B00C0A253 /* NameViewController.swift */,
 			);
 			path = Name;
 			sourceTree = "<group>";
@@ -218,6 +224,7 @@
 				977DC794288AD91D00C0A253 /* Main.storyboard in Resources */,
 				977DC784288A84F900C0A253 /* Select.storyboard in Resources */,
 				977DC772288A7B5900C0A253 /* Assets.xcassets in Resources */,
+				977DC7A0288B0B6A00C0A253 /* Name.storyboard in Resources */,
 				977DC790288AAFD600C0A253 /* Detail.storyboard in Resources */,
 				977DC798288AEDEB00C0A253 /* Setting.storyboard in Resources */,
 			);
@@ -241,6 +248,7 @@
 				977DC79A288AEDF700C0A253 /* SettingTableViewController.swift in Sources */,
 				977DC792288AAFDF00C0A253 /* DetailViewController.swift in Sources */,
 				977DC796288AD92800C0A253 /* MainViewController.swift in Sources */,
+				977DC7A2288B0B7B00C0A253 /* NameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
