@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		97559F46288BF35000142E2A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97559F45288BF35000142E2A /* UIViewController+Extension.swift */; };
 		977DC769288A7B5800C0A253 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC768288A7B5800C0A253 /* AppDelegate.swift */; };
 		977DC76B288A7B5800C0A253 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC76A288A7B5800C0A253 /* SceneDelegate.swift */; };
 		977DC772288A7B5900C0A253 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 977DC771288A7B5900C0A253 /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		97559F45288BF35000142E2A /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		977DC765288A7B5800C0A253 /* Tamagotchi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagotchi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		977DC768288A7B5800C0A253 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		977DC76A288A7B5800C0A253 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				977DC789288A89B700C0A253 /* UIColor+Extension.swift */,
+				97559F45288BF35000142E2A /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				977DC79E288AFBAF00C0A253 /* SettingTableViewCell.swift in Sources */,
+				97559F46288BF35000142E2A /* UIViewController+Extension.swift in Sources */,
 				977DC786288A881D00C0A253 /* SelectCollectionViewCell.swift in Sources */,
 				977DC77D288A826A00C0A253 /* SelectCollectionViewController.swift in Sources */,
 				977DC78A288A89B700C0A253 /* UIColor+Extension.swift in Sources */,

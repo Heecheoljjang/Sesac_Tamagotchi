@@ -49,7 +49,25 @@ class SettingTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 이름 변경
         if indexPath.row == 0 {
+            
+            let sb = UIStoryboard(name: "Name", bundle: nil)
+            guard let vc = sb.instantiateViewController(withIdentifier: NameViewController.identity) as? NameViewController else { return }
+            
+            if let currentName = UserDefaults.standard.string(forKey: "name") {
+                vc.currentName = currentName
+            }
+            
+            navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.row == 1 {
+            // 다마고치 변경하기
+            
+            
+        } else if indexPath.row == 2{
+            // 초기화 -> UserDefaults 지우고 첫화면으로 돌아감
+            
+            
             
         }
     }

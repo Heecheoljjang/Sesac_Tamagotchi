@@ -53,6 +53,9 @@
                             <constraint firstItem="HGu-00-E1G" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Kqw-WX-tf6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="namingTextField" destination="76p-dS-ObM" id="1QB-Ak-f3t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

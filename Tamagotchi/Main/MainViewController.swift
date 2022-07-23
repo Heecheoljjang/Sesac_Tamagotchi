@@ -13,13 +13,24 @@ class MainViewController: UIViewController {
     
     var name: String = ""
     
+    //레벨, 밥알, 물방울
+    var myTamagotchi: [String: Int] = ["level": 1, "food": 0, "water": 0]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //네비게이션 타이틀
-        title = "\(name)의 다마고치"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(tapSettingBtn))
         navigationItem.backButtonTitle = ""
+    }
+    
+    // pop됐을땐 viewDidLoad가 실행되지않으므로
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let currentName = UserDefaults.standard.string(forKey: "name") {
+            title = "\(currentName)의 다마고치"
+        }
     }
     
     @objc func tapSettingBtn() {
