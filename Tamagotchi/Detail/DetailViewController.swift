@@ -69,7 +69,7 @@ class DetailViewController: UIViewController {
         
         secondLineView.backgroundColor = .systemGray4
         
-        profileImg.image = data.profileImg
+        profileImg.image = UIImage(named: data.profileImg)
         nameLabel.text = data.name
         detailLabel.text = data.detail
     }
@@ -89,9 +89,12 @@ class DetailViewController: UIViewController {
         guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identity) as? MainViewController else { return }
                
         //UserDefaults에 선택한 다마고치 저장. 
-        
-        
-        
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(tamagotchiData) {
+            UserDefaults.standard.setValue(encoded, forKey: "tamagotchi")
+            print(encoded)
+        }
+
         // 첫 화면이라면 name으로 대장을, 변경하기 화면이라면 UserDefaults에 들어있는 값으로
         if UserDefaults.standard.string(forKey: "name") == nil {
 //            vc.name = "대장님"

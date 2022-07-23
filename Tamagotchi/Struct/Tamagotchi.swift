@@ -9,7 +9,7 @@ import UIKit
 
 //메세지 추가해야됨
 
-struct Tamagotchi {
+struct Tamagotchi: Codable {
     var profileImg: String
     var name: String
     var detail: String

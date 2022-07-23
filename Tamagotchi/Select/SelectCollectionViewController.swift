@@ -44,12 +44,12 @@ class SelectCollectionViewController: UICollectionViewController {
         cell.setCell()
         
         if indexPath.item < 3 {
-            cell.profileImg.image = tamagotchiList.list[indexPath.row].profileImg
+            cell.profileImg.image = UIImage(named: tamagotchiList.list[indexPath.row].profileImg)
             cell.nameLabel.text = tamagotchiList.list[indexPath.row].name
     
         } else {
             cell.nameLabel.text = tamagotchiList.list[3].name
-            cell.profileImg.image = tamagotchiList.list[3].profileImg
+            cell.profileImg.image = UIImage(named: tamagotchiList.list[3].profileImg)
         }
         
         return cell

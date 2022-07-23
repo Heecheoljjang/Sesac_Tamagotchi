@@ -50,7 +50,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oQO-y1-h5r">
-                                <rect key="frame" x="142" y="435.5" width="130" height="29"/>
+                                <rect key="frame" x="142" y="439.5" width="130" height="29"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다마다마 다마꼬치" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bq0-Gf-cuh">
                                         <rect key="frame" x="4" y="4" width="122" height="21"/>
@@ -68,7 +68,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LV0 · 밥알 0개 · 물방울 0개" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nk4-R0-CxT">
-                                <rect key="frame" x="113" y="480.5" width="188.5" height="21"/>
+                                <rect key="frame" x="113" y="484.5" width="188.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -183,7 +183,7 @@
                             <constraint firstItem="vU3-Gl-6HV" firstAttribute="width" secondItem="QgT-jT-yJx" secondAttribute="width" id="0KZ-ao-Wlk"/>
                             <constraint firstItem="Vqi-Zt-Vsf" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="21U-95-Rmy"/>
                             <constraint firstItem="4KJ-p5-W1n" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.6" id="73E-eg-yV3"/>
-                            <constraint firstItem="QgT-jT-yJx" firstAttribute="top" secondItem="Nk4-R0-CxT" secondAttribute="bottom" constant="36" id="HNd-LI-syJ"/>
+                            <constraint firstItem="QgT-jT-yJx" firstAttribute="top" secondItem="Nk4-R0-CxT" secondAttribute="bottom" constant="32" id="HNd-LI-syJ"/>
                             <constraint firstItem="4KJ-p5-W1n" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="48" id="LZp-e8-4hY"/>
                             <constraint firstItem="4KJ-p5-W1n" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Lrl-mz-iUS"/>
                             <constraint firstItem="Nk4-R0-CxT" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="M7P-Oj-VHs"/>
@@ -191,7 +191,7 @@
                             <constraint firstItem="Nk4-R0-CxT" firstAttribute="width" relation="lessThanOrEqual" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.8" id="X8H-gU-gSH"/>
                             <constraint firstItem="Vqi-Zt-Vsf" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.45" id="YtV-cX-olv"/>
                             <constraint firstItem="oQO-y1-h5r" firstAttribute="width" relation="lessThanOrEqual" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.7" id="ZaD-ur-XKZ"/>
-                            <constraint firstItem="oQO-y1-h5r" firstAttribute="top" secondItem="Vqi-Zt-Vsf" secondAttribute="bottom" constant="4" id="aDP-v1-BtB"/>
+                            <constraint firstItem="oQO-y1-h5r" firstAttribute="top" secondItem="Vqi-Zt-Vsf" secondAttribute="bottom" constant="8" id="aDP-v1-BtB"/>
                             <constraint firstItem="Nk4-R0-CxT" firstAttribute="top" secondItem="oQO-y1-h5r" secondAttribute="bottom" constant="16" id="co9-Hu-q2T"/>
                             <constraint firstItem="nNB-DK-FhS" firstAttribute="width" secondItem="MKC-FU-ueb" secondAttribute="width" id="cqe-Sm-4lY"/>
                             <constraint firstItem="vU3-Gl-6HV" firstAttribute="top" secondItem="QgT-jT-yJx" secondAttribute="bottom" constant="20" id="oTb-tt-WH3"/>
@@ -208,6 +208,7 @@
                         <outlet property="foodOuterView" destination="QgT-jT-yJx" id="WUD-yx-ND2"/>
                         <outlet property="foodTextField" destination="GCS-9b-VEB" id="XAs-Zo-6kD"/>
                         <outlet property="messageLabel" destination="7iZ-jR-cgi" id="KrW-lI-MFD"/>
+                        <outlet property="messageView" destination="4KJ-p5-W1n" id="DMP-o9-S2n"/>
                         <outlet property="nameLabel" destination="bq0-Gf-cuh" id="rHq-uu-9Bp"/>
                         <outlet property="nameView" destination="oQO-y1-h5r" id="NTz-EG-v3L"/>
                         <outlet property="profileImg" destination="Vqi-Zt-Vsf" id="aBc-Tp-zmc"/>

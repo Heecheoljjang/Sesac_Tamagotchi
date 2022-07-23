@@ -34,7 +34,7 @@ class SettingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identity, for: indexPath) as? SettingTableViewCell else { return UITableViewCell() }
         
-        cell.listImg.image = settingList.settingLists[indexPath.row].leftImg
+        cell.listImg.image = UIImage(named: settingList.settingLists[indexPath.row].leftImg)
         cell.listImg.tintColor = .sesacBorder
         cell.listTitle.text = settingList.settingLists[indexPath.row].listTitle
         cell.listTitle.font = .systemFont(ofSize: 13, weight: .semibold)
@@ -83,7 +83,8 @@ class SettingTableViewController: UITableViewController {
                 let sb = UIStoryboard(name: "Select", bundle: nil)
                 guard let vc = sb.instantiateViewController(withIdentifier: SelectCollectionViewController.identity) as? SelectCollectionViewController else { return }
                 
-                UserDefaults.standard.removeObject(forKey: "name") // 데이터 지우기
+                let domain = Bundle.main.bundleIdentifier!
+                UserDefaults.standard.removePersistentDomain(forName: domain)
                 
                 vc.navTitle = "다마고치 선택하기"
                 
