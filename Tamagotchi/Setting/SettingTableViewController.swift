@@ -62,13 +62,39 @@ class SettingTableViewController: UITableViewController {
             navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 1 {
             // 다마고치 변경하기
+            // push로 셀렉션뷰 띄우고 타이틀은 다마고치 변경하기 -> 이후는 detailview에서 설정
+            let sb = UIStoryboard(name: "Select", bundle: nil)
+            guard let vc = sb.instantiateViewController(withIdentifier: SelectCollectionViewController.identity) as? SelectCollectionViewController else { return }
             
+            vc.navTitle = "다마고치 변경하기"
+            
+            navigationController?.pushViewController(vc, animated: true)
             
         } else if indexPath.row == 2{
-            // 초기화 -> UserDefaults 지우고 첫화면으로 돌아감
+            // 초기화 -> alert띄우고 확인눌렀을 때, UserDefaults 지우고 첫화면으로 돌아감
             
-            
-            
+            // alert띄우기, showAlert랑 형태가 달라서 따로 작성
+            let alert = UIAlertController(title: "데이터 초기화", message: "정말로 처음부터 다시 시작하실건가요?", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "웅", style: .default) { _ in
+                // 화면 초기화
+                let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene // 앱을 다시 처음부터 실행해주는 코드
+                let sceneDelegate = windowScene?.delegate as? SceneDelegate // 신딜리게이트 클래스에 접근
+                        
+                let sb = UIStoryboard(name: "Select", bundle: nil)
+                guard let vc = sb.instantiateViewController(withIdentifier: SelectCollectionViewController.identity) as? SelectCollectionViewController else { return }
+                
+                UserDefaults.standard.removeObject(forKey: "name") // 데이터 지우기
+                
+                vc.navTitle = "다마고치 선택하기"
+                
+                sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: vc)
+                sceneDelegate?.window?.makeKeyAndVisible()
+                
+            }
+            let no = UIAlertAction(title: "아니아니", style: .cancel)
+            alert.addAction(ok)
+            alert.addAction(no)
+            present(alert, animated: true)
         }
     }
     
