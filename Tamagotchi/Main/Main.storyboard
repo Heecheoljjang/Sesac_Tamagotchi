@@ -107,6 +107,9 @@
                                         <rect key="frame" x="180" y="0.0" width="89" height="38.5"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="물먹기" image="drop.circle" catalog="system"/>
+                                        <connections>
+                                            <action selector="tapFoodBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Np0-Ir-T7V"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBrownColor"/>
@@ -156,6 +159,9 @@
                                         <rect key="frame" x="180" y="0.0" width="89" height="38"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="물먹기" image="drop.circle" catalog="system"/>
+                                        <connections>
+                                            <action selector="tapWaterBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="jsM-Mt-KnJ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBrownColor"/>
@@ -196,6 +202,21 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nso-wp-6Pf"/>
+                    <connections>
+                        <outlet property="foodBtn" destination="MKC-FU-ueb" id="ayg-LL-23H"/>
+                        <outlet property="foodLineView" destination="5MH-TS-57Z" id="bnf-ug-IbW"/>
+                        <outlet property="foodOuterView" destination="QgT-jT-yJx" id="WUD-yx-ND2"/>
+                        <outlet property="foodTextField" destination="GCS-9b-VEB" id="XAs-Zo-6kD"/>
+                        <outlet property="messageLabel" destination="7iZ-jR-cgi" id="KrW-lI-MFD"/>
+                        <outlet property="nameLabel" destination="bq0-Gf-cuh" id="rHq-uu-9Bp"/>
+                        <outlet property="nameView" destination="oQO-y1-h5r" id="NTz-EG-v3L"/>
+                        <outlet property="profileImg" destination="Vqi-Zt-Vsf" id="aBc-Tp-zmc"/>
+                        <outlet property="stateLabel" destination="Nk4-R0-CxT" id="KZE-fr-9Ok"/>
+                        <outlet property="waterBtn" destination="nNB-DK-FhS" id="NQm-fO-Hka"/>
+                        <outlet property="waterLineView" destination="flM-Ud-I1D" id="VPw-tR-Oy3"/>
+                        <outlet property="waterOuterView" destination="vU3-Gl-6HV" id="fnE-ay-HW2"/>
+                        <outlet property="waterTextField" destination="MrZ-a9-0rX" id="hYw-LH-EHt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

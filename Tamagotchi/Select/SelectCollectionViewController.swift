@@ -11,7 +11,7 @@ class SelectCollectionViewController: UICollectionViewController {
 
     static let identity = "SelectCollectionViewController"
     
-    var tamagotchiList = TamagochiList()
+    var tamagotchiList = TamagotchiList()
     
     var navTitle: String = ""
     
@@ -43,7 +43,7 @@ class SelectCollectionViewController: UICollectionViewController {
         
         cell.setCell()
         
-        if indexPath.row < 3 {
+        if indexPath.item < 3 {
             cell.profileImg.image = tamagotchiList.list[indexPath.row].profileImg
             cell.nameLabel.text = tamagotchiList.list[indexPath.row].name
     
@@ -59,10 +59,15 @@ class SelectCollectionViewController: UICollectionViewController {
         let sb = UIStoryboard(name: "Detail", bundle: nil)
         guard let vc = sb.instantiateViewController(withIdentifier: DetailViewController.identity) as? DetailViewController else { return }
         
-        vc.tamagotchiData = tamagotchiList.list[indexPath.item]
-        
-        vc.modalPresentationStyle = .overFullScreen
-        present(vc, animated: true)
+        if indexPath.item < 3 {
+            
+            vc.tamagotchiData = tamagotchiList.list[indexPath.item]
+            
+            vc.modalPresentationStyle = .overFullScreen
+            present(vc, animated: true)
+        } else {
+            showAlert(title: "준비중입니다!!!")
+        }
     }
     
 }

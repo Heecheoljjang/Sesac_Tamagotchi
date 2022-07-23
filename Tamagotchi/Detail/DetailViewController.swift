@@ -29,6 +29,12 @@ class DetailViewController: UIViewController {
         if let tamagotchiData = tamagotchiData {
             settingView(data: tamagotchiData)
         }
+        
+        if UserDefaults.standard.string(forKey: "name") == nil {
+            selectBtn.setTitle("시작하기", for: .normal)
+        } else {
+            selectBtn.setTitle("변경하기", for: .normal)
+        }
 
     }
     
@@ -58,7 +64,6 @@ class DetailViewController: UIViewController {
         cancleBtn.layer.cornerRadius = 10
         cancleBtn.backgroundColor = .cancelColor
         
-        selectBtn.setTitle("시작하기", for: .normal)
         selectBtn.layer.maskedCorners = [.layerMinXMaxYCorner]
         selectBtn.layer.cornerRadius = 10
         
@@ -83,15 +88,20 @@ class DetailViewController: UIViewController {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identity) as? MainViewController else { return }
                
+        //UserDefaults에 선택한 다마고치 저장. 
+        
+        
+        
         // 첫 화면이라면 name으로 대장을, 변경하기 화면이라면 UserDefaults에 들어있는 값으로
         if UserDefaults.standard.string(forKey: "name") == nil {
-            vc.name = "대장님"
+//            vc.name = "대장님"
             UserDefaults.standard.set("대장님", forKey: "name")
-        } else {
-            if let name = UserDefaults.standard.string(forKey: "name") {
-                vc.name = name
-            }
         }
+//        } else {
+//            if let name = UserDefaults.standard.string(forKey: "name") {
+//                vc.name = name
+//            }
+//        }
         
         sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: vc)
         sceneDelegate?.window?.makeKeyAndVisible()

@@ -17,13 +17,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         
-//        UserDefaults.standard.set("123", forKey: "name")
         // 선택을 했으면 true값을 넣어주기때문. 값이 있으면 메인화면
         if UserDefaults.standard.string(forKey: "name") != nil {
             let sb = UIStoryboard(name: "Main", bundle: nil)
             guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identity) as? MainViewController else { return }
             
-            vc.name = UserDefaults.standard.string(forKey: "name")!
+            //vc.name = UserDefaults.standard.string(forKey: "name")!
             
             window?.rootViewController = UINavigationController(rootViewController: vc)
             window?.makeKeyAndVisible()
