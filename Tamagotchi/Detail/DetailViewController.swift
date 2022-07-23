@@ -75,8 +75,27 @@ class DetailViewController: UIViewController {
     
     @IBAction func tapSelect(_ sender: UIButton) {
         
-        // UserDefault에 값이 있으면 변경하기 화면이므로 값 변화x
-        // 값이 없다면 초기화면이므로 다시 대장으로
+        // 메인화면으로 루트뷰컨틀롤러 이동
+        
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene // 앱을 다시 처음부터 실행해주는 코드
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate // 신딜리게이트 클래스에 접근
+                
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identity) as? MainViewController else { return }
+               
+        // 첫 화면이라면 name으로 대장을, 변경하기 화면이라면 UserDefaults에 들어있는 값으로
+        if UserDefaults.standard.string(forKey: "name") == nil {
+            vc.name = "대장님"
+            UserDefaults.standard.set("대장님", forKey: "name")
+        } else {
+            if let name = UserDefaults.standard.string(forKey: "name") {
+                vc.name = name
+            }
+        }
+        
+        sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: vc)
+        sceneDelegate?.window?.makeKeyAndVisible()
+        
     }
     
 }
