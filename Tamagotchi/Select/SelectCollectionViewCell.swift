@@ -15,16 +15,17 @@ class SelectCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var labelView: UIView!
     
-    func setCell(name: String) {
+    func setCell() {
         labelView.layer.borderWidth = 1
         labelView.layer.borderColor = UIColor.sesacBorder.cgColor
         labelView.layer.cornerRadius = 5
         labelView.backgroundColor = .sesacBackground
-        nameLabel.text = name
         nameLabel.font = UIFont.systemFont(ofSize: 13, weight: .bold)
         nameLabel.backgroundColor = .sesacBackground
         nameLabel.textColor = .sesacBorder
         nameLabel.adjustsFontSizeToFitWidth = true
+        
+        self.backgroundColor = .sesacBackground
     }
     
 }

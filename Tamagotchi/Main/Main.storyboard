@@ -195,10 +195,11 @@
                             <constraint firstItem="Vqi-Zt-Vsf" firstAttribute="top" secondItem="4KJ-p5-W1n" secondAttribute="bottom" constant="4" id="ymt-IN-reG"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="nso-wp-6Pf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="120.53571428571428"/>
+            <point key="canvasLocation" x="1047.8260869565217" y="120.53571428571428"/>
         </scene>
     </scenes>
     <resources>

@@ -9,6 +9,12 @@ import UIKit
 
 class SelectCollectionViewController: UICollectionViewController {
 
+    static let identity = "SelectCollectionViewController"
+    
+    var tamagotchiList = TamagochiList()
+    
+    var navTitle: String = ""
+    
     override func viewDidLoad() {
         
         self.collectionView.backgroundColor = UIColor.sesacBackground
@@ -23,18 +29,28 @@ class SelectCollectionViewController: UICollectionViewController {
         layout.itemSize = CGSize(width: width / 3, height: (width / 3) * 1.2)
         layout.minimumLineSpacing = spacing
         collectionView.collectionViewLayout = layout
+        
+        title = navTitle
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 27
+        return 30
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectCollectionViewCell.identity, for: indexPath) as? SelectCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.backgroundColor = UIColor.sesacBackground
-        cell.setCell(name: "따끔따끔 다마고치")
+        cell.setCell()
+        
+        if indexPath.row < 3 {
+            cell.profileImg.image = tamagotchiList.list[indexPath.row].profileImg
+            cell.nameLabel.text = tamagotchiList.list[indexPath.row].name
+    
+        } else {
+            cell.nameLabel.text = tamagotchiList.list[3].name
+            cell.profileImg.image = tamagotchiList.list[3].profileImg
+        }
         
         return cell
         
