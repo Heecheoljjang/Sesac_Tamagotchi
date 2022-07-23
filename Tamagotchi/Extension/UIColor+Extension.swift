@@ -13,4 +13,5 @@ extension UIColor {
     
     static let sesacBorder = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
     
+    static let cancelColor = UIColor(red: 227/255, green: 236/255, blue: 238/255, alpha: 1)
 }

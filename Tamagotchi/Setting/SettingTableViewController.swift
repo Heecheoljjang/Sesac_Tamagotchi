@@ -37,7 +37,7 @@ class SettingTableViewController: UITableViewController {
         cell.listImg.image = settingList.settingLists[indexPath.row].leftImg
         cell.listImg.tintColor = .sesacBorder
         cell.listTitle.text = settingList.settingLists[indexPath.row].listTitle
-        cell.listTitle.font = .boldSystemFont(ofSize: 13)
+        cell.listTitle.font = .systemFont(ofSize: 13, weight: .semibold)
         if indexPath.row == 0 {
             cell.detailLabel.text = UserDefaults.standard.string(forKey: "name")!
         } else {

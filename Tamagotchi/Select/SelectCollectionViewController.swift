@@ -59,6 +59,8 @@ class SelectCollectionViewController: UICollectionViewController {
         let sb = UIStoryboard(name: "Detail", bundle: nil)
         guard let vc = sb.instantiateViewController(withIdentifier: DetailViewController.identity) as? DetailViewController else { return }
         
+        vc.tamagotchiData = tamagotchiList.list[indexPath.item]
+        
         vc.modalPresentationStyle = .overFullScreen
         present(vc, animated: true)
     }

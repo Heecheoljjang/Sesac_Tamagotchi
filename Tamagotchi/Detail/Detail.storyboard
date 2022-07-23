@@ -64,11 +64,17 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="165.5" height="44.5"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="tapCancel:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Hql-hc-UvF"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpj-Yn-vrd">
                                                 <rect key="frame" x="165.5" y="0.0" width="165.5" height="44.5"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="tapSelect:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="boA-b3-gwW"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
