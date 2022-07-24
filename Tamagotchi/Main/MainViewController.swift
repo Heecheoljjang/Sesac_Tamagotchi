@@ -163,7 +163,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             if let foodText = foodTextField.text {
                 if Int(foodText) != nil {
                     if Int(foodText)! >= 100 || Int(foodText)! <= 0{
-                        showAlert(title: "장난하지말고 다시.")
+                        showAlert(title: "너무 많잖아요..")
                     } else {
                         food += Int(foodText)!
                     }
@@ -203,6 +203,9 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         
         // 텍스트필드 비워주기
         foodTextField.text = ""
+        
+        // 키보드내리기
+        view.endEditing(true)
     }
     
     // 물주기 버튼
@@ -214,7 +217,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             if let waterText = waterTextField.text {
                 if Int(waterText) != nil {
                     if Int(waterText)! >= 50 || Int(waterText)! <= 0{
-                        showAlert(title: "장난하지말고 다시.")
+                        showAlert(title: "너무 많잖아요..")
                     } else {
                         water += Int(waterText)!
                     }
@@ -254,6 +257,9 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         
         // 텍스트필드 비워주기
         waterTextField.text = ""
+        
+        // 키보드내리기
+        view.endEditing(true)
     }
     
     //UI세팅
@@ -281,7 +287,6 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         foodLineView.backgroundColor = .sesacBorder
         foodTextField.placeholder = "밥주세용"
         foodTextField.backgroundColor = .sesacBackground
-//        foodTextField.keyboardType = .numberPad
         foodBtn.backgroundColor = .sesacBackground
         foodBtn.layer.cornerRadius = 5
         foodBtn.layer.borderWidth = 0.5
@@ -295,7 +300,6 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         waterLineView.backgroundColor = .sesacBorder
         waterTextField.placeholder = "물주세용"
         waterTextField.backgroundColor = .sesacBackground
-//        waterTextField.keyboardType = .numberPad
         waterBtn.backgroundColor = .sesacBackground
         waterBtn.layer.cornerRadius = 5
         waterBtn.layer.borderWidth = 0.5

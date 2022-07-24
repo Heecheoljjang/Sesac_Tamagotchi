@@ -18,14 +18,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="50I-Cm-TY6">
-                                <rect key="frame" x="0.0" y="88" width="414" height="0.0"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="0.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="0.20000000000000001" id="bBI-Qc-yQB"/>
+                                    <constraint firstAttribute="height" constant="0.29999999999999999" id="bBI-Qc-yQB"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="y8c-NB-kVu">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88.5" width="414" height="807.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VPU-rq-GHK">
                                     <size key="itemSize" width="155" height="191"/>

@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HGu-00-E1G">
-                                <rect key="frame" x="41.5" y="64" width="331" height="44"/>
+                                <rect key="frame" x="41.5" y="64.5" width="331" height="44"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="고래밥" placeholder="이름을 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="76p-dS-ObM">
                                         <rect key="frame" x="0.0" y="0.0" width="331" height="43"/>
@@ -45,10 +45,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fuk-Km-EN6">
-                                <rect key="frame" x="0.0" y="44" width="414" height="0.0"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="0.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="0.20000000000000001" id="wtF-9I-PnY"/>
+                                    <constraint firstAttribute="height" constant="0.29999999999999999" id="wtF-9I-PnY"/>
                                 </constraints>
                             </view>
                         </subviews>

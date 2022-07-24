@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		97559F46288BF35000142E2A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97559F45288BF35000142E2A /* UIViewController+Extension.swift */; };
 		97559F4A288C35C000142E2A /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97559F49288C35C000142E2A /* Status.swift */; };
-		97559F50288D41A600142E2A /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 97559F4F288D41A600142E2A /* IQKeyboardManagerSwift */; };
 		97559F52288D720A00142E2A /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97559F51288D720A00142E2A /* SelectViewController.swift */; };
 		97559F54288D757500142E2A /* SelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97559F53288D757500142E2A /* SelectCollectionViewCell.swift */; };
 		977DC769288A7B5800C0A253 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC768288A7B5800C0A253 /* AppDelegate.swift */; };
@@ -62,7 +61,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97559F50288D41A600142E2A /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,8 +142,8 @@
 		977DC782288A849D00C0A253 /* Select */ = {
 			isa = PBXGroup;
 			children = (
-				97559F51288D720A00142E2A /* SelectViewController.swift */,
 				977DC783288A84F900C0A253 /* Select.storyboard */,
+				97559F51288D720A00142E2A /* SelectViewController.swift */,
 				97559F53288D757500142E2A /* SelectCollectionViewCell.swift */,
 			);
 			path = Select;
@@ -187,7 +185,6 @@
 			);
 			name = Tamagotchi;
 			packageProductDependencies = (
-				97559F4F288D41A600142E2A /* IQKeyboardManagerSwift */,
 			);
 			productName = Tamagotchi;
 			productReference = 977DC765288A7B5800C0A253 /* Tamagotchi.app */;
@@ -218,7 +215,6 @@
 			);
 			mainGroup = 977DC75C288A7B5800C0A253;
 			packageReferences = (
-				97559F4E288D41A600142E2A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 977DC766288A7B5800C0A253 /* Products */;
 			projectDirPath = "";
@@ -478,25 +474,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		97559F4E288D41A600142E2A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
-			requirement = {
-				kind = exactVersion;
-				version = 6.5.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		97559F4F288D41A600142E2A /* IQKeyboardManagerSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 97559F4E288D41A600142E2A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
-			productName = IQKeyboardManagerSwift;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 977DC75D288A7B5800C0A253 /* Project object */;
 }
