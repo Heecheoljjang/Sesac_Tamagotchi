@@ -1,14 +1,13 @@
 //
-//  SelectCollectionViewCell.swift
+//  bbCollectionViewCell.swift
 //  Tamagotchi
 //
-//  Created by HeecheolYoon on 2022/07/22.
+//  Created by HeecheolYoon on 2022/07/24.
 //
 
 import UIKit
 
 class SelectCollectionViewCell: UICollectionViewCell {
-    
     static let identity = "SelectCollectionViewCell"
     
     @IBOutlet weak var profileImg: UIImageView!
@@ -27,5 +26,4 @@ class SelectCollectionViewCell: UICollectionViewCell {
         
         self.backgroundColor = .sesacBackground
     }
-    
 }

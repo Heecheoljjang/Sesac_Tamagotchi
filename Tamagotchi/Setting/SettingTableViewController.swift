@@ -69,7 +69,7 @@ class SettingTableViewController: UITableViewController {
             // 다마고치 변경하기
             // push로 셀렉션뷰 띄우고 타이틀은 다마고치 변경하기 -> 이후는 detailview에서 설정
             let sb = UIStoryboard(name: "Select", bundle: nil)
-            guard let vc = sb.instantiateViewController(withIdentifier: SelectCollectionViewController.identity) as? SelectCollectionViewController else { return }
+            guard let vc = sb.instantiateViewController(withIdentifier: SelectViewController.identity) as? SelectViewController else { return }
             
             vc.navTitle = "다마고치 변경하기"
             
@@ -86,7 +86,7 @@ class SettingTableViewController: UITableViewController {
                 let sceneDelegate = windowScene?.delegate as? SceneDelegate // 신딜리게이트 클래스에 접근
                         
                 let sb = UIStoryboard(name: "Select", bundle: nil)
-                guard let vc = sb.instantiateViewController(withIdentifier: SelectCollectionViewController.identity) as? SelectCollectionViewController else { return }
+                guard let vc = sb.instantiateViewController(withIdentifier: SelectViewController.identity) as? SelectViewController else { return }
                 
                 // 전체 userDefaults 삭제
                 let domain = Bundle.main.bundleIdentifier!

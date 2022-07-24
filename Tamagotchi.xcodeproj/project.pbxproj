@@ -10,13 +10,13 @@
 		97559F46288BF35000142E2A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97559F45288BF35000142E2A /* UIViewController+Extension.swift */; };
 		97559F4A288C35C000142E2A /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97559F49288C35C000142E2A /* Status.swift */; };
 		97559F50288D41A600142E2A /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 97559F4F288D41A600142E2A /* IQKeyboardManagerSwift */; };
+		97559F52288D720A00142E2A /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97559F51288D720A00142E2A /* SelectViewController.swift */; };
+		97559F54288D757500142E2A /* SelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97559F53288D757500142E2A /* SelectCollectionViewCell.swift */; };
 		977DC769288A7B5800C0A253 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC768288A7B5800C0A253 /* AppDelegate.swift */; };
 		977DC76B288A7B5800C0A253 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC76A288A7B5800C0A253 /* SceneDelegate.swift */; };
 		977DC772288A7B5900C0A253 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 977DC771288A7B5900C0A253 /* Assets.xcassets */; };
 		977DC775288A7B5900C0A253 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 977DC773288A7B5900C0A253 /* LaunchScreen.storyboard */; };
-		977DC77D288A826A00C0A253 /* SelectCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC77C288A826A00C0A253 /* SelectCollectionViewController.swift */; };
 		977DC784288A84F900C0A253 /* Select.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 977DC783288A84F900C0A253 /* Select.storyboard */; };
-		977DC786288A881D00C0A253 /* SelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC785288A881D00C0A253 /* SelectCollectionViewCell.swift */; };
 		977DC78A288A89B700C0A253 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC789288A89B700C0A253 /* UIColor+Extension.swift */; };
 		977DC78E288AA5CD00C0A253 /* Tamagotchi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC78D288AA5CD00C0A253 /* Tamagotchi.swift */; };
 		977DC790288AAFD600C0A253 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 977DC78F288AAFD600C0A253 /* Detail.storyboard */; };
@@ -34,15 +34,15 @@
 /* Begin PBXFileReference section */
 		97559F45288BF35000142E2A /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		97559F49288C35C000142E2A /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		97559F51288D720A00142E2A /* SelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
+		97559F53288D757500142E2A /* SelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionViewCell.swift; sourceTree = "<group>"; };
 		977DC765288A7B5800C0A253 /* Tamagotchi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagotchi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		977DC768288A7B5800C0A253 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		977DC76A288A7B5800C0A253 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		977DC771288A7B5900C0A253 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		977DC774288A7B5900C0A253 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		977DC776288A7B5900C0A253 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		977DC77C288A826A00C0A253 /* SelectCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionViewController.swift; sourceTree = "<group>"; };
 		977DC783288A84F900C0A253 /* Select.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Select.storyboard; sourceTree = "<group>"; };
-		977DC785288A881D00C0A253 /* SelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionViewCell.swift; sourceTree = "<group>"; };
 		977DC789288A89B700C0A253 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		977DC78D288AA5CD00C0A253 /* Tamagotchi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tamagotchi.swift; sourceTree = "<group>"; };
 		977DC78F288AAFD600C0A253 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
@@ -144,9 +144,9 @@
 		977DC782288A849D00C0A253 /* Select */ = {
 			isa = PBXGroup;
 			children = (
-				977DC77C288A826A00C0A253 /* SelectCollectionViewController.swift */,
-				977DC785288A881D00C0A253 /* SelectCollectionViewCell.swift */,
+				97559F51288D720A00142E2A /* SelectViewController.swift */,
 				977DC783288A84F900C0A253 /* Select.storyboard */,
+				97559F53288D757500142E2A /* SelectCollectionViewCell.swift */,
 			);
 			path = Select;
 			sourceTree = "<group>";
@@ -251,13 +251,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97559F54288D757500142E2A /* SelectCollectionViewCell.swift in Sources */,
 				977DC79E288AFBAF00C0A253 /* SettingTableViewCell.swift in Sources */,
 				97559F46288BF35000142E2A /* UIViewController+Extension.swift in Sources */,
-				977DC786288A881D00C0A253 /* SelectCollectionViewCell.swift in Sources */,
-				977DC77D288A826A00C0A253 /* SelectCollectionViewController.swift in Sources */,
 				977DC78A288A89B700C0A253 /* UIColor+Extension.swift in Sources */,
 				977DC769288A7B5800C0A253 /* AppDelegate.swift in Sources */,
 				977DC78E288AA5CD00C0A253 /* Tamagotchi.swift in Sources */,
+				97559F52288D720A00142E2A /* SelectViewController.swift in Sources */,
 				977DC79C288AF14F00C0A253 /* SettingTableList.swift in Sources */,
 				977DC76B288A7B5800C0A253 /* SceneDelegate.swift in Sources */,
 				97559F4A288C35C000142E2A /* Status.swift in Sources */,

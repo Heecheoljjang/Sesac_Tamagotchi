@@ -49,6 +49,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         foodTextField.delegate = self
         waterTextField.delegate = self
         
+        // 키보드가 올라오고 내려오는 것을 감지해서 selector에 있는 메서드 실행
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
@@ -117,15 +118,13 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         messageLabel.text = messages.randomElement()
     }
     @objc func keyboardWillShow(_ sender: Notification) {
-        print("hh")
-        self.view.frame.origin.y = -170
-        navigationController?.navigationBar.isHidden = true
+        
+        self.view.frame.origin.y = -190 // 뷰를 아래에서 위로 올림
+        navigationController?.navigationBar.isHidden = true // 뷰만 올라가므로 네비게이션바도 같이 없애줌.
 
     }
     @objc func keyboardWillHide(_ sender: Notification) {
-        print("hh")
-
-        self.view.frame.origin.y = 0
+        self.view.frame.origin.y = 0 // 다시 원상복구
         navigationController?.navigationBar.isHidden = false
     }
     

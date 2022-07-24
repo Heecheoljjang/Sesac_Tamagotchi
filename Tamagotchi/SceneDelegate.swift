@@ -21,22 +21,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if UserDefaults.standard.string(forKey: "name") != nil {
             let sb = UIStoryboard(name: "Main", bundle: nil)
             guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identity) as? MainViewController else { return }
-            
-            //vc.name = UserDefaults.standard.string(forKey: "name")!
-            
+
             window?.rootViewController = UINavigationController(rootViewController: vc)
             window?.makeKeyAndVisible()
-        
+
         } else { // 값이 없으면 선택화면
             let sb = UIStoryboard(name: "Select", bundle: nil)
-            guard let vc = sb.instantiateViewController(withIdentifier: SelectCollectionViewController.identity) as? SelectCollectionViewController else { return }
-            
+            guard let vc = sb.instantiateViewController(withIdentifier: SelectViewController.identity) as? SelectViewController else { return }
+
             vc.navTitle = "다마고치 선택하기"
-            
+
             window?.rootViewController = UINavigationController(rootViewController: vc)
             window?.makeKeyAndVisible()
         }
-        
+       
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

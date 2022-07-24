@@ -1,23 +1,28 @@
 //
-//  SelectCollectionViewController.swift
+//  aaViewController.swift
 //  Tamagotchi
 //
-//  Created by HeecheolYoon on 2022/07/22.
+//  Created by HeecheolYoon on 2022/07/24.
 //
 
 import UIKit
 
-class SelectCollectionViewController: UICollectionViewController {
+class SelectViewController: UIViewController {
 
-    static let identity = "SelectCollectionViewController"
+    static let identity = "SelectViewController"
     
     var tamagotchiList = TamagotchiList()
     
     var navTitle: String = ""
     
+    @IBOutlet weak var listCollectionView: UICollectionView!
+    @IBOutlet weak var lineView: UIView!
+    
+    
     override func viewDidLoad() {
-        
-        self.collectionView.backgroundColor = UIColor.sesacBackground
+        super.viewDidLoad()
+
+        listCollectionView.backgroundColor = UIColor.sesacBackground
         // 컬렉션뷰 셀 레이아웃
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 8
@@ -27,18 +32,25 @@ class SelectCollectionViewController: UICollectionViewController {
         layout.sectionInset = UIEdgeInsets(top: 20, left: 8, bottom: 0, right: 8)
         layout.itemSize = CGSize(width: width / 3, height: (width / 3) * 1.2)
         layout.minimumLineSpacing = spacing
-        collectionView.collectionViewLayout = layout
+        listCollectionView.collectionViewLayout = layout
         
         title = navTitle
-        navigationController?.navigationBar.barTintColor = .sesacBackground
-
+        navigationController?.navigationBar.backgroundColor = .sesacBackground
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder ]
+        lineView.backgroundColor = .sesacBorder
+        view.backgroundColor = .sesacBackground
+        
     }
+
+}
+
+extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 30
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectCollectionViewCell.identity, for: indexPath) as? SelectCollectionViewCell else { return UICollectionViewCell() }
         
@@ -56,7 +68,7 @@ class SelectCollectionViewController: UICollectionViewController {
         return cell
         
     }
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "Detail", bundle: nil)
         guard let vc = sb.instantiateViewController(withIdentifier: DetailViewController.identity) as? DetailViewController else { return }
         
