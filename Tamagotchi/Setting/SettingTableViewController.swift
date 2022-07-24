@@ -18,6 +18,7 @@ class SettingTableViewController: UITableViewController {
         super.viewDidLoad()
 
         title = "설정"
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder ]
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -25,6 +26,9 @@ class SettingTableViewController: UITableViewController {
         
         // 이름을 바꾸면 다시 테이블뷰로 돌아올 때 리로드해줘야 디테일 레이블 값 바뀜
         tableView.reloadData()
+        
+        tableView.backgroundColor = .sesacBackground
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,16 +38,14 @@ class SettingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identity, for: indexPath) as? SettingTableViewCell else { return UITableViewCell() }
         
-        cell.listImg.image = UIImage(named: settingList.settingLists[indexPath.row].leftImg)
-        cell.listImg.tintColor = .sesacBorder
+        cell.setCellUI()
+        
+        cell.listImg.image = UIImage(systemName: settingList.settingLists[indexPath.row].leftImg)
         cell.listTitle.text = settingList.settingLists[indexPath.row].listTitle
-        cell.listTitle.font = .systemFont(ofSize: 13, weight: .semibold)
+
         if indexPath.row == 0 {
             cell.detailLabel.text = UserDefaults.standard.string(forKey: "name")!
-        } else {
-            cell.detailLabel.text = ""
         }
-        
         
         return cell
     }

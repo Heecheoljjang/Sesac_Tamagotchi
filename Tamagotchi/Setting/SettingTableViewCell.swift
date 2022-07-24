@@ -15,5 +15,12 @@ class SettingTableViewCell: UITableViewCell {
     @IBOutlet weak var listImg: UIImageView!
     @IBOutlet weak var detailLabel: UILabel!
     
-    
+    func setCellUI() {
+        backgroundColor = .sesacBackground
+        listTitle.font = .systemFont(ofSize: 13, weight: .semibold)
+        listImg.tintColor = .sesacBorder
+        detailLabel.text = ""
+        detailLabel.textColor = .sesacBorder
+        
+    }
 }
