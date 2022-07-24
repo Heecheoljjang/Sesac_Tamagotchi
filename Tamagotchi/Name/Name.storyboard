@@ -17,15 +17,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HGu-00-E1G">
-                                <rect key="frame" x="41.5" y="84" width="331" height="50"/>
+                                <rect key="frame" x="41.5" y="64" width="331" height="44"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="고래밥" placeholder="이름을 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="76p-dS-ObM">
-                                        <rect key="frame" x="0.0" y="0.0" width="331" height="49"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="331" height="43"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="79m-1t-vgn">
-                                        <rect key="frame" x="0.0" y="49" width="331" height="1"/>
+                                        <rect key="frame" x="0.0" y="43" width="331" height="1"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="nfK-M4-z04"/>
@@ -36,7 +36,7 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="79m-1t-vgn" secondAttribute="bottom" id="8lQ-h5-Nmw"/>
                                     <constraint firstAttribute="trailing" secondItem="76p-dS-ObM" secondAttribute="trailing" id="BK6-3a-I2E"/>
-                                    <constraint firstAttribute="height" constant="50" id="KE1-bG-tBj"/>
+                                    <constraint firstAttribute="height" constant="44" id="KE1-bG-tBj"/>
                                     <constraint firstItem="79m-1t-vgn" firstAttribute="top" secondItem="76p-dS-ObM" secondAttribute="bottom" id="NQT-QT-5hF"/>
                                     <constraint firstItem="76p-dS-ObM" firstAttribute="leading" secondItem="HGu-00-E1G" secondAttribute="leading" id="TCJ-xq-lNT"/>
                                     <constraint firstItem="79m-1t-vgn" firstAttribute="leading" secondItem="HGu-00-E1G" secondAttribute="leading" id="aCe-3r-xZC"/>
@@ -44,17 +44,29 @@
                                     <constraint firstItem="76p-dS-ObM" firstAttribute="top" secondItem="HGu-00-E1G" secondAttribute="top" id="yDT-hx-cc9"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fuk-Km-EN6">
+                                <rect key="frame" x="0.0" y="44" width="414" height="0.0"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.20000000000000001" id="wtF-9I-PnY"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
+                            <constraint firstItem="HGu-00-E1G" firstAttribute="top" secondItem="Fuk-Km-EN6" secondAttribute="bottom" constant="20" id="7hH-XB-rAs"/>
                             <constraint firstItem="HGu-00-E1G" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.8" id="I7b-jt-yGr"/>
-                            <constraint firstItem="HGu-00-E1G" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="40" id="Jzq-SQ-HMF"/>
                             <constraint firstItem="HGu-00-E1G" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Kqw-WX-tf6"/>
+                            <constraint firstItem="Fuk-Km-EN6" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="YyH-s5-GEk"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Fuk-Km-EN6" secondAttribute="trailing" id="aX5-7c-1oQ"/>
+                            <constraint firstItem="Fuk-Km-EN6" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="xDB-kG-Im8"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomLine" destination="79m-1t-vgn" id="AqA-Tt-ASL"/>
                         <outlet property="namingTextField" destination="76p-dS-ObM" id="1QB-Ak-f3t"/>
+                        <outlet property="navBottomLine" destination="Fuk-Km-EN6" id="fO2-dP-OeO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

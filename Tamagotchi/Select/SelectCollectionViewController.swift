@@ -18,7 +18,6 @@ class SelectCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         
         self.collectionView.backgroundColor = UIColor.sesacBackground
-        
         // 컬렉션뷰 셀 레이아웃
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 8
@@ -31,6 +30,8 @@ class SelectCollectionViewController: UICollectionViewController {
         collectionView.collectionViewLayout = layout
         
         title = navTitle
+        navigationController?.navigationBar.barTintColor = .sesacBackground
+
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

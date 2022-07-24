@@ -58,10 +58,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ZYA-8B-ixp">
-                                        <rect key="frame" x="0.0" y="397.5" width="331" height="44.5"/>
+                                        <rect key="frame" x="0.0" y="389" width="331" height="53"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIV-OW-O9j">
-                                                <rect key="frame" x="0.0" y="0.0" width="165.5" height="44.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="165.5" height="53"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
@@ -69,7 +69,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpj-Yn-vrd">
-                                                <rect key="frame" x="165.5" y="0.0" width="165.5" height="44.5"/>
+                                                <rect key="frame" x="165.5" y="0.0" width="165.5" height="53"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
@@ -79,7 +79,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iEZ-PE-6iR">
-                                        <rect key="frame" x="0.0" y="396.5" width="331" height="1"/>
+                                        <rect key="frame" x="0.0" y="388" width="331" height="1"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="qwg-QD-YGs"/>
@@ -93,7 +93,7 @@
                                     <constraint firstItem="iEZ-PE-6iR" firstAttribute="leading" secondItem="ha0-6x-e49" secondAttribute="leading" id="BDN-e4-oYI"/>
                                     <constraint firstAttribute="trailing" secondItem="iEZ-PE-6iR" secondAttribute="trailing" id="D4N-Ve-w61"/>
                                     <constraint firstItem="iEZ-PE-6iR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7cY-Sq-t8c" secondAttribute="bottom" constant="24" id="DfF-qx-oSE"/>
-                                    <constraint firstItem="ZYA-8B-ixp" firstAttribute="height" secondItem="ha0-6x-e49" secondAttribute="height" multiplier="0.1" id="JHe-Nk-nbz"/>
+                                    <constraint firstItem="ZYA-8B-ixp" firstAttribute="height" secondItem="ha0-6x-e49" secondAttribute="height" multiplier="0.12" id="JHe-Nk-nbz"/>
                                     <constraint firstItem="7cY-Sq-t8c" firstAttribute="trailing" secondItem="IIK-Lo-tGE" secondAttribute="trailing" id="JrF-sP-Mvz"/>
                                     <constraint firstItem="ZYA-8B-ixp" firstAttribute="top" secondItem="iEZ-PE-6iR" secondAttribute="bottom" id="RuG-a3-yXw"/>
                                     <constraint firstItem="IIK-Lo-tGE" firstAttribute="top" secondItem="mH3-CO-c6x" secondAttribute="bottom" constant="24" id="RyU-PW-boC"/>

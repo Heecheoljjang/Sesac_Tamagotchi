@@ -7,9 +7,11 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITextFieldDelegate {
 
     static let identity = "MainViewController"
+    
+    let userDefaults = UserDefaults.standard
     
     @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var messageLabel: UILabel! // 랜덤한 메세지 -> 구조체로 데이터 만들어서 다마고치 데이터형태에서 사용
@@ -25,6 +27,9 @@ class MainViewController: UIViewController {
     @IBOutlet weak var waterTextField: UITextField!
     @IBOutlet weak var waterLineView: UIView!
     @IBOutlet weak var waterBtn: UIButton!
+    @IBOutlet weak var navLineView: UIView!
+    
+    @IBOutlet weak var betweenFoodWater: NSLayoutConstraint!
     
     //레벨, 밥알, 물방울 -> UserDefaults로 관리해야할듯
     var currentStatus: Status?
@@ -39,12 +44,24 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+        // 키보드가 뷰 가리는 현상 해결
+        foodTextField.delegate = self
+        waterTextField.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(tapSettingBtn))
         navigationItem.backButtonTitle = ""
         
+        
+        // 네비게이션 타이틀 색
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder]
+        navLineView.backgroundColor = .sesacBorder // 네비게이션 바텀라인: UIView를 얇게 붙여서 구현
+        
         // 디코딩해서 데이터가져오기
-        if let savedTamagotchiData = UserDefaults.standard.object(forKey: "tamagotchi") as? Data, let savedStatusData = UserDefaults.standard.object(forKey: "status") as? Data {
+        if let savedTamagotchiData = userDefaults.object(forKey: "tamagotchi") as? Data, let savedStatusData = userDefaults.object(forKey: "status") as? Data {
             
             let decoder = JSONDecoder()
             if let tamagotchiData = try? decoder.decode(Tamagotchi.self, from: savedTamagotchiData), let statusData = try? decoder.decode(Status.self, from: savedStatusData)  {
@@ -76,16 +93,17 @@ class MainViewController: UIViewController {
         setViewUI()
         
     }
+
     
     // pop됐을땐 viewDidLoad가 실행되지않으므로
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let name = UserDefaults.standard.string(forKey: "name") {
+        if let name = userDefaults.string(forKey: "name") {
             masterName = name
         }
         
-        if let currentName = UserDefaults.standard.string(forKey: "name") {
+        if let currentName = userDefaults.string(forKey: "name") {
             title = "\(currentName)님의 다마고치"
         }
         // 확실하게 값이 있으므로 강제추출
@@ -98,13 +116,44 @@ class MainViewController: UIViewController {
         //메세지 띄우기
         messageLabel.text = messages.randomElement()
     }
+    @objc func keyboardWillShow(_ sender: Notification) {
+        print("hh")
+        self.view.frame.origin.y = -170
+        navigationController?.navigationBar.isHidden = true
+
+    }
+    @objc func keyboardWillHide(_ sender: Notification) {
+        print("hh")
+
+        self.view.frame.origin.y = 0
+        navigationController?.navigationBar.isHidden = false
+    }
     
+    @IBAction func keyboardDown(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+    }
+
     @objc func tapSettingBtn() {
         let sb = UIStoryboard(name: "Setting", bundle: nil)
         guard let vc = sb.instantiateViewController(withIdentifier: SettingTableViewController.identity) as? SettingTableViewController else { return }
         
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    // 텍스트필드에서 리턴눌렀을때 버튼함수 실행
+    @IBAction func tapFoodTextFieldReturn(_ sender: UITextField) {
+        
+        tapFoodBtn(foodBtn)
+
+    }
+    
+    @IBAction func tapWaterTextFieldReturn(_ sender: UITextField) {
+        
+        tapWaterBtn(waterBtn)
+
+    }
+
     
     //밥주기 버튼
     @IBAction func tapFoodBtn(_ sender: UIButton) {
@@ -148,10 +197,13 @@ class MainViewController: UIViewController {
         // 상태 레이블 새로고침 및 저장 -> 마찬가지로 아카이빙해서 저장
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(Status(level: level, food: food, water: water)) {
-            UserDefaults.standard.setValue(encoded, forKey: "status")
+            userDefaults.setValue(encoded, forKey: "status")
         }
         
         statusLabel.text = "LV\(level) · 밥알 \(food)개 · 물방울 \(water)개"
+        
+        // 텍스트필드 비워주기
+        foodTextField.text = ""
     }
     
     // 물주기 버튼
@@ -162,7 +214,7 @@ class MainViewController: UIViewController {
         } else {
             if let waterText = waterTextField.text {
                 if Int(waterText) != nil {
-                    if Int(waterText)! >= 100 || Int(waterText)! <= 0{
+                    if Int(waterText)! >= 50 || Int(waterText)! <= 0{
                         showAlert(title: "장난하지말고 다시.")
                     } else {
                         water += Int(waterText)!
@@ -196,10 +248,13 @@ class MainViewController: UIViewController {
         // 상태 레이블 새로고침 및 저장 -> 마찬가지로 아카이빙해서 저장
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(Status(level: level, food: food, water: water)) {
-            UserDefaults.standard.setValue(encoded, forKey: "status")
+            userDefaults.setValue(encoded, forKey: "status")
         }
         
         statusLabel.text = "LV\(level) · 밥알 \(food)개 · 물방울 \(water)개"
+        
+        // 텍스트필드 비워주기
+        waterTextField.text = ""
     }
     
     //UI세팅
@@ -212,9 +267,10 @@ class MainViewController: UIViewController {
         messageView.backgroundColor = .sesacBackground
         
         nameLabel.textColor = .sesacBorder
-        nameLabel.font = .systemFont(ofSize: 13, weight: .semibold)
+        nameLabel.font = .systemFont(ofSize: 13, weight: .bold)
         nameLabel.adjustsFontSizeToFitWidth = true
-        nameView.backgroundColor = .sesacBackground
+        nameLabel.backgroundColor = .labelBackgroundColor
+        nameView.backgroundColor = .labelBackgroundColor
         nameView.layer.borderColor = UIColor.sesacBorder.cgColor
         nameView.layer.borderWidth = 0.5
         nameView.layer.cornerRadius = 5
@@ -226,6 +282,7 @@ class MainViewController: UIViewController {
         foodLineView.backgroundColor = .sesacBorder
         foodTextField.placeholder = "밥주세용"
         foodTextField.backgroundColor = .sesacBackground
+//        foodTextField.keyboardType = .numberPad
         foodBtn.backgroundColor = .sesacBackground
         foodBtn.layer.cornerRadius = 5
         foodBtn.layer.borderWidth = 0.5
@@ -239,6 +296,7 @@ class MainViewController: UIViewController {
         waterLineView.backgroundColor = .sesacBorder
         waterTextField.placeholder = "물주세용"
         waterTextField.backgroundColor = .sesacBackground
+//        waterTextField.keyboardType = .numberPad
         waterBtn.backgroundColor = .sesacBackground
         waterBtn.layer.cornerRadius = 5
         waterBtn.layer.borderWidth = 0.5

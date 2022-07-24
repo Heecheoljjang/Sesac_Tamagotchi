@@ -11,7 +11,11 @@ class NameViewController: UIViewController {
 
     static let identity = "NameViewController"
     
+    let userDefaults = UserDefaults.standard
+    
     @IBOutlet weak var namingTextField: UITextField!
+    @IBOutlet weak var bottomLine: UIView!
+    @IBOutlet weak var navBottomLine: UIView!
     
     var currentName: String = ""
     
@@ -20,8 +24,18 @@ class NameViewController: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(tapSaveBtn))
         
+        if let titleName = userDefaults.string(forKey: "name") {
+            title = "\(titleName)님 이름 정하기"
+        }
+        
+        view.backgroundColor = .sesacBackground
+        navBottomLine.backgroundColor = .sesacBorder
         namingTextField.text = currentName
         namingTextField.placeholder = "이름을 입력해주세요!!"
+        namingTextField.textColor = .sesacBorder
+        namingTextField.font = .systemFont(ofSize: 14, weight: .semibold)
+        namingTextField.backgroundColor = .sesacBackground
+        bottomLine.backgroundColor = .sesacBorder
         
     }
     
@@ -34,9 +48,12 @@ class NameViewController: UIViewController {
         } else {
             if let newName = namingTextField.text {
                 
-                UserDefaults.standard.set(newName, forKey: "name")
-                navigationController?.popViewController(animated: true)
-                
+                if newName.count >= 2 && newName.count <= 6 {
+                    userDefaults.set(newName, forKey: "name")
+                    navigationController?.popViewController(animated: true)
+                } else {
+                    showAlert(title: "2글자 이상 6글자 이하의 이름만 가능해요!")
+                }
             }
         }
         

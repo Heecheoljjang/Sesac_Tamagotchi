@@ -11,6 +11,8 @@ class SettingTableViewController: UITableViewController {
 
     static let identity = "SettingTableViewController"
     
+    let userDefaults = UserDefaults.standard
+    
     var settingList = SettingLists()
     var name: String?
     
@@ -19,6 +21,7 @@ class SettingTableViewController: UITableViewController {
 
         title = "설정"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder ]
+        tableView.separatorColor = .sesacBorder
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -44,7 +47,7 @@ class SettingTableViewController: UITableViewController {
         cell.listTitle.text = settingList.settingLists[indexPath.row].listTitle
 
         if indexPath.row == 0 {
-            cell.detailLabel.text = UserDefaults.standard.string(forKey: "name")!
+            cell.detailLabel.text = userDefaults.string(forKey: "name")!
         }
         
         return cell
@@ -57,7 +60,7 @@ class SettingTableViewController: UITableViewController {
             let sb = UIStoryboard(name: "Name", bundle: nil)
             guard let vc = sb.instantiateViewController(withIdentifier: NameViewController.identity) as? NameViewController else { return }
             
-            if let currentName = UserDefaults.standard.string(forKey: "name") {
+            if let currentName = userDefaults.string(forKey: "name") {
                 vc.currentName = currentName
             }
             
@@ -85,10 +88,17 @@ class SettingTableViewController: UITableViewController {
                 let sb = UIStoryboard(name: "Select", bundle: nil)
                 guard let vc = sb.instantiateViewController(withIdentifier: SelectCollectionViewController.identity) as? SelectCollectionViewController else { return }
                 
+                // 전체 userDefaults 삭제
                 let domain = Bundle.main.bundleIdentifier!
-                UserDefaults.standard.removePersistentDomain(forName: domain)
+                self.userDefaults.removePersistentDomain(forName: domain)
                 
                 vc.navTitle = "다마고치 선택하기"
+                
+                // fade애니메이션 추가
+                let transition = CATransition()
+                transition.type = .fade
+                transition.duration = 0.3
+                sceneDelegate?.window?.layer.add(transition, forKey: kCATransition)
                 
                 sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: vc)
                 sceneDelegate?.window?.makeKeyAndVisible()
@@ -102,6 +112,6 @@ class SettingTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(44)
+        return CGFloat(48)
     }
 }

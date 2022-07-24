@@ -11,6 +11,8 @@ class DetailViewController: UIViewController {
 
     static let identity = "DetailViewController"
     
+    let userDefaults = UserDefaults.standard
+    
     var tamagotchiData: Tamagotchi?
     let initialData: Status = Status(level: 1, food: 0, water: 0)
 
@@ -31,7 +33,7 @@ class DetailViewController: UIViewController {
             settingView(data: tamagotchiData)
         }
         
-        if UserDefaults.standard.string(forKey: "name") == nil {
+        if userDefaults.string(forKey: "name") == nil {
             selectBtn.setTitle("시작하기", for: .normal)
         } else {
             selectBtn.setTitle("변경하기", for: .normal)
@@ -48,8 +50,9 @@ class DetailViewController: UIViewController {
         labelView.layer.cornerRadius = 5
         labelView.layer.borderWidth = 0.5
         labelView.layer.borderColor = UIColor.sesacBorder.cgColor
-        labelView.backgroundColor = .sesacBackground
+        labelView.backgroundColor = .labelBackgroundColor
         
+        nameLabel.backgroundColor = .labelBackgroundColor
         nameLabel.font = .systemFont(ofSize: 13, weight: .semibold)
         nameLabel.textColor = .sesacBorder
         
@@ -92,17 +95,17 @@ class DetailViewController: UIViewController {
         //UserDefaults에 선택한 다마고치 저장. 
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(tamagotchiData) {
-            UserDefaults.standard.setValue(encoded, forKey: "tamagotchi")
+            userDefaults.setValue(encoded, forKey: "tamagotchi")
             print(encoded)
         }
 
         // 첫 화면이라면 name으로 대장, 초기 레벨, 밥, 물값 저장
-        if UserDefaults.standard.string(forKey: "name") == nil {
-            UserDefaults.standard.set("대장", forKey: "name")
+        if userDefaults.string(forKey: "name") == nil {
+            userDefaults.set("대장", forKey: "name")
             
             // 초기 상태값 저장 (1, 0, 0)
             if let encoded = try? encoder.encode(initialData) {
-                UserDefaults.standard.setValue(encoded, forKey: "status")
+                userDefaults.setValue(encoded, forKey: "status")
             }
         }
         

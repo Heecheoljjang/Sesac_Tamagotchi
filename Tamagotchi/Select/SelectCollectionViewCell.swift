@@ -19,9 +19,9 @@ class SelectCollectionViewCell: UICollectionViewCell {
         labelView.layer.borderWidth = 0.5
         labelView.layer.borderColor = UIColor.sesacBorder.cgColor
         labelView.layer.cornerRadius = 5
-        labelView.backgroundColor = .sesacBackground
+        labelView.backgroundColor = .labelBackgroundColor
         nameLabel.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
-        nameLabel.backgroundColor = .sesacBackground
+        nameLabel.backgroundColor = .labelBackgroundColor
         nameLabel.textColor = .sesacBorder
         nameLabel.adjustsFontSizeToFitWidth = true
         

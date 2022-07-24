@@ -21,6 +21,6 @@ class SettingTableViewCell: UITableViewCell {
         listImg.tintColor = .sesacBorder
         detailLabel.text = ""
         detailLabel.textColor = .sesacBorder
-        
+        detailLabel.font = .systemFont(ofSize: 13, weight: .light)
     }
 }

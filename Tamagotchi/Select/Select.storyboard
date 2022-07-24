@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -84,16 +85,72 @@
             </objects>
             <point key="canvasLocation" x="959.4202898550725" y="128.57142857142856"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="5bf-nu-zWq">
+            <objects>
+                <viewController id="OO1-gg-PsY" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W3O-8B-ahE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="50I-Cm-TY6">
+                                <rect key="frame" x="0.0" y="44" width="414" height="1"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="bBI-Qc-yQB"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="y8c-NB-kVu">
+                                <rect key="frame" x="0.0" y="45" width="414" height="817"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VPU-rq-GHK">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="quy-Dw-BGa">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yjc-s3-WC6">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Vw0-nj-Of6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Vw0-nj-Of6" firstAttribute="bottom" secondItem="y8c-NB-kVu" secondAttribute="bottom" id="1MG-Te-G0W"/>
+                            <constraint firstItem="y8c-NB-kVu" firstAttribute="top" secondItem="50I-Cm-TY6" secondAttribute="bottom" id="H0j-B5-4gL"/>
+                            <constraint firstItem="50I-Cm-TY6" firstAttribute="top" secondItem="Vw0-nj-Of6" secondAttribute="top" id="Qmz-ql-ARP"/>
+                            <constraint firstItem="Vw0-nj-Of6" firstAttribute="trailing" secondItem="y8c-NB-kVu" secondAttribute="trailing" id="Vr2-G8-Gly"/>
+                            <constraint firstItem="Vw0-nj-Of6" firstAttribute="trailing" secondItem="50I-Cm-TY6" secondAttribute="trailing" id="jNb-0q-rtu"/>
+                            <constraint firstItem="50I-Cm-TY6" firstAttribute="leading" secondItem="Vw0-nj-Of6" secondAttribute="leading" id="r6c-FJ-WTY"/>
+                            <constraint firstItem="y8c-NB-kVu" firstAttribute="leading" secondItem="Vw0-nj-Of6" secondAttribute="leading" id="s2L-et-UWM"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HfR-IC-hDa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1710" y="134"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="OcY-d2-NlS">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lKs-AY-yq2" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mme-Ji-aoc">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="mme-Ji-aoc">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tdE-f6-XBB">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="9Ce-Ad-YJa" kind="relationship" relationship="rootViewController" id="K4I-nE-xmK"/>
                     </connections>
