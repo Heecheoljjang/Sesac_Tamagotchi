@@ -212,7 +212,7 @@
                         <outlet property="nameLabel" destination="bq0-Gf-cuh" id="rHq-uu-9Bp"/>
                         <outlet property="nameView" destination="oQO-y1-h5r" id="NTz-EG-v3L"/>
                         <outlet property="profileImg" destination="Vqi-Zt-Vsf" id="aBc-Tp-zmc"/>
-                        <outlet property="stateLabel" destination="Nk4-R0-CxT" id="KZE-fr-9Ok"/>
+                        <outlet property="statusLabel" destination="Nk4-R0-CxT" id="KZE-fr-9Ok"/>
                         <outlet property="waterBtn" destination="nNB-DK-FhS" id="NQm-fO-Hka"/>
                         <outlet property="waterLineView" destination="flM-Ud-I1D" id="VPw-tR-Oy3"/>
                         <outlet property="waterOuterView" destination="vU3-Gl-6HV" id="fnE-ay-HW2"/>

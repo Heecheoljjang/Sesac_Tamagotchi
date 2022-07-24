@@ -12,7 +12,8 @@ class DetailViewController: UIViewController {
     static let identity = "DetailViewController"
     
     var tamagotchiData: Tamagotchi?
-    
+    let initialData: Status = Status(level: 1, food: 0, water: 0)
+
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var profileImg: UIImageView!
     @IBOutlet weak var labelView: UIView!
@@ -95,16 +96,15 @@ class DetailViewController: UIViewController {
             print(encoded)
         }
 
-        // 첫 화면이라면 name으로 대장을, 변경하기 화면이라면 UserDefaults에 들어있는 값으로
+        // 첫 화면이라면 name으로 대장, 초기 레벨, 밥, 물값 저장
         if UserDefaults.standard.string(forKey: "name") == nil {
-//            vc.name = "대장님"
-            UserDefaults.standard.set("대장님", forKey: "name")
+            UserDefaults.standard.set("대장", forKey: "name")
+            
+            // 초기 상태값 저장 (1, 0, 0)
+            if let encoded = try? encoder.encode(initialData) {
+                UserDefaults.standard.setValue(encoded, forKey: "status")
+            }
         }
-//        } else {
-//            if let name = UserDefaults.standard.string(forKey: "name") {
-//                vc.name = name
-//            }
-//        }
         
         sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: vc)
         sceneDelegate?.window?.makeKeyAndVisible()
