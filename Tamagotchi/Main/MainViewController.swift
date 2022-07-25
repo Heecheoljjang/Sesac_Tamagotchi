@@ -49,9 +49,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         foodTextField.delegate = self
         waterTextField.delegate = self
         
-        // 키보드가 올라오고 내려오는 것을 감지해서 selector에 있는 메서드 실행
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(tapSettingBtn))
         navigationItem.backButtonTitle = ""
@@ -100,6 +98,12 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        print(#function)
+        
+        // 키보드가 올라오고 내려오는 것을 감지해서 selector에 있는 메서드 실행
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         if let name = userDefaults.string(forKey: "name") {
             masterName = name
         }
@@ -117,17 +121,23 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         //메세지 띄우기
         messageLabel.text = messages.randomElement()
     }
-    @objc func keyboardWillShow(_ sender: Notification) {
+    override func viewWillDisappear(_ animated: Bool) {
+        print(#function)
         
-        self.view.frame.origin.y = -190 // 뷰를 아래에서 위로 올림
-        navigationController?.navigationBar.isHidden = true // 뷰만 올라가므로 네비게이션바도 같이 없애줌.
-
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+    }
+    // 키보드에 따라 뷰를 올리고 내리는 메서드
+    @objc func keyboardWillShow(_ sender: Notification) {
+        self.navigationController?.view.frame.origin.y = -190 // 뷰 전체를 올림
+        
     }
     @objc func keyboardWillHide(_ sender: Notification) {
-        self.view.frame.origin.y = 0 // 다시 원상복구
-        navigationController?.navigationBar.isHidden = false
+        self.navigationController?.view.frame.origin.y = 0 // 다시 원상복구
     }
     
+    // 배경 탭하면 키보드 내리기
     @IBAction func keyboardDown(_ sender: UITapGestureRecognizer) {
         
         view.endEditing(true)
@@ -146,7 +156,6 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         tapFoodBtn(foodBtn)
 
     }
-    
     @IBAction func tapWaterTextFieldReturn(_ sender: UITextField) {
         
         tapWaterBtn(waterBtn)

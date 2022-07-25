@@ -22,7 +22,10 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="고래밥" placeholder="이름을 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="76p-dS-ObM">
                                         <rect key="frame" x="0.0" y="0.0" width="331" height="43"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                        <connections>
+                                            <action selector="nameTextFieldReturn:" destination="Y6W-OH-hqX" eventType="editingDidEndOnExit" id="6MA-Fp-d73"/>
+                                        </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="79m-1t-vgn">
                                         <rect key="frame" x="0.0" y="43" width="331" height="1"/>

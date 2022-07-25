@@ -8,6 +8,7 @@
 import UIKit
 
 class SelectCollectionViewCell: UICollectionViewCell {
+    
     static let identity = "SelectCollectionViewCell"
     
     @IBOutlet weak var profileImg: UIImageView!

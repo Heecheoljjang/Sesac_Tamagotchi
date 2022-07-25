@@ -13,11 +13,10 @@ class SelectViewController: UIViewController {
     
     var tamagotchiList = TamagotchiList()
     
-    var navTitle: String = ""
+    var navTitle: String = "" // 다마고치 변경하기 눌렀을땐 타이틀이 다르게 떠야하므로 변수 사용
     
     @IBOutlet weak var listCollectionView: UICollectionView!
     @IBOutlet weak var lineView: UIView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +28,7 @@ class SelectViewController: UIViewController {
         let width = UIScreen.main.bounds.width - (spacing * 6)
         
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 8, bottom: 0, right: 8)
+        layout.sectionInset = UIEdgeInsets(top: spacing * 2.5 , left: spacing, bottom: 0, right: spacing)
         layout.itemSize = CGSize(width: width / 3, height: (width / 3) * 1.2)
         layout.minimumLineSpacing = spacing
         listCollectionView.collectionViewLayout = layout
@@ -61,6 +60,7 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
             cell.nameLabel.text = tamagotchiList.list[indexPath.row].name
     
         } else {
+            // 준비중인 셀
             cell.nameLabel.text = tamagotchiList.list[3].name
             cell.profileImg.image = UIImage(named: tamagotchiList.list[3].profileImg)
         }
@@ -74,8 +74,10 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         if indexPath.item < 3 {
             
+            // 선택한 다마고치 데이터를 DetailVC에 넘겨줌.
             vc.tamagotchiData = tamagotchiList.list[indexPath.item]
             
+            // 뒤의 뷰를 반투명하게 보여주려면 over로 띄워야함.
             vc.modalPresentationStyle = .overFullScreen
             present(vc, animated: true)
         } else {

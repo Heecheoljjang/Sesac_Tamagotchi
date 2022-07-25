@@ -58,5 +58,11 @@ class NameViewController: UIViewController {
         }
         
     }
+    @IBAction func nameTextFieldReturn(_ sender: UITextField) {
+        
+        tapSaveBtn()
+    }
+    
 
+    
 }
