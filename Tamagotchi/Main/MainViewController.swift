@@ -33,8 +33,10 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     //레벨, 밥알, 물방울 -> UserDefaults로 관리해야할듯
     var currentStatus: Status?
+    
     //메인화면에선 앱이 꺼졌다 켜질 수도 있으므로 UserDefaults로 데이터 받아와야함.
     var tamaData: Tamagotchi?
+    
     var level: Int = 1
     var food: Int = 0
     var water: Int = 0
@@ -44,13 +46,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        // 키보드가 뷰 가리는 현상 해결
-        foodTextField.delegate = self
-        waterTextField.delegate = self
         
-        
-        
+        // 네비게이션 바 세팅
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(tapSettingBtn))
         navigationItem.backButtonTitle = ""
         
@@ -98,32 +95,28 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        print(#function)
-        
         // 키보드가 올라오고 내려오는 것을 감지해서 selector에 있는 메서드 실행
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         if let name = userDefaults.string(forKey: "name") {
             masterName = name
+            title = "\(name)님의 다마고치"
         }
-        
-        if let currentName = userDefaults.string(forKey: "name") {
-            title = "\(currentName)님의 다마고치"
-        }
+
         // 확실하게 값이 있으므로 강제추출
         messages = [
             "안녕하세요 \(masterName!)님!!!", "배고파요!! 밥이랑 물주세요", "\(masterName!)님! 공부는 잘 하고있으신가요?", "\(masterName!)님 블로그는 왜 안쓰세요?",
             "오늘은 어떤 공부를 하셨나요?", "내일은 어떤 공부를 하실 예정이에요?", "다른 다마고치들은 특식도 먹던데..나만 없어", "열심히 크고 있어요!",
             "테이블뷰와 컬렉션뷰의 차이는 무엇일까요?", "WWDC는 다 챙겨보셨나요?", "\(masterName!)님!! 저랑 놀아주세요.", "멘토님들에게 감사하다는 인사는 하셨나요?",
-            "지금 당장 저에게 밥을 주시면 \(masterName!)님께 좋은 일만 생기게 기도해드릴게요!!", "\(masterName!)님 바보"
+            "지금 당장 저에게 밥을 주시면 \(masterName!)님께 좋은 일만 생기게 기도해드릴게요!!", "\(masterName!)님 바보", "목말라요"
         ]
+        
         //메세지 띄우기
         messageLabel.text = messages.randomElement()
     }
     override func viewWillDisappear(_ animated: Bool) {
-        print(#function)
-        
+        // 메인화면에서만 키보드를 감지할 것이기때문에 옵저버제거
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         
@@ -137,18 +130,20 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.view.frame.origin.y = 0 // 다시 원상복구
     }
     
-    // 배경 탭하면 키보드 내리기
-    @IBAction func keyboardDown(_ sender: UITapGestureRecognizer) {
-        
-        view.endEditing(true)
-    }
-
+   
     @objc func tapSettingBtn() {
         let sb = UIStoryboard(name: "Setting", bundle: nil)
         guard let vc = sb.instantiateViewController(withIdentifier: SettingTableViewController.identity) as? SettingTableViewController else { return }
         
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    // 배경 탭하면 키보드 내리기
+    @IBAction func keyboardDown(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+    }
+
     
     // 텍스트필드에서 리턴눌렀을때 버튼함수 실행
     @IBAction func tapFoodTextFieldReturn(_ sender: UITextField) {

@@ -24,9 +24,11 @@ class NameViewController: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(tapSaveBtn))
         
-        if let titleName = userDefaults.string(forKey: "name") {
-            title = "\(titleName)님 이름 정하기"
-        }
+        // 여기 타이틀은 고정같음
+//        if let titleName = userDefaults.string(forKey: "name") {
+//            title = "\(titleName)님 이름 정하기"
+//        }
+        title = "대장님 이름 정하기"
         
         view.backgroundColor = .sesacBackground
         navBottomLine.backgroundColor = .sesacBorder
@@ -35,6 +37,7 @@ class NameViewController: UIViewController {
         namingTextField.textColor = .sesacBorder
         namingTextField.font = .systemFont(ofSize: 14, weight: .semibold)
         namingTextField.backgroundColor = .sesacBackground
+        
         bottomLine.backgroundColor = .sesacBorder
         
     }
@@ -63,6 +66,9 @@ class NameViewController: UIViewController {
         tapSaveBtn()
     }
     
-
-    
+    // 배경 탭했을때 키보드 내리기
+    @IBAction func keyboardDown(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+    }
 }

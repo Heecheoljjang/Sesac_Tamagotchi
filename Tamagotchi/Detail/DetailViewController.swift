@@ -96,7 +96,6 @@ class DetailViewController: UIViewController {
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(tamagotchiData) {
             userDefaults.setValue(encoded, forKey: "tamagotchi")
-            print(encoded)
         }
 
         // 첫 화면이라면 name으로 대장, 초기 레벨, 밥, 물값 저장

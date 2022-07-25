@@ -22,6 +22,7 @@ class SelectViewController: UIViewController {
         super.viewDidLoad()
 
         listCollectionView.backgroundColor = UIColor.sesacBackground
+        
         // 컬렉션뷰 셀 레이아웃
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 8
@@ -33,6 +34,7 @@ class SelectViewController: UIViewController {
         layout.minimumLineSpacing = spacing
         listCollectionView.collectionViewLayout = layout
         
+        // 네비게이션 바 세팅
         title = navTitle
         navigationController?.navigationBar.backgroundColor = .sesacBackground
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder ]
@@ -53,6 +55,7 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectCollectionViewCell.identity, for: indexPath) as? SelectCollectionViewCell else { return UICollectionViewCell() }
         
+        // 셀의 기본적인 UI
         cell.setCell()
         
         if indexPath.item < 3 {
@@ -68,6 +71,7 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
         
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "Detail", bundle: nil)
         guard let vc = sb.instantiateViewController(withIdentifier: DetailViewController.identity) as? DetailViewController else { return }
@@ -80,6 +84,7 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
             // 뒤의 뷰를 반투명하게 보여주려면 over로 띄워야함.
             vc.modalPresentationStyle = .overFullScreen
             present(vc, animated: true)
+            
         } else {
             showAlert(title: "준비중입니다!!!")
         }
