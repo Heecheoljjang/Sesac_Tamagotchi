@@ -23,11 +23,7 @@ class NameViewController: UIViewController {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(tapSaveBtn))
-        
-        // 여기 타이틀은 고정같음
-//        if let titleName = userDefaults.string(forKey: "name") {
-//            title = "\(titleName)님 이름 정하기"
-//        }
+
         title = "대장님 이름 정하기"
         
         view.backgroundColor = .sesacBackground

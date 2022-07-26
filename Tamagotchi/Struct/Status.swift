@@ -7,16 +7,10 @@
 
 import UIKit
 
-//struct Status: Codable {
-//    var level: Int
-//    var food: Int
-//    var water: Int
-//}
-
 struct Status: Codable {
     
-    var food: Int
-    var water: Int
+    var food: Int = 0
+    var water: Int = 0
     var typeNumber: String = "0" // 다마고치별 이미지 앞 숫자
     
     var level: Int {
@@ -57,7 +51,13 @@ struct Status: Codable {
     
     var profileImg: String {
         get {
-            return typeNumber + "-\(level)"
+            if level < 10 && level >= 1 {
+                return typeNumber + "-\(level)"
+            } else if level >= 10 {
+                return typeNumber + "-9"
+            } else {
+                return "noImage"
+            }
         }
         set {
             typeNumber = newValue

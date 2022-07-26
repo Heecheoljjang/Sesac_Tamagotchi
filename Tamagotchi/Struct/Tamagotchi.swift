@@ -7,13 +7,11 @@
 
 import UIKit
 
-//메세지 추가해야됨
-
 struct Tamagotchi: Codable {
-    var profileImg: String
-    var name: String
-    var detail: String
-    var number: Int
+    var profileImg: String = ""
+    var name: String = ""
+    var detail: String = ""
+    var number: Int = 0
 }
 
 struct TamagotchiList {
