@@ -14,7 +14,7 @@ class DetailViewController: UIViewController {
     let userDefaults = UserDefaults.standard
     
     var tamagotchiData: Tamagotchi?
-    let initialData: Status = Status(level: 1, food: 0, water: 0)
+    let initialData: Status = Status(food: 0, water: 0)
 
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var profileImg: UIImageView!

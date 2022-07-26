@@ -32,8 +32,9 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var betweenFoodWater: NSLayoutConstraint!
     
     //레벨, 밥알, 물방울 -> UserDefaults로 관리해야할듯
+    //연산 프로퍼티 활용
     var currentStatus: Status?
-    
+
     //메인화면에선 앱이 꺼졌다 켜질 수도 있으므로 UserDefaults로 데이터 받아와야함.
     var tamaData: Tamagotchi?
     
@@ -61,6 +62,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             
             let decoder = JSONDecoder()
             if let tamagotchiData = try? decoder.decode(Tamagotchi.self, from: savedTamagotchiData), let statusData = try? decoder.decode(Status.self, from: savedStatusData)  {
+                
                 tamaData = tamagotchiData
                 currentStatus = statusData
             }
@@ -74,7 +76,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             water = statusData.water
             
             if level < 10 && level > 0 {
-                profileImg.image = UIImage(named: "\(tamaData.number)-\(level)")
+                profileImg.image = UIImage(named: "\(tamaData.number)-\(statusData.level)")
             } else if level >= 10{
                 profileImg.image = UIImage(named: "\(tamaData.number)-9")
             } else {
@@ -82,7 +84,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             }
             
             nameLabel.text = tamaData.name
-            statusLabel.text = "LV\(statusData.level) · 밥알 \(statusData.food)개 · 물방울 \(statusData.water)개"
+//            statusLabel.text = "LV\(statusData.level) · 밥알 \(statusData.food)개 · 물방울 \(statusData.water)개"
+            statusLabel.text = statusData.statusLabel
         }
         
         //UI세팅
@@ -160,54 +163,43 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     //밥주기 버튼
     @IBAction func tapFoodBtn(_ sender: UIButton) {
+
         // stateLabel(밥알 개수) 텍스트필드 조건 확인
         if foodTextField.text == "" {
-            food += 1
+            currentStatus?.food += 1
         } else {
             if let foodText = foodTextField.text {
                 if Int(foodText) != nil {
                     if Int(foodText)! >= 100 || Int(foodText)! <= 0{
                         showAlert(title: "너무 많잖아요..")
                     } else {
-                        food += Int(foodText)!
+                        currentStatus?.food += Int(foodText)!
                     }
                 } else {
                     showAlert(title: "숫자만 입력해야합니다.")
                 }
             }
         }
-        // 경험치 계산해서 이미지랑 레벨 세팅
-        exp = (Double(food) / 5) + (Double(water) / 2)
+        // 이미지 세팅. 레벨을 연산프로퍼티에 의해 자동으로 연산
+        // 확실하게 값이 있기때문에 !를 사용. -> if let을 사용하면 코드가 더 길어지겠지만 안전해질듯
+        currentStatus?.typeNumber = "\(tamaData!.number)"
+        profileImg.image = UIImage(named: currentStatus!.profileImg)
 
-        if let exp = exp, let tamaData = tamaData {
-            if exp < 20 && exp >= 0 {
-                level = 1
-                profileImg.image = UIImage(named: "\(tamaData.number)-\(level)")
-            } else if exp >= 20 && exp < 100 {
-                level = Int(exp / 10)
-                profileImg.image = UIImage(named: "\(tamaData.number)-\(level)")
-            } else if exp >= 100 {
-                level = 10
-                profileImg.image = UIImage(named: "\(tamaData.number)-9")
-            } else {
-                showAlert(title: "레벨 오류입니다.")
-            }
-        }
-        
         // 메세지 레이블
         messageLabel.text = messages.randomElement()
-        
+
         // 상태 레이블 새로고침 및 저장 -> 마찬가지로 아카이빙해서 저장
         let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(Status(level: level, food: food, water: water)) {
+        if let encoded = try? encoder.encode(Status(food: currentStatus!.food, water: currentStatus!.water)) {
             userDefaults.setValue(encoded, forKey: "status")
+
         }
-        
-        statusLabel.text = "LV\(level) · 밥알 \(food)개 · 물방울 \(water)개"
-        
+
+        statusLabel.text = currentStatus?.statusLabel
+
         // 텍스트필드 비워주기
         foodTextField.text = ""
-        
+
         // 키보드내리기
         view.endEditing(true)
     }
@@ -216,52 +208,40 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     @IBAction func tapWaterBtn(_ sender: UIButton) {
         // stateLabel(물방울 개수) 텍스트필드 조건 확인
         if waterTextField.text == "" {
-            water += 1
+            currentStatus?.water += 1
         } else {
             if let waterText = waterTextField.text {
                 if Int(waterText) != nil {
-                    if Int(waterText)! >= 50 || Int(waterText)! <= 0{
+                    if Int(waterText)! >= 100 || Int(waterText)! <= 0{
                         showAlert(title: "너무 많잖아요..")
                     } else {
-                        water += Int(waterText)!
+                        currentStatus?.water += Int(waterText)!
                     }
                 } else {
                     showAlert(title: "숫자만 입력해야합니다.")
                 }
             }
         }
-        // 경험치 계산해서 이미지랑 레벨 세팅
-        exp = (Double(food) / 5) + (Double(water) / 2)
-        
-        if let exp = exp, let tamaData = tamaData {
-            if exp < 20 && exp >= 0 {
-                level = 1
-                profileImg.image = UIImage(named: "\(tamaData.number)-\(level)")
-            } else if exp >= 20 && exp < 100 {
-                level = Int(exp / 10)
-                profileImg.image = UIImage(named: "\(tamaData.number)-\(level)")
-            } else if exp >= 100 {
-                level = 10
-                profileImg.image = UIImage(named: "\(tamaData.number)-9")
-            } else {
-                showAlert(title: "레벨 오류입니다.")
-            }
-        }
-        
+        // 이미지 세팅. 레벨을 연산프로퍼티에 의해 자동으로 연산
+        // 확실하게 값이 있기때문에 !를 사용. -> if let을 사용하면 코드가 더 길어지겠지만 안전해질듯
+        currentStatus?.typeNumber = "\(tamaData!.number)"
+        profileImg.image = UIImage(named: currentStatus!.profileImg)
+
         // 메세지 레이블
         messageLabel.text = messages.randomElement()
-        
+
         // 상태 레이블 새로고침 및 저장 -> 마찬가지로 아카이빙해서 저장
         let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(Status(level: level, food: food, water: water)) {
+        if let encoded = try? encoder.encode(Status(food: currentStatus!.food, water: currentStatus!.water)) {
             userDefaults.setValue(encoded, forKey: "status")
+
         }
-        
-        statusLabel.text = "LV\(level) · 밥알 \(food)개 · 물방울 \(water)개"
-        
+
+        statusLabel.text = currentStatus?.statusLabel
+
         // 텍스트필드 비워주기
         waterTextField.text = ""
-        
+
         // 키보드내리기
         view.endEditing(true)
     }
