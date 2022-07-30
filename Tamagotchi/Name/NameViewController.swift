@@ -23,6 +23,7 @@ class NameViewController: UIViewController {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(tapSaveBtn))
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: "MICEGothic OTF Bold", size: 17)! ]
 
         title = "대장님 이름 정하기"
         
@@ -31,7 +32,7 @@ class NameViewController: UIViewController {
         namingTextField.text = currentName
         namingTextField.placeholder = "이름을 입력해주세요!!"
         namingTextField.textColor = .sesacBorder
-        namingTextField.font = .systemFont(ofSize: 14, weight: .semibold)
+        namingTextField.font = UIFont(name: "MICEGothic OTF Bold", size: 14)
         namingTextField.backgroundColor = .sesacBackground
         
         bottomLine.backgroundColor = .sesacBorder

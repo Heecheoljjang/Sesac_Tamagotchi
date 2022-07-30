@@ -53,24 +53,26 @@ class DetailViewController: UIViewController {
         labelView.backgroundColor = .labelBackgroundColor
         
         nameLabel.backgroundColor = .labelBackgroundColor
-        nameLabel.font = .systemFont(ofSize: 13, weight: .semibold)
+        nameLabel.font = UIFont(name: "MICEGothic OTF Bold", size: 13)
         nameLabel.textColor = .sesacBorder
         
         lineView.backgroundColor = .sesacBorder
         
         detailLabel.text = data.detail
-        detailLabel.font = .systemFont(ofSize: 14, weight: .regular)
+        detailLabel.font = UIFont(name: "MICEGothic OTF", size: 14)
         detailLabel.textColor = .sesacBorder
         detailLabel.adjustsFontSizeToFitWidth = true
         
         cancleBtn.setTitle("취소", for: .normal)
+        cancleBtn.titleLabel?.font = UIFont(name: "MICEGothic OTF", size: 15)
         cancleBtn.layer.maskedCorners = [.layerMinXMaxYCorner]
         cancleBtn.layer.cornerRadius = 10
         cancleBtn.backgroundColor = .cancelColor
         
         selectBtn.layer.maskedCorners = [.layerMinXMaxYCorner]
         selectBtn.layer.cornerRadius = 10
-        
+        selectBtn.titleLabel?.font = UIFont(name: "MICEGothic OTF", size: 15)
+
         secondLineView.backgroundColor = .systemGray4
         
         profileImg.image = UIImage(named: data.profileImg)

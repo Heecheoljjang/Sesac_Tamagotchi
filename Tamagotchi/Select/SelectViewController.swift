@@ -41,7 +41,7 @@ class SelectViewController: UIViewController {
         // 네비게이션 바 세팅
         title = navTitle
         navigationController?.navigationBar.backgroundColor = .sesacBackground
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder ]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: "MICEGothic OTF Bold", size: 17)! ]
         lineView.backgroundColor = .sesacBorder
         view.backgroundColor = .sesacBackground
         
@@ -53,7 +53,7 @@ class SelectViewController: UIViewController {
     func requestAuthorization() {
         
         //option에는 여러개가 들어있음.
-        let authorizationOption = UNAuthorizationOptions(arrayLiteral: [.badge, .sound, .alert])
+        let authorizationOption = UNAuthorizationOptions(arrayLiteral: [.sound, .alert])
         
         notificationCenter.requestAuthorization(options: authorizationOption) { success, error in
             

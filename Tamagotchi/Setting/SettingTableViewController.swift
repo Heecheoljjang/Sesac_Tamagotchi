@@ -20,7 +20,7 @@ class SettingTableViewController: UITableViewController {
         super.viewDidLoad()
 
         title = "설정"
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder ]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: "MICEGothic OTF Bold", size: 17)! ]
         tableView.separatorColor = .sesacBorder
     }
 

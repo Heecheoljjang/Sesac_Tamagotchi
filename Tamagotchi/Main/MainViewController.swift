@@ -51,7 +51,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         // 네비게이션 바 세팅
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(tapSettingBtn))
         navigationItem.backButtonTitle = ""
-        
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: "MICEGothic OTF Bold", size: 17)! ]
         
         // 네비게이션 타이틀 색
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder]
@@ -236,13 +236,13 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     func setViewUI() {
         
         view.backgroundColor = .sesacBackground
-        messageLabel.font = .systemFont(ofSize: 13, weight: .semibold)
+        messageLabel.font = UIFont(name: "MICEGothic OTF", size: 14)
         messageLabel.textColor = .sesacBorder
         
         messageView.backgroundColor = .sesacBackground
         
         nameLabel.textColor = .sesacBorder
-        nameLabel.font = .systemFont(ofSize: 13, weight: .bold)
+        nameLabel.font = UIFont(name: "MICEGothic OTF Bold", size: 13)
         nameLabel.adjustsFontSizeToFitWidth = true
         nameLabel.backgroundColor = .labelBackgroundColor
         nameView.backgroundColor = .labelBackgroundColor
@@ -250,7 +250,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         nameView.layer.borderWidth = 0.5
         nameView.layer.cornerRadius = 5
         
-        statusLabel.font = .systemFont(ofSize: 13, weight: .semibold)
+        statusLabel.font = UIFont(name: "MICEGothic OTF Bold", size: 15)
         statusLabel.textColor = .sesacBorder
         
         foodOuterView.backgroundColor = .sesacBackground
@@ -263,7 +263,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         foodBtn.layer.borderColor = UIColor.sesacBorder.cgColor
         foodBtn.setImage(UIImage(systemName: "drop.circle"), for: .normal)
         foodBtn.setTitle(" 밥먹기", for: .normal)
-        foodBtn.titleLabel?.font = .systemFont(ofSize: 13, weight: .bold)
+        foodBtn.titleLabel?.font = UIFont(name: "MICEGothic OTF Bold", size: 13)
         foodBtn.setTitleColor(.sesacBorder, for: .normal)
         
         waterOuterView.backgroundColor = .sesacBackground
@@ -276,7 +276,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         waterBtn.layer.borderColor = UIColor.sesacBorder.cgColor
         waterBtn.setImage(UIImage(systemName: "leaf.circle"), for: .normal)
         waterBtn.setTitle(" 물먹기", for: .normal)
-        waterBtn.titleLabel?.font = .systemFont(ofSize: 13, weight: .bold)
+        waterBtn.titleLabel?.font = UIFont(name: "MICEGothic OTF Bold", size: 13)
         waterBtn.setTitleColor(.sesacBorder, for: .normal)
         
     }

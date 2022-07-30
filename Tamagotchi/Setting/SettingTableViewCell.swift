@@ -17,10 +17,10 @@ class SettingTableViewCell: UITableViewCell {
     
     func setCellUI() {
         backgroundColor = .sesacBackground
-        listTitle.font = .systemFont(ofSize: 13, weight: .semibold)
+        listTitle.font = UIFont(name: "MICEGothic OTF", size: 13)
         listImg.tintColor = .sesacBorder
         detailLabel.text = ""
         detailLabel.textColor = .sesacBorder
-        detailLabel.font = .systemFont(ofSize: 13, weight: .light)
+        detailLabel.font = UIFont(name: "MICEGothic OTF", size: 13)
     }
 }
