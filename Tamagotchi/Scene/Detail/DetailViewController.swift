@@ -7,36 +7,39 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, Identity {
 
-    static let identity = "DetailViewController"
+    static var identity = String(describing: DetailViewController.self)
     
     let userDefaults = UserDefaults.standard
     
-    var tamagotchiData: Tamagotchi?
+//    var tamagotchiData: Tamagotchi?
+    var tamagotchiData = Tamagotchi()
+    
     let initialData: Status = Status(food: 0, water: 0)
 
     @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var profileImg: UIImageView!
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var labelView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var cancleBtn: UIButton!
-    @IBOutlet weak var selectBtn: UIButton!
+    @IBOutlet weak var cancleButton: UIButton!
+    @IBOutlet weak var selectButton: UIButton!
     @IBOutlet weak var secondLineView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let tamagotchiData = tamagotchiData {
-            settingView(data: tamagotchiData)
-        }
+//        if let tamagotchiData = tamagotchiData {
+//            settingView(data: tamagotchiData)
+//        }
+        settingView(data: tamagotchiData)
         
         if userDefaults.string(forKey: "name") == nil {
-            selectBtn.setTitle("시작하기", for: .normal)
+            selectButton.setTitle("시작하기", for: .normal)
         } else {
-            selectBtn.setTitle("변경하기", for: .normal)
+            selectButton.setTitle("변경하기", for: .normal)
         }
 
     }
@@ -63,19 +66,19 @@ class DetailViewController: UIViewController {
         detailLabel.textColor = .sesacBorder
         detailLabel.adjustsFontSizeToFitWidth = true
         
-        cancleBtn.setTitle("취소", for: .normal)
-        cancleBtn.titleLabel?.font = UIFont(name: "MICEGothic OTF", size: 15)
-        cancleBtn.layer.maskedCorners = [.layerMinXMaxYCorner]
-        cancleBtn.layer.cornerRadius = 10
-        cancleBtn.backgroundColor = .cancelColor
+        cancleButton.setTitle("취소", for: .normal)
+        cancleButton.titleLabel?.font = UIFont(name: "MICEGothic OTF", size: 15)
+        cancleButton.layer.maskedCorners = [.layerMinXMaxYCorner]
+        cancleButton.layer.cornerRadius = 10
+        cancleButton.backgroundColor = .cancelColor
         
-        selectBtn.layer.maskedCorners = [.layerMinXMaxYCorner]
-        selectBtn.layer.cornerRadius = 10
-        selectBtn.titleLabel?.font = UIFont(name: "MICEGothic OTF", size: 15)
+        selectButton.layer.maskedCorners = [.layerMinXMaxYCorner]
+        selectButton.layer.cornerRadius = 10
+        selectButton.titleLabel?.font = UIFont(name: "MICEGothic OTF", size: 15)
 
         secondLineView.backgroundColor = .systemGray4
         
-        profileImg.image = UIImage(named: data.profileImg)
+        profileImageView.image = UIImage(named: data.profileImg)
         nameLabel.text = data.name
         detailLabel.text = data.detail
     }
@@ -91,7 +94,7 @@ class DetailViewController: UIViewController {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene // 앱을 다시 처음부터 실행해주는 코드
         let sceneDelegate = windowScene?.delegate as? SceneDelegate // 신딜리게이트 클래스에 접근
                 
-        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let sb = storyboardInit("Main")
         guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identity) as? MainViewController else { return }
                
         //UserDefaults에 선택한 다마고치 저장. 
@@ -113,6 +116,10 @@ class DetailViewController: UIViewController {
         sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: vc)
         sceneDelegate?.window?.makeKeyAndVisible()
         
+    }
+    
+    func storyboardInit(_ StoryboardName: String) -> UIStoryboard {
+        UIStoryboard(name: StoryboardName, bundle: nil)
     }
     
 }

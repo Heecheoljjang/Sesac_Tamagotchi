@@ -31,6 +31,8 @@
 		978295A12894F07800BE2368 /* EF_Diary.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 978295A02894F07800BE2368 /* EF_Diary.ttf */; };
 		978295A32894F18F00BE2368 /* MICEGothic OTF Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 978295A22894F18F00BE2368 /* MICEGothic OTF Bold.otf */; };
 		978295A52894F19900BE2368 /* MICEGothic OTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = 978295A42894F19900BE2368 /* MICEGothic OTF.otf */; };
+		978295A928956DA500BE2368 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978295A828956DA500BE2368 /* Protocols.swift */; };
+		978295AB28959EE700BE2368 /* StoryboardName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978295AA28959EE700BE2368 /* StoryboardName.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		978295A02894F07800BE2368 /* EF_Diary.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EF_Diary.ttf; sourceTree = "<group>"; };
 		978295A22894F18F00BE2368 /* MICEGothic OTF Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MICEGothic OTF Bold.otf"; sourceTree = "<group>"; };
 		978295A42894F19900BE2368 /* MICEGothic OTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MICEGothic OTF.otf"; sourceTree = "<group>"; };
+		978295A828956DA500BE2368 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		978295AA28959EE700BE2368 /* StoryboardName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardName.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,14 +101,11 @@
 				977DC771288A7B5900C0A253 /* Assets.xcassets */,
 				977DC773288A7B5900C0A253 /* LaunchScreen.storyboard */,
 				977DC776288A7B5900C0A253 /* Info.plist */,
-				977DC782288A849D00C0A253 /* Select */,
-				977DC781288A849B00C0A253 /* Detail */,
-				977DC77E288A849100C0A253 /* Main */,
-				977DC780288A849900C0A253 /* Setting */,
-				977DC77F288A849700C0A253 /* Name */,
+				978295A6289545AA00BE2368 /* Scene */,
 				977DC78B288A8C4400C0A253 /* Extension */,
-				977DC78C288AA5B600C0A253 /* Struct */,
+				977DC78C288AA5B600C0A253 /* Entity */,
 				9782959F2894F06700BE2368 /* Resource */,
+				978295A828956DA500BE2368 /* Protocols.swift */,
 			);
 			path = Tamagotchi;
 			sourceTree = "<group>";
@@ -165,14 +166,15 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		977DC78C288AA5B600C0A253 /* Struct */ = {
+		977DC78C288AA5B600C0A253 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
 				977DC78D288AA5CD00C0A253 /* Tamagotchi.swift */,
 				977DC79B288AF14F00C0A253 /* SettingTableList.swift */,
 				97559F49288C35C000142E2A /* Status.swift */,
+				978295AA28959EE700BE2368 /* StoryboardName.swift */,
 			);
-			path = Struct;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		9782959F2894F06700BE2368 /* Resource */ = {
@@ -183,6 +185,18 @@
 				978295A42894F19900BE2368 /* MICEGothic OTF.otf */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		978295A6289545AA00BE2368 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				977DC782288A849D00C0A253 /* Select */,
+				977DC781288A849B00C0A253 /* Detail */,
+				977DC77E288A849100C0A253 /* Main */,
+				977DC780288A849900C0A253 /* Setting */,
+				977DC77F288A849700C0A253 /* Name */,
+			);
+			path = Scene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,9 +281,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				978295A928956DA500BE2368 /* Protocols.swift in Sources */,
 				97559F54288D757500142E2A /* SelectCollectionViewCell.swift in Sources */,
 				977DC79E288AFBAF00C0A253 /* SettingTableViewCell.swift in Sources */,
 				97559F46288BF35000142E2A /* UIViewController+Extension.swift in Sources */,
+				978295AB28959EE700BE2368 /* StoryboardName.swift in Sources */,
 				977DC78A288A89B700C0A253 /* UIColor+Extension.swift in Sources */,
 				977DC769288A7B5800C0A253 /* AppDelegate.swift in Sources */,
 				977DC78E288AA5CD00C0A253 /* Tamagotchi.swift in Sources */,

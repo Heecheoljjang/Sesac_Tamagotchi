@@ -10,7 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let scene = (scene as? UIWindowScene) else { return }
@@ -18,14 +18,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // 선택을 했으면 true값을 넣어주기때문. 값이 있으면 메인화면
         if UserDefaults.standard.string(forKey: "name") != nil {
-            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let sb = storyboardInit("Main")
             guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identity) as? MainViewController else { return }
 
             window?.rootViewController = UINavigationController(rootViewController: vc)
             window?.makeKeyAndVisible()
 
         } else { // 값이 없으면 선택화면
-            let sb = UIStoryboard(name: "Select", bundle: nil)
+            let sb = storyboardInit("Select")
             guard let vc = sb.instantiateViewController(withIdentifier: SelectViewController.identity) as? SelectViewController else { return }
 
             vc.navTitle = "다마고치 선택하기"
@@ -34,6 +34,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.makeKeyAndVisible()
         }
        
+    }
+    
+    func storyboardInit(_ StoryboardName: String) -> UIStoryboard {
+        UIStoryboard(name: StoryboardName, bundle: nil)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

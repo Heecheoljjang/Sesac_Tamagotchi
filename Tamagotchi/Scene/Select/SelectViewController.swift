@@ -7,10 +7,10 @@
 
 import UIKit
 
-class SelectViewController: UIViewController {
-
-    static let identity = "SelectViewController"
+class SelectViewController: UIViewController, Identity {
     
+    static var identity = String(describing: SelectViewController.self)
+
     var tamagotchiList = TamagotchiList()
     
     var navTitle: String = "" // 다마고치 변경하기 눌렀을땐 타이틀이 다르게 떠야하므로 변수 사용
@@ -24,26 +24,12 @@ class SelectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        listCollectionView.backgroundColor = UIColor.sesacBackground
         
-        // 컬렉션뷰 셀 레이아웃
-        let layout = UICollectionViewFlowLayout()
-        let spacing: CGFloat = 8
-        let width = UIScreen.main.bounds.width - (spacing * 6)
-        
-        layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: spacing * 2.5 , left: spacing, bottom: 0, right: spacing)
-        layout.itemSize = CGSize(width: width / 3, height: (width / 3) * 1.2)
-        layout.minimumLineSpacing = spacing
-        listCollectionView.collectionViewLayout = layout
+        // 컬렉션뷰 세팅
+        setUpCollectionView()
         
         // 네비게이션 바 세팅
-        title = navTitle
-        navigationController?.navigationBar.backgroundColor = .sesacBackground
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: "MICEGothic OTF Bold", size: 17)! ]
-        lineView.backgroundColor = .sesacBorder
-        view.backgroundColor = .sesacBackground
+        setUpNavigationBar()
         
         // 알림 권한 요청
         requestAuthorization()
@@ -81,6 +67,33 @@ class SelectViewController: UIViewController {
         
         notificationCenter.add(request)
     }
+    
+    //MARK: - Setting
+    
+    //컬렉션뷰 셀 세팅
+    func setUpCollectionView() {
+        let layout = UICollectionViewFlowLayout()
+        let spacing: CGFloat = 8
+        let width = UIScreen.main.bounds.width - (spacing * 6)
+        
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: spacing * 2.5 , left: spacing, bottom: 0, right: spacing)
+        layout.itemSize = CGSize(width: width / 3, height: (width / 3) * 1.2)
+        layout.minimumLineSpacing = spacing
+        listCollectionView.collectionViewLayout = layout
+        
+        listCollectionView.backgroundColor = UIColor.sesacBackground
+    }
+    
+    // 네비게이션 바 세팅
+    func setUpNavigationBar() {
+        title = navTitle
+        navigationController?.navigationBar.backgroundColor = .sesacBackground
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: "MICEGothic OTF Bold", size: 17)! ]
+        lineView.backgroundColor = .sesacBorder
+        view.backgroundColor = .sesacBackground
+    }
+    
 
 }
 
@@ -94,17 +107,14 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectCollectionViewCell.identity, for: indexPath) as? SelectCollectionViewCell else { return UICollectionViewCell() }
         
-        // 셀의 기본적인 UI
-        cell.setCell()
-        
         if indexPath.item < 3 {
-            cell.profileImg.image = UIImage(named: tamagotchiList.list[indexPath.row].profileImg)
+            cell.profileImageView.image = UIImage(named: tamagotchiList.list[indexPath.row].profileImg)
             cell.nameLabel.text = tamagotchiList.list[indexPath.row].name
     
         } else {
             // 준비중인 셀
             cell.nameLabel.text = tamagotchiList.list[3].name
-            cell.profileImg.image = UIImage(named: tamagotchiList.list[3].profileImg)
+            cell.profileImageView.image = UIImage(named: tamagotchiList.list[3].profileImg)
         }
         
         return cell
@@ -112,9 +122,10 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let sb = UIStoryboard(name: "Detail", bundle: nil)
-        guard let vc = sb.instantiateViewController(withIdentifier: DetailViewController.identity) as? DetailViewController else { return }
+        let sb = storyboardInit(Storyboard.detail.storyboardName)
         
+        guard let vc = sb.instantiateViewController(withIdentifier: DetailViewController.identity) as? DetailViewController else { return }
+
         if indexPath.item < 3 {
             
             // 선택한 다마고치 데이터를 DetailVC에 넘겨줌.
@@ -127,6 +138,10 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
         } else {
             showAlert(title: "준비중입니다!!!")
         }
+    }
+    
+    func storyboardInit(_ StoryboardName: String) -> UIStoryboard {
+        UIStoryboard(name: StoryboardName, bundle: nil)
     }
     
 }

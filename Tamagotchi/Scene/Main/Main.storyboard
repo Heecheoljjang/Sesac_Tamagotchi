@@ -224,8 +224,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="nso-wp-6Pf"/>
                     <connections>
-                        <outlet property="betweenFoodWater" destination="oTb-tt-WH3" id="YgS-xq-chw"/>
-                        <outlet property="foodBtn" destination="MKC-FU-ueb" id="ayg-LL-23H"/>
+                        <outlet property="foodButton" destination="MKC-FU-ueb" id="ayg-LL-23H"/>
                         <outlet property="foodLineView" destination="5MH-TS-57Z" id="bnf-ug-IbW"/>
                         <outlet property="foodOuterView" destination="QgT-jT-yJx" id="WUD-yx-ND2"/>
                         <outlet property="foodTextField" destination="GCS-9b-VEB" id="XAs-Zo-6kD"/>
@@ -234,9 +233,9 @@
                         <outlet property="nameLabel" destination="bq0-Gf-cuh" id="rHq-uu-9Bp"/>
                         <outlet property="nameView" destination="oQO-y1-h5r" id="NTz-EG-v3L"/>
                         <outlet property="navLineView" destination="HSF-vi-uAl" id="kYy-NJ-0EB"/>
-                        <outlet property="profileImg" destination="Vqi-Zt-Vsf" id="aBc-Tp-zmc"/>
+                        <outlet property="profileImageView" destination="Vqi-Zt-Vsf" id="aBc-Tp-zmc"/>
                         <outlet property="statusLabel" destination="Nk4-R0-CxT" id="KZE-fr-9Ok"/>
-                        <outlet property="waterBtn" destination="nNB-DK-FhS" id="NQm-fO-Hka"/>
+                        <outlet property="waterButton" destination="nNB-DK-FhS" id="NQm-fO-Hka"/>
                         <outlet property="waterLineView" destination="flM-Ud-I1D" id="VPw-tR-Oy3"/>
                         <outlet property="waterOuterView" destination="vU3-Gl-6HV" id="fnE-ay-HW2"/>
                         <outlet property="waterTextField" destination="MrZ-a9-0rX" id="hYw-LH-EHt"/>

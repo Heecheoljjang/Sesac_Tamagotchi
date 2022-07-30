@@ -7,9 +7,9 @@
 
 import UIKit
 
-class SettingTableViewController: UITableViewController {
+class SettingTableViewController: UITableViewController, Identity {
 
-    static let identity = "SettingTableViewController"
+    static var identity = String(describing: SettingTableViewController.self)
     
     let userDefaults = UserDefaults.standard
     
@@ -19,9 +19,8 @@ class SettingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "설정"
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: "MICEGothic OTF Bold", size: 17)! ]
-        tableView.separatorColor = .sesacBorder
+        setUpNavigationBar()
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -34,16 +33,24 @@ class SettingTableViewController: UITableViewController {
         
     }
     
+    func setUpNavigationBar() {
+        title = "설정"
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: "MICEGothic OTF Bold", size: 17)! ]
+        tableView.separatorColor = .sesacBorder
+    }
+    
+    func storyboardInit(_ StoryboardName: String) -> UIStoryboard {
+        UIStoryboard(name: StoryboardName, bundle: nil)
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return settingList.settingLists.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identity, for: indexPath) as? SettingTableViewCell else { return UITableViewCell() }
-        
-        cell.setCellUI()
-        
-        cell.listImg.image = UIImage(systemName: settingList.settingLists[indexPath.row].leftImg)
+                
+        cell.listImageView.image = UIImage(systemName: settingList.settingLists[indexPath.row].leftImg)
         cell.listTitle.text = settingList.settingLists[indexPath.row].listTitle
 
         if indexPath.row == 0 {
@@ -57,7 +64,7 @@ class SettingTableViewController: UITableViewController {
         // 이름 변경
         if indexPath.row == 0 {
             
-            let sb = UIStoryboard(name: "Name", bundle: nil)
+            let sb = storyboardInit("Name")
             guard let vc = sb.instantiateViewController(withIdentifier: NameViewController.identity) as? NameViewController else { return }
             
             if let currentName = userDefaults.string(forKey: "name") {
@@ -85,7 +92,7 @@ class SettingTableViewController: UITableViewController {
                 let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene // 앱을 다시 처음부터 실행해주는 코드
                 let sceneDelegate = windowScene?.delegate as? SceneDelegate // 신딜리게이트 클래스에 접근
                         
-                let sb = UIStoryboard(name: "Select", bundle: nil)
+                let sb = self.storyboardInit("Select")
                 guard let vc = sb.instantiateViewController(withIdentifier: SelectViewController.identity) as? SelectViewController else { return }
                 
                 // 전체 userDefaults 삭제

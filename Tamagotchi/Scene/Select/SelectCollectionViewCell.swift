@@ -7,15 +7,22 @@
 
 import UIKit
 
-class SelectCollectionViewCell: UICollectionViewCell {
+class SelectCollectionViewCell: UICollectionViewCell, Identity {
     
-    static let identity = "SelectCollectionViewCell"
+    static var identity = String(describing: SelectCollectionViewCell.self)
     
-    @IBOutlet weak var profileImg: UIImageView!
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var labelView: UIView!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        setCell()
+    }
+    
     func setCell() {
+        print("123")
         labelView.layer.borderWidth = 0.5
         labelView.layer.borderColor = UIColor.sesacBorder.cgColor
         labelView.layer.cornerRadius = 5

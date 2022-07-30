@@ -80,7 +80,7 @@
                                         <connections>
                                             <outlet property="labelView" destination="AGH-G3-MmH" id="OCB-Zf-nhi"/>
                                             <outlet property="nameLabel" destination="kpx-cl-8AQ" id="vaC-SM-VtZ"/>
-                                            <outlet property="profileImg" destination="JAb-T3-dW3" id="d7J-IG-pwd"/>
+                                            <outlet property="profileImageView" destination="JAb-T3-dW3" id="d7J-IG-pwd"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -111,41 +111,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HfR-IC-hDa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="996" y="129"/>
-        </scene>
-        <!--Collection View Controller-->
-        <scene sceneID="Rpr-RJ-lJ1">
-            <objects>
-                <collectionViewController id="SG6-bV-qP0" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Us6-UP-ukN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kCq-iL-AAe">
-                            <size key="itemSize" width="128" height="128"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="H2a-WO-57l">
-                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="XDS-HX-WJi">
-                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </collectionViewCellContentView>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="SG6-bV-qP0" id="LPC-gF-ZBd"/>
-                            <outlet property="delegate" destination="SG6-bV-qP0" id="OkC-cp-8QQ"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" id="Eex-da-UOq"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IPp-aV-YKJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1733" y="129"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OcY-d2-NlS">

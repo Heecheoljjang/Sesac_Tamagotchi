@@ -7,9 +7,9 @@
 
 import UIKit
 
-class NameViewController: UIViewController {
+class NameViewController: UIViewController, Identity {
 
-    static let identity = "NameViewController"
+    static var identity = String(describing: NameViewController.self)
     
     let userDefaults = UserDefaults.standard
     
@@ -22,11 +22,20 @@ class NameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setUpNavigationBar()
+        
+        setUpView()
+        
+    }
+    
+    func setUpNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(tapSaveBtn))
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: "MICEGothic OTF Bold", size: 17)! ]
 
         title = "대장님 이름 정하기"
-        
+    }
+    
+    func setUpView() {
         view.backgroundColor = .sesacBackground
         navBottomLine.backgroundColor = .sesacBorder
         namingTextField.text = currentName
@@ -36,7 +45,6 @@ class NameViewController: UIViewController {
         namingTextField.backgroundColor = .sesacBackground
         
         bottomLine.backgroundColor = .sesacBorder
-        
     }
     
     // 이전화면으로 pop하고 userDefaults 바꿈

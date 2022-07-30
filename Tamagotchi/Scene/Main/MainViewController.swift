@@ -7,9 +7,9 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITextFieldDelegate {
+class MainViewController: UIViewController, UITextFieldDelegate, Identity {
 
-    static let identity = "MainViewController"
+    static var identity = String(describing: MainViewController.self)
     
     let userDefaults = UserDefaults.standard
     
@@ -17,21 +17,19 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var messageLabel: UILabel! // 랜덤한 메세지 -> 구조체로 데이터 만들어서 다마고치 데이터형태에서 사용
-    @IBOutlet weak var profileImg: UIImageView!
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel! // 이름
     @IBOutlet weak var nameView: UIView! // 이름 레이블 담은 뷰
     @IBOutlet weak var statusLabel: UILabel! // 레벨, 밥, 물방울 레이블
     @IBOutlet weak var foodTextField: UITextField!
     @IBOutlet weak var foodLineView: UIView!
-    @IBOutlet weak var foodBtn: UIButton!
+    @IBOutlet weak var foodButton: UIButton!
     @IBOutlet weak var foodOuterView: UIView!
     @IBOutlet weak var waterOuterView: UIView!
     @IBOutlet weak var waterTextField: UITextField!
     @IBOutlet weak var waterLineView: UIView!
-    @IBOutlet weak var waterBtn: UIButton!
+    @IBOutlet weak var waterButton: UIButton!
     @IBOutlet weak var navLineView: UIView!
-    
-    @IBOutlet weak var betweenFoodWater: NSLayoutConstraint!
     
     //레벨, 밥알, 물방울 -> UserDefaults로 관리해야할듯
     //연산 프로퍼티 활용
@@ -47,15 +45,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         // 네비게이션 바 세팅
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(tapSettingBtn))
-        navigationItem.backButtonTitle = ""
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: "MICEGothic OTF Bold", size: 17)! ]
-        
-        // 네비게이션 타이틀 색
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder]
-        navLineView.backgroundColor = .sesacBorder // 네비게이션 바텀라인: UIView를 얇게 붙여서 구현
+        setUpNavigationBar()
         
         // 디코딩해서 데이터가져오기
         if let savedTamagotchiData = userDefaults.object(forKey: "tamagotchi") as? Data, let savedStatusData = userDefaults.object(forKey: "status") as? Data {
@@ -71,7 +62,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         // 가져온 데이터로 이미지, 이름, 상태 세팅
 
         currentStatus.typeNumber = "\(tamaData.number)"
-        profileImg.image = UIImage(named: currentStatus.profileImg)
+        profileImageView.image = UIImage(named: currentStatus.profileImg)
         
         nameLabel.text = tamaData.name
         statusLabel.text = currentStatus.statusLabel
@@ -79,6 +70,18 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         //UI세팅
         setViewUI()
         
+    }
+    
+    //MARK: - 네비게이션 바 세팅
+    func setUpNavigationBar() {
+        // 네비게이션 바 세팅
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(tapSettingBtn))
+        navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: "MICEGothic OTF Bold", size: 17)! ]
+        
+        // 네비게이션 타이틀 색
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder]
+        navLineView.backgroundColor = .sesacBorder // 네비게이션 바텀라인: UIView를 얇게 붙여서 구현
     }
     
     // pop됐을땐 viewDidLoad가 실행되지않으므로
@@ -106,10 +109,14 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         messageLabel.text = messages.randomElement()
     }
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         // 메인화면에서만 키보드를 감지할 것이기때문에 옵저버제거
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-        
+    
+    }
+    func storyboardInit(_ StoryboardName: String) -> UIStoryboard {
+        UIStoryboard(name: StoryboardName, bundle: nil)
     }
     // 키보드에 따라 뷰를 올리고 내리는 메서드
     @objc func keyboardWillShow(_ sender: Notification) {
@@ -122,7 +129,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
    
     @objc func tapSettingBtn() {
-        let sb = UIStoryboard(name: "Setting", bundle: nil)
+        let sb = storyboardInit("Setting")
         guard let vc = sb.instantiateViewController(withIdentifier: SettingTableViewController.identity) as? SettingTableViewController else { return }
         
         navigationController?.pushViewController(vc, animated: true)
@@ -138,12 +145,12 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     // 텍스트필드에서 리턴눌렀을때 버튼함수 실행
     @IBAction func tapFoodTextFieldReturn(_ sender: UITextField) {
         
-        tapFoodBtn(foodBtn)
+        tapFoodBtn(foodButton)
 
     }
     @IBAction func tapWaterTextFieldReturn(_ sender: UITextField) {
         
-        tapWaterBtn(waterBtn)
+        tapWaterBtn(waterButton)
 
     }
 
@@ -169,7 +176,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         }
         // 이미지 세팅. 레벨을 연산프로퍼티에 의해 자동으로 연산
         currentStatus.typeNumber = "\(tamaData.number)"
-        profileImg.image = UIImage(named: currentStatus.profileImg)
+        profileImageView.image = UIImage(named: currentStatus.profileImg)
         
         // 메세지 레이블
         messageLabel.text = messages.randomElement()
@@ -211,7 +218,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         }
         // 이미지 세팅. 레벨을 연산프로퍼티에 의해 자동으로 연산
         currentStatus.typeNumber = "\(tamaData.number)"
-        profileImg.image = UIImage(named: currentStatus.profileImg)
+        profileImageView.image = UIImage(named: currentStatus.profileImg)
         
         // 메세지 레이블
         messageLabel.text = messages.randomElement()
@@ -257,27 +264,27 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         foodLineView.backgroundColor = .sesacBorder
         foodTextField.placeholder = "밥주세용"
         foodTextField.backgroundColor = .sesacBackground
-        foodBtn.backgroundColor = .sesacBackground
-        foodBtn.layer.cornerRadius = 5
-        foodBtn.layer.borderWidth = 0.5
-        foodBtn.layer.borderColor = UIColor.sesacBorder.cgColor
-        foodBtn.setImage(UIImage(systemName: "drop.circle"), for: .normal)
-        foodBtn.setTitle(" 밥먹기", for: .normal)
-        foodBtn.titleLabel?.font = UIFont(name: "MICEGothic OTF Bold", size: 13)
-        foodBtn.setTitleColor(.sesacBorder, for: .normal)
+        foodButton.backgroundColor = .sesacBackground
+        foodButton.layer.cornerRadius = 5
+        foodButton.layer.borderWidth = 0.5
+        foodButton.layer.borderColor = UIColor.sesacBorder.cgColor
+        foodButton.setImage(UIImage(systemName: "drop.circle"), for: .normal)
+        foodButton.setTitle(" 밥먹기", for: .normal)
+        foodButton.titleLabel?.font = UIFont(name: "MICEGothic OTF Bold", size: 13)
+        foodButton.setTitleColor(.sesacBorder, for: .normal)
         
         waterOuterView.backgroundColor = .sesacBackground
         waterLineView.backgroundColor = .sesacBorder
         waterTextField.placeholder = "물주세용"
         waterTextField.backgroundColor = .sesacBackground
-        waterBtn.backgroundColor = .sesacBackground
-        waterBtn.layer.cornerRadius = 5
-        waterBtn.layer.borderWidth = 0.5
-        waterBtn.layer.borderColor = UIColor.sesacBorder.cgColor
-        waterBtn.setImage(UIImage(systemName: "leaf.circle"), for: .normal)
-        waterBtn.setTitle(" 물먹기", for: .normal)
-        waterBtn.titleLabel?.font = UIFont(name: "MICEGothic OTF Bold", size: 13)
-        waterBtn.setTitleColor(.sesacBorder, for: .normal)
+        waterButton.backgroundColor = .sesacBackground
+        waterButton.layer.cornerRadius = 5
+        waterButton.layer.borderWidth = 0.5
+        waterButton.layer.borderColor = UIColor.sesacBorder.cgColor
+        waterButton.setImage(UIImage(systemName: "leaf.circle"), for: .normal)
+        waterButton.setTitle(" 물먹기", for: .normal)
+        waterButton.titleLabel?.font = UIFont(name: "MICEGothic OTF Bold", size: 13)
+        waterButton.setTitleColor(.sesacBorder, for: .normal)
         
     }
 }
