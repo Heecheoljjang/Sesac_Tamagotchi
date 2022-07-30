@@ -15,6 +15,10 @@ class SelectViewController: UIViewController {
     
     var navTitle: String = "" // 다마고치 변경하기 눌렀을땐 타이틀이 다르게 떠야하므로 변수 사용
     
+    let notificationCenter = UNUserNotificationCenter.current()
+    
+    var isAllowed = false
+    
     @IBOutlet weak var listCollectionView: UICollectionView!
     @IBOutlet weak var lineView: UIView!
     
@@ -41,6 +45,41 @@ class SelectViewController: UIViewController {
         lineView.backgroundColor = .sesacBorder
         view.backgroundColor = .sesacBackground
         
+        // 알림 권한 요청
+        requestAuthorization()
+    }
+
+    //MARK: - 알림
+    func requestAuthorization() {
+        
+        //option에는 여러개가 들어있음.
+        let authorizationOption = UNAuthorizationOptions(arrayLiteral: [.badge, .sound, .alert])
+        
+        notificationCenter.requestAuthorization(options: authorizationOption) { success, error in
+            
+            //사용자가 허용했을때만 알림보냄
+            if success {
+                self.sendNotification()
+            }
+        }
+    }
+    
+    func sendNotification() {
+        
+        let notificationContent = UNMutableNotificationContent()
+        
+        notificationContent.sound = .default
+        notificationContent.title = "다마고치"
+        notificationContent.subtitle = "주인님 배고파요ㅠ"
+                
+        var dateComponent = DateComponents()
+        dateComponent.minute = 0
+
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "\(Date())", content: notificationContent, trigger: trigger)
+        
+        notificationCenter.add(request)
     }
 
 }

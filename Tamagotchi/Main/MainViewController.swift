@@ -13,6 +13,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     let userDefaults = UserDefaults.standard
     
+    let notificationCenter = UNUserNotificationCenter.current()
+    
     @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var messageLabel: UILabel! // 랜덤한 메세지 -> 구조체로 데이터 만들어서 다마고치 데이터형태에서 사용
     @IBOutlet weak var profileImg: UIImageView!
@@ -44,6 +46,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         // 네비게이션 바 세팅
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(tapSettingBtn))
@@ -77,7 +80,6 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         setViewUI()
         
     }
-
     
     // pop됐을땐 viewDidLoad가 실행되지않으므로
     override func viewWillAppear(_ animated: Bool) {
