@@ -94,7 +94,7 @@ class DetailViewController: UIViewController, Identity {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene // 앱을 다시 처음부터 실행해주는 코드
         let sceneDelegate = windowScene?.delegate as? SceneDelegate // 신딜리게이트 클래스에 접근
                 
-        let sb = storyboardInit("Main")
+        let sb = storyboardInit(StoryboardName.main.storyboardName)
         guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identity) as? MainViewController else { return }
                
         //UserDefaults에 선택한 다마고치 저장. 

@@ -122,7 +122,7 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let sb = storyboardInit(Storyboard.detail.storyboardName)
+        let sb = storyboardInit(StoryboardName.detail.rawValue)
         
         guard let vc = sb.instantiateViewController(withIdentifier: DetailViewController.identity) as? DetailViewController else { return }
 

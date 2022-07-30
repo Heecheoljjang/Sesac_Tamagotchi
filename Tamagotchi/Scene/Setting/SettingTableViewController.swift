@@ -64,7 +64,7 @@ class SettingTableViewController: UITableViewController, Identity {
         // 이름 변경
         if indexPath.row == 0 {
             
-            let sb = storyboardInit("Name")
+            let sb = storyboardInit(StoryboardName.name.rawValue)
             guard let vc = sb.instantiateViewController(withIdentifier: NameViewController.identity) as? NameViewController else { return }
             
             if let currentName = userDefaults.string(forKey: "name") {
@@ -75,7 +75,7 @@ class SettingTableViewController: UITableViewController, Identity {
         } else if indexPath.row == 1 {
             // 다마고치 변경하기
             // push로 셀렉션뷰 띄우고 타이틀은 다마고치 변경하기 -> 이후는 detailview에서 설정
-            let sb = UIStoryboard(name: "Select", bundle: nil)
+            let sb = storyboardInit(StoryboardName.select.rawValue)
             guard let vc = sb.instantiateViewController(withIdentifier: SelectViewController.identity) as? SelectViewController else { return }
             
             vc.navTitle = "다마고치 변경하기"
@@ -92,7 +92,7 @@ class SettingTableViewController: UITableViewController, Identity {
                 let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene // 앱을 다시 처음부터 실행해주는 코드
                 let sceneDelegate = windowScene?.delegate as? SceneDelegate // 신딜리게이트 클래스에 접근
                         
-                let sb = self.storyboardInit("Select")
+                let sb = self.storyboardInit(StoryboardName.select.rawValue)
                 guard let vc = sb.instantiateViewController(withIdentifier: SelectViewController.identity) as? SelectViewController else { return }
                 
                 // 전체 userDefaults 삭제

@@ -22,7 +22,6 @@ class SelectCollectionViewCell: UICollectionViewCell, Identity {
     }
     
     func setCell() {
-        print("123")
         labelView.layer.borderWidth = 0.5
         labelView.layer.borderColor = UIColor.sesacBorder.cgColor
         labelView.layer.cornerRadius = 5

@@ -7,23 +7,12 @@
 
 import Foundation
 
-enum Storyboard {
-    case select, detail, main, setting, name
+enum StoryboardName: String {
     
-    var storyboardName: String {
-        get {
-            switch self {
-            case .select:
-                return "Select"
-            case .detail:
-                return "Detail"
-            case .main:
-                return "Main"
-            case .setting:
-                return "Setting"
-            case .name:
-                return "Name"
-            }
-        }
-    }
+    case select = "Select"
+    case detail = "Detail"
+    case main = "Main"
+    case setting = "Setting"
+    case name = "Name"
+    
 }

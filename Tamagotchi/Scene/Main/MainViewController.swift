@@ -129,7 +129,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
     
    
     @objc func tapSettingBtn() {
-        let sb = storyboardInit("Setting")
+        let sb = storyboardInit(StoryboardName.setting.rawValue)
         guard let vc = sb.instantiateViewController(withIdentifier: SettingTableViewController.identity) as? SettingTableViewController else { return }
         
         navigationController?.pushViewController(vc, animated: true)
