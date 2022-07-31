@@ -9,36 +9,22 @@ import UIKit
 
 struct Status: Codable {
     
-    var food: Int = 0
-    var water: Int = 0
-    var typeNumber: String = "0" // 다마고치별 이미지 앞 숫자
+    var food = 0
+    var water = 0
+    var typeNumber = "0" // 다마고치별 이미지 앞 숫자
     
     var level: Int {
         get {
             let exp = (Double(food) / 5) + (Double(water) / 2)
-            switch exp {
-            case 0..<20 :
+            
+            if exp >= 0 && exp < 20 {
+                print(exp, "1")
                 return 1
-            case 20..<30 :
-                return 2
-            case 30..<40 :
-                return 3
-            case 40..<50 :
-                return 4
-            case 50..<60 :
-                return 5
-            case 60..<70 :
-                return 6
-            case 70..<80 :
-                return 7
-            case 80..<90 :
-                return 8
-            case 90..<100 :
-                return 9
-            case 100... :
+            } else if exp >= 100 {
+                print(exp, "10")
                 return 10
-            default:
-                return 0
+            } else {
+                return Int(exp / 10)
             }
         }
     }

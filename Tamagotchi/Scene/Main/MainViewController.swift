@@ -33,10 +33,10 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
     
     //레벨, 밥알, 물방울 -> UserDefaults로 관리해야할듯
     //연산 프로퍼티 활용
-    var currentStatus: Status = Status()
+    var currentStatus = Status()
 
     //메인화면에선 앱이 꺼졌다 켜질 수도 있으므로 UserDefaults로 데이터 받아와야함.
-    var tamaData: Tamagotchi = Tamagotchi()
+    var tamaData = Tamagotchi()
     
     var exp: Double?
     var messages: [String] = []
@@ -237,35 +237,23 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
         statusLabel.font = UIFont(name: CustomFont.bold.rawValue, size: 15)
         statusLabel.textColor = .sesacBorder
         
-        foodOuterView.backgroundColor = .sesacBackground
-        foodLineView.backgroundColor = .sesacBorder
-        foodTextField.placeholder = "밥주세용"
-        foodTextField.backgroundColor = .sesacBackground
-        foodButton.backgroundColor = .sesacBackground
-        foodButton.layer.cornerRadius = 5
-        foodButton.layer.borderWidth = 0.5
-        foodButton.layer.borderColor = UIColor.sesacBorder.cgColor
-        foodButton.setImage(UIImage(systemName: ImageName.drop.rawValue), for: .normal)
-        foodButton.setTitle(" 밥먹기", for: .normal)
-        foodButton.titleLabel?.font = UIFont(name: CustomFont.bold.rawValue, size: 13)
-        foodButton.setTitleColor(.sesacBorder, for: .normal)
-        
-        waterOuterView.backgroundColor = .sesacBackground
-        waterLineView.backgroundColor = .sesacBorder
-        waterTextField.placeholder = "물주세용"
-        waterTextField.backgroundColor = .sesacBackground
-        waterButton.backgroundColor = .sesacBackground
-        waterButton.layer.cornerRadius = 5
-        waterButton.layer.borderWidth = 0.5
-        waterButton.layer.borderColor = UIColor.sesacBorder.cgColor
-        waterButton.setImage(UIImage(systemName: ImageName.leaf.rawValue), for: .normal)
-        waterButton.setTitle(" 물먹기", for: .normal)
-        waterButton.titleLabel?.font = UIFont(name: CustomFont.bold.rawValue, size: 13)
-        waterButton.setTitleColor(.sesacBorder, for: .normal)
+        setUpButtonUI(button: foodButton, outerView: foodOuterView, lineView: foodLineView, textField: foodTextField, placeholder: "밥주세용", buttonTitle: " 밥먹기", buttonImage: ImageName.drop.rawValue)
+        setUpButtonUI(button: waterButton, outerView: waterOuterView, lineView: waterLineView, textField: waterTextField, placeholder: "물주세용", buttonTitle: " 물먹기", buttonImage: ImageName.leaf.rawValue)
         
     }
     
-    func setUpButtonUI(button: UIButton) {
-        
+    func setUpButtonUI(button: UIButton, outerView: UIView, lineView: UIView, textField: UITextField, placeholder: String, buttonTitle: String, buttonImage: String) {
+        outerView.backgroundColor = .sesacBackground
+        lineView.backgroundColor = .sesacBorder
+        textField.placeholder = placeholder
+        textField.backgroundColor = .sesacBackground
+        button.backgroundColor = .sesacBackground
+        button.layer.cornerRadius = 5
+        button.layer.borderWidth = 0.5
+        button.layer.borderColor = UIColor.sesacBorder.cgColor
+        button.setImage(UIImage(systemName: buttonImage), for: .normal)
+        button.setTitle(buttonTitle, for: .normal)
+        button.titleLabel?.font = UIFont(name: CustomFont.bold.rawValue, size: 13)
+        button.setTitleColor(.sesacBorder, for: .normal)
     }
 }

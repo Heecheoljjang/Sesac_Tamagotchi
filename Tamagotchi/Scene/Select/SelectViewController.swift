@@ -13,7 +13,7 @@ class SelectViewController: UIViewController, Identity {
 
     var tamagotchiList = TamagotchiList()
     
-    var navTitle: String = "" // 다마고치 변경하기 눌렀을땐 타이틀이 다르게 떠야하므로 변수 사용
+    var navTitle = "" // 다마고치 변경하기 눌렀을땐 타이틀이 다르게 떠야하므로 변수 사용
     
     let notificationCenter = UNUserNotificationCenter.current()
     

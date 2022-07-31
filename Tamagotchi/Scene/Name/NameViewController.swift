@@ -17,7 +17,7 @@ class NameViewController: UIViewController, Identity {
     @IBOutlet weak var bottomLine: UIView!
     @IBOutlet weak var navBottomLine: UIView!
     
-    var currentName: String = ""
+    var currentName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()

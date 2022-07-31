@@ -16,7 +16,7 @@ class DetailViewController: UIViewController, Identity {
 //    var tamagotchiData: Tamagotchi?
     var tamagotchiData = Tamagotchi()
     
-    let initialData: Status = Status(food: 0, water: 0)
+    let initialData = Status(food: 0, water: 0)
 
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
