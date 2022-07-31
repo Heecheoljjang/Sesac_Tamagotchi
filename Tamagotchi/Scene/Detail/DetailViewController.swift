@@ -37,9 +37,9 @@ class DetailViewController: UIViewController, Identity {
         settingView(data: tamagotchiData)
         
         if userDefaults.string(forKey: UserDefaultsKey.name.rawValue) == nil {
-            selectButton.setTitle("시작하기", for: .normal)
+            selectButton.setTitle(DetailViewButtonTitle.start.rawValue, for: .normal)
         } else {
-            selectButton.setTitle("변경하기", for: .normal)
+            selectButton.setTitle(DetailViewButtonTitle.change.rawValue, for: .normal)
         }
 
     }

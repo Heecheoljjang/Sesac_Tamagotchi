@@ -35,6 +35,7 @@
 		978295AD28960E1900BE2368 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978295AC28960E1900BE2368 /* CustomFont.swift */; };
 		978295AF2896127200BE2368 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978295AE2896127200BE2368 /* UserDefaultsKeys.swift */; };
 		978295B12896140600BE2368 /* ImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978295B02896140600BE2368 /* ImageName.swift */; };
+		978295B32896805500BE2368 /* DetailViewButtonTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978295B22896805500BE2368 /* DetailViewButtonTitle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		978295AC28960E1900BE2368 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		978295AE2896127200BE2368 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		978295B02896140600BE2368 /* ImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageName.swift; sourceTree = "<group>"; };
+		978295B22896805500BE2368 /* DetailViewButtonTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewButtonTitle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 				978295AC28960E1900BE2368 /* CustomFont.swift */,
 				978295AE2896127200BE2368 /* UserDefaultsKeys.swift */,
 				978295B02896140600BE2368 /* ImageName.swift */,
+				978295B22896805500BE2368 /* DetailViewButtonTitle.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				977DC78A288A89B700C0A253 /* UIColor+Extension.swift in Sources */,
 				977DC769288A7B5800C0A253 /* AppDelegate.swift in Sources */,
 				977DC78E288AA5CD00C0A253 /* Tamagotchi.swift in Sources */,
+				978295B32896805500BE2368 /* DetailViewButtonTitle.swift in Sources */,
 				97559F52288D720A00142E2A /* SelectViewController.swift in Sources */,
 				977DC79C288AF14F00C0A253 /* SettingTableList.swift in Sources */,
 				977DC76B288A7B5800C0A253 /* SceneDelegate.swift in Sources */,

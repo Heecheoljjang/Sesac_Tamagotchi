@@ -184,7 +184,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
         } else {
             if let text = textField.text {
                 if Int(text) != nil {
-                    if Int(text)! >= 100 || Int(text)! <= 0{
+                    if Int(text)! >= 100 || Int(text)! <= 0 {
                         showAlert(title: "너무 많잖아요..")
                     } else {
                         if button.tag == 0 {
@@ -194,7 +194,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
                         }
                     }
                 } else {
-                    showAlert(title: "숫자만 입력해야합니다.")
+                    showAlert(title: "입력이 너무 길거나 문자가 포함되어 있습니다.")
                 }
             }
         }
