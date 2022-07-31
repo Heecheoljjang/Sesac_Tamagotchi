@@ -36,7 +36,7 @@ class DetailViewController: UIViewController, Identity {
 //        }
         settingView(data: tamagotchiData)
         
-        if userDefaults.string(forKey: "name") == nil {
+        if userDefaults.string(forKey: UserDefaultsKey.name.rawValue) == nil {
             selectButton.setTitle("시작하기", for: .normal)
         } else {
             selectButton.setTitle("변경하기", for: .normal)
@@ -56,25 +56,25 @@ class DetailViewController: UIViewController, Identity {
         labelView.backgroundColor = .labelBackgroundColor
         
         nameLabel.backgroundColor = .labelBackgroundColor
-        nameLabel.font = UIFont(name: "MICEGothic OTF Bold", size: 13)
+        nameLabel.font = UIFont(name: CustomFont.bold.rawValue, size: 13)
         nameLabel.textColor = .sesacBorder
         
         lineView.backgroundColor = .sesacBorder
         
         detailLabel.text = data.detail
-        detailLabel.font = UIFont(name: "MICEGothic OTF", size: 14)
+        detailLabel.font = UIFont(name: CustomFont.regular.rawValue, size: 14)
         detailLabel.textColor = .sesacBorder
         detailLabel.adjustsFontSizeToFitWidth = true
         
         cancleButton.setTitle("취소", for: .normal)
-        cancleButton.titleLabel?.font = UIFont(name: "MICEGothic OTF", size: 15)
+        cancleButton.titleLabel?.font = UIFont(name: CustomFont.regular.rawValue, size: 15)
         cancleButton.layer.maskedCorners = [.layerMinXMaxYCorner]
         cancleButton.layer.cornerRadius = 10
         cancleButton.backgroundColor = .cancelColor
         
         selectButton.layer.maskedCorners = [.layerMinXMaxYCorner]
         selectButton.layer.cornerRadius = 10
-        selectButton.titleLabel?.font = UIFont(name: "MICEGothic OTF", size: 15)
+        selectButton.titleLabel?.font = UIFont(name: CustomFont.regular.rawValue, size: 15)
 
         secondLineView.backgroundColor = .systemGray4
         
@@ -94,22 +94,22 @@ class DetailViewController: UIViewController, Identity {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene // 앱을 다시 처음부터 실행해주는 코드
         let sceneDelegate = windowScene?.delegate as? SceneDelegate // 신딜리게이트 클래스에 접근
                 
-        let sb = storyboardInit(StoryboardName.main.storyboardName)
+        let sb = storyboardInit(StoryboardName.main.rawValue)
         guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identity) as? MainViewController else { return }
                
         //UserDefaults에 선택한 다마고치 저장. 
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(tamagotchiData) {
-            userDefaults.setValue(encoded, forKey: "tamagotchi")
+            userDefaults.setValue(encoded, forKey: UserDefaultsKey.tamagotchi.rawValue)
         }
 
         // 첫 화면이라면 name으로 대장, 초기 레벨, 밥, 물값 저장
-        if userDefaults.string(forKey: "name") == nil {
-            userDefaults.set("대장", forKey: "name")
+        if userDefaults.string(forKey: UserDefaultsKey.name.rawValue) == nil {
+            userDefaults.set("대장", forKey: UserDefaultsKey.name.rawValue)
             
             // 초기 상태값 저장 (1, 0, 0)
             if let encoded = try? encoder.encode(initialData) {
-                userDefaults.setValue(encoded, forKey: "status")
+                userDefaults.setValue(encoded, forKey: UserDefaultsKey.status.rawValue)
             }
         }
         

@@ -49,7 +49,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
         setUpNavigationBar()
         
         // 디코딩해서 데이터가져오기
-        if let savedTamagotchiData = userDefaults.object(forKey: "tamagotchi") as? Data, let savedStatusData = userDefaults.object(forKey: "status") as? Data {
+        if let savedTamagotchiData = userDefaults.object(forKey: UserDefaultsKey.tamagotchi.rawValue) as? Data, let savedStatusData = userDefaults.object(forKey: UserDefaultsKey.status.rawValue) as? Data {
             
             let decoder = JSONDecoder()
             if let tamagotchiData = try? decoder.decode(Tamagotchi.self, from: savedTamagotchiData), let statusData = try? decoder.decode(Status.self, from: savedStatusData)  {
@@ -75,9 +75,9 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
     //MARK: - 네비게이션 바 세팅
     func setUpNavigationBar() {
         // 네비게이션 바 세팅
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(tapSettingBtn))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: ImageName.person.rawValue), style: .plain, target: self, action: #selector(tapSettingBtn))
         navigationItem.backButtonTitle = ""
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: "MICEGothic OTF Bold", size: 17)! ]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: CustomFont.bold.rawValue, size: 17)! ]
         
         // 네비게이션 타이틀 색
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder]
@@ -92,7 +92,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        if let name = userDefaults.string(forKey: "name") {
+        if let name = userDefaults.string(forKey: UserDefaultsKey.name.rawValue) {
             masterName = name
             title = "\(name)님의 다마고치"
         }
@@ -184,7 +184,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
         // 상태 레이블 새로고침 및 저장 -> 마찬가지로 아카이빙해서 저장
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(Status(food: currentStatus.food, water: currentStatus.water)) {
-            userDefaults.setValue(encoded, forKey: "status")
+            userDefaults.setValue(encoded, forKey: UserDefaultsKey.status.rawValue)
             
         }
  
@@ -226,7 +226,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
         // 상태 레이블 새로고침 및 저장 -> 마찬가지로 아카이빙해서 저장
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(Status(food: currentStatus.food, water: currentStatus.water)) {
-            userDefaults.setValue(encoded, forKey: "status")
+            userDefaults.setValue(encoded, forKey: UserDefaultsKey.status.rawValue)
             
         }
         
@@ -243,13 +243,13 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
     func setViewUI() {
         
         view.backgroundColor = .sesacBackground
-        messageLabel.font = UIFont(name: "MICEGothic OTF", size: 14)
+        messageLabel.font = UIFont(name: CustomFont.regular.rawValue, size: 14)
         messageLabel.textColor = .sesacBorder
         
         messageView.backgroundColor = .sesacBackground
         
         nameLabel.textColor = .sesacBorder
-        nameLabel.font = UIFont(name: "MICEGothic OTF Bold", size: 13)
+        nameLabel.font = UIFont(name: CustomFont.bold.rawValue, size: 13)
         nameLabel.adjustsFontSizeToFitWidth = true
         nameLabel.backgroundColor = .labelBackgroundColor
         nameView.backgroundColor = .labelBackgroundColor
@@ -257,7 +257,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
         nameView.layer.borderWidth = 0.5
         nameView.layer.cornerRadius = 5
         
-        statusLabel.font = UIFont(name: "MICEGothic OTF Bold", size: 15)
+        statusLabel.font = UIFont(name: CustomFont.bold.rawValue, size: 15)
         statusLabel.textColor = .sesacBorder
         
         foodOuterView.backgroundColor = .sesacBackground
@@ -268,9 +268,9 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
         foodButton.layer.cornerRadius = 5
         foodButton.layer.borderWidth = 0.5
         foodButton.layer.borderColor = UIColor.sesacBorder.cgColor
-        foodButton.setImage(UIImage(systemName: "drop.circle"), for: .normal)
+        foodButton.setImage(UIImage(systemName: ImageName.drop.rawValue), for: .normal)
         foodButton.setTitle(" 밥먹기", for: .normal)
-        foodButton.titleLabel?.font = UIFont(name: "MICEGothic OTF Bold", size: 13)
+        foodButton.titleLabel?.font = UIFont(name: CustomFont.bold.rawValue, size: 13)
         foodButton.setTitleColor(.sesacBorder, for: .normal)
         
         waterOuterView.backgroundColor = .sesacBackground
@@ -281,9 +281,9 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
         waterButton.layer.cornerRadius = 5
         waterButton.layer.borderWidth = 0.5
         waterButton.layer.borderColor = UIColor.sesacBorder.cgColor
-        waterButton.setImage(UIImage(systemName: "leaf.circle"), for: .normal)
+        waterButton.setImage(UIImage(systemName: ImageName.leaf.rawValue), for: .normal)
         waterButton.setTitle(" 물먹기", for: .normal)
-        waterButton.titleLabel?.font = UIFont(name: "MICEGothic OTF Bold", size: 13)
+        waterButton.titleLabel?.font = UIFont(name: CustomFont.bold.rawValue, size: 13)
         waterButton.setTitleColor(.sesacBorder, for: .normal)
         
     }

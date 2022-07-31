@@ -89,7 +89,7 @@ class SelectViewController: UIViewController, Identity {
     func setUpNavigationBar() {
         title = navTitle
         navigationController?.navigationBar.backgroundColor = .sesacBackground
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: "MICEGothic OTF Bold", size: 17)! ]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: CustomFont.bold.rawValue, size: 17)! ]
         lineView.backgroundColor = .sesacBorder
         view.backgroundColor = .sesacBackground
     }

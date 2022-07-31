@@ -15,8 +15,8 @@ struct SettingList {
 
 struct SettingLists {
     var settingLists: [SettingList] = [
-        SettingList(leftImg: "pencil", listTitle: "내 이름 설정하기", detailLabel: ""),
-        SettingList(leftImg: "moon.fill", listTitle: "다마고치 변경하기", detailLabel: ""),
-        SettingList(leftImg: "arrow.clockwise", listTitle: "데이터 초기화", detailLabel: "")
+        SettingList(leftImg: ImageName.pencil.rawValue, listTitle: "내 이름 설정하기", detailLabel: ""),
+        SettingList(leftImg: ImageName.moon.rawValue, listTitle: "다마고치 변경하기", detailLabel: ""),
+        SettingList(leftImg: ImageName.arrow.rawValue, listTitle: "데이터 초기화", detailLabel: "")
     ]
 }

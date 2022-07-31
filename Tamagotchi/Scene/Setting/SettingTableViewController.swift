@@ -35,7 +35,7 @@ class SettingTableViewController: UITableViewController, Identity {
     
     func setUpNavigationBar() {
         title = "설정"
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: "MICEGothic OTF Bold", size: 17)! ]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: CustomFont.bold.rawValue, size: 17)! ]
         tableView.separatorColor = .sesacBorder
     }
     
@@ -54,7 +54,7 @@ class SettingTableViewController: UITableViewController, Identity {
         cell.listTitle.text = settingList.settingLists[indexPath.row].listTitle
 
         if indexPath.row == 0 {
-            cell.detailLabel.text = userDefaults.string(forKey: "name")!
+            cell.detailLabel.text = userDefaults.string(forKey: UserDefaultsKey.name.rawValue)!
         }
         
         return cell
@@ -67,7 +67,7 @@ class SettingTableViewController: UITableViewController, Identity {
             let sb = storyboardInit(StoryboardName.name.rawValue)
             guard let vc = sb.instantiateViewController(withIdentifier: NameViewController.identity) as? NameViewController else { return }
             
-            if let currentName = userDefaults.string(forKey: "name") {
+            if let currentName = userDefaults.string(forKey: UserDefaultsKey.name.rawValue) {
                 vc.currentName = currentName
             }
             

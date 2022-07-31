@@ -22,10 +22,10 @@ class SettingTableViewCell: UITableViewCell, Identity {
     
     func setCellUI() {
         backgroundColor = .sesacBackground
-        listTitle.font = UIFont(name: "MICEGothic OTF", size: 13)
+        listTitle.font = UIFont(name: CustomFont.regular.rawValue, size: 13)
         listImageView.tintColor = .sesacBorder
         detailLabel.text = ""
         detailLabel.textColor = .sesacBorder
-        detailLabel.font = UIFont(name: "MICEGothic OTF", size: 13)
+        detailLabel.font = UIFont(name: CustomFont.regular.rawValue, size: 13)
     }
 }

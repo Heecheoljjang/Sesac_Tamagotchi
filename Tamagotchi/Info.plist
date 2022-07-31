@@ -4,7 +4,6 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>EF_Diary.ttf</string>
 		<string>MICEGothic OTF.otf</string>
 		<string>MICEGothic OTF Bold.otf</string>
 	</array>

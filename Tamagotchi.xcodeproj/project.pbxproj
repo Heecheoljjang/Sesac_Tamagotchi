@@ -28,11 +28,13 @@
 		977DC79E288AFBAF00C0A253 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC79D288AFBAF00C0A253 /* SettingTableViewCell.swift */; };
 		977DC7A0288B0B6A00C0A253 /* Name.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 977DC79F288B0B6A00C0A253 /* Name.storyboard */; };
 		977DC7A2288B0B7B00C0A253 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC7A1288B0B7B00C0A253 /* NameViewController.swift */; };
-		978295A12894F07800BE2368 /* EF_Diary.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 978295A02894F07800BE2368 /* EF_Diary.ttf */; };
 		978295A32894F18F00BE2368 /* MICEGothic OTF Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 978295A22894F18F00BE2368 /* MICEGothic OTF Bold.otf */; };
 		978295A52894F19900BE2368 /* MICEGothic OTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = 978295A42894F19900BE2368 /* MICEGothic OTF.otf */; };
 		978295A928956DA500BE2368 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978295A828956DA500BE2368 /* Protocols.swift */; };
 		978295AB28959EE700BE2368 /* StoryboardName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978295AA28959EE700BE2368 /* StoryboardName.swift */; };
+		978295AD28960E1900BE2368 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978295AC28960E1900BE2368 /* CustomFont.swift */; };
+		978295AF2896127200BE2368 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978295AE2896127200BE2368 /* UserDefaultsKeys.swift */; };
+		978295B12896140600BE2368 /* ImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978295B02896140600BE2368 /* ImageName.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,11 +61,13 @@
 		977DC79D288AFBAF00C0A253 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		977DC79F288B0B6A00C0A253 /* Name.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Name.storyboard; sourceTree = "<group>"; };
 		977DC7A1288B0B7B00C0A253 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
-		978295A02894F07800BE2368 /* EF_Diary.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EF_Diary.ttf; sourceTree = "<group>"; };
 		978295A22894F18F00BE2368 /* MICEGothic OTF Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MICEGothic OTF Bold.otf"; sourceTree = "<group>"; };
 		978295A42894F19900BE2368 /* MICEGothic OTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MICEGothic OTF.otf"; sourceTree = "<group>"; };
 		978295A828956DA500BE2368 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		978295AA28959EE700BE2368 /* StoryboardName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardName.swift; sourceTree = "<group>"; };
+		978295AC28960E1900BE2368 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
+		978295AE2896127200BE2368 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
+		978295B02896140600BE2368 /* ImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageName.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +177,9 @@
 				977DC79B288AF14F00C0A253 /* SettingTableList.swift */,
 				97559F49288C35C000142E2A /* Status.swift */,
 				978295AA28959EE700BE2368 /* StoryboardName.swift */,
+				978295AC28960E1900BE2368 /* CustomFont.swift */,
+				978295AE2896127200BE2368 /* UserDefaultsKeys.swift */,
+				978295B02896140600BE2368 /* ImageName.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -180,7 +187,6 @@
 		9782959F2894F06700BE2368 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				978295A02894F07800BE2368 /* EF_Diary.ttf */,
 				978295A22894F18F00BE2368 /* MICEGothic OTF Bold.otf */,
 				978295A42894F19900BE2368 /* MICEGothic OTF.otf */,
 			);
@@ -264,7 +270,6 @@
 				977DC775288A7B5900C0A253 /* LaunchScreen.storyboard in Resources */,
 				977DC794288AD91D00C0A253 /* Main.storyboard in Resources */,
 				977DC784288A84F900C0A253 /* Select.storyboard in Resources */,
-				978295A12894F07800BE2368 /* EF_Diary.ttf in Resources */,
 				977DC772288A7B5900C0A253 /* Assets.xcassets in Resources */,
 				977DC7A0288B0B6A00C0A253 /* Name.storyboard in Resources */,
 				977DC790288AAFD600C0A253 /* Detail.storyboard in Resources */,
@@ -281,10 +286,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				978295B12896140600BE2368 /* ImageName.swift in Sources */,
 				978295A928956DA500BE2368 /* Protocols.swift in Sources */,
 				97559F54288D757500142E2A /* SelectCollectionViewCell.swift in Sources */,
 				977DC79E288AFBAF00C0A253 /* SettingTableViewCell.swift in Sources */,
 				97559F46288BF35000142E2A /* UIViewController+Extension.swift in Sources */,
+				978295AF2896127200BE2368 /* UserDefaultsKeys.swift in Sources */,
 				978295AB28959EE700BE2368 /* StoryboardName.swift in Sources */,
 				977DC78A288A89B700C0A253 /* UIColor+Extension.swift in Sources */,
 				977DC769288A7B5800C0A253 /* AppDelegate.swift in Sources */,
@@ -293,6 +300,7 @@
 				977DC79C288AF14F00C0A253 /* SettingTableList.swift in Sources */,
 				977DC76B288A7B5800C0A253 /* SceneDelegate.swift in Sources */,
 				97559F4A288C35C000142E2A /* Status.swift in Sources */,
+				978295AD28960E1900BE2368 /* CustomFont.swift in Sources */,
 				977DC79A288AEDF700C0A253 /* SettingTableViewController.swift in Sources */,
 				977DC792288AAFDF00C0A253 /* DetailViewController.swift in Sources */,
 				977DC796288AD92800C0A253 /* MainViewController.swift in Sources */,
