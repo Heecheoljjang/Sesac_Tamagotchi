@@ -55,6 +55,8 @@ class SettingTableViewController: UITableViewController, Identity {
 
         if indexPath.row == 0 {
             cell.detailLabel.text = userDefaults.string(forKey: UserDefaultsKey.name.rawValue)!
+        } else {
+            cell.detailLabel.text = ""
         }
         
         return cell
