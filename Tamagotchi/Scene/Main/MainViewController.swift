@@ -70,6 +70,10 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
         //UI세팅
         setViewUI()
         
+        //버튼 태그 설정
+        foodButton.tag = 1
+        waterButton.tag = 0
+        
     }
     
     //MARK: - 네비게이션 바 세팅
@@ -89,7 +93,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
         super.viewWillAppear(animated)
         
         // 키보드가 올라오고 내려오는 것을 감지해서 selector에 있는 메서드 실행
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         if let name = userDefaults.string(forKey: UserDefaultsKey.name.rawValue) {
@@ -111,7 +115,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // 메인화면에서만 키보드를 감지할 것이기때문에 옵저버제거
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     
     }
@@ -119,9 +123,15 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
         UIStoryboard(name: StoryboardName, bundle: nil)
     }
     // 키보드에 따라 뷰를 올리고 내리는 메서드
-    @objc func keyboardWillShow(_ sender: Notification) {
-        self.navigationController?.view.frame.origin.y = -190 // 뷰 전체를 올림
+    @objc func keyboardWillChange(_ sender: Notification) {
         
+        guard let keyboardFrame = sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardHeight = keyboardFrame.cgRectValue.size.height
+        let waterBottomSpace = view.frame.height - waterOuterView.frame.origin.y
+       
+        if self.navigationController?.view.frame.origin.y == 0 {
+            self.navigationController?.view.frame.origin.y = -(keyboardHeight - waterBottomSpace + 80)
+        }
     }
     @objc func keyboardWillHide(_ sender: Notification) {
         self.navigationController?.view.frame.origin.y = 0 // 다시 원상복구
@@ -145,100 +155,67 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
     // 텍스트필드에서 리턴눌렀을때 버튼함수 실행
     @IBAction func tapFoodTextFieldReturn(_ sender: UITextField) {
         
-        tapFoodBtn(foodButton)
+        tapButton(foodButton)
 
     }
     @IBAction func tapWaterTextFieldReturn(_ sender: UITextField) {
         
-        tapWaterBtn(waterButton)
+        tapButton(waterButton)
 
     }
-
     
-    //밥주기 버튼
-    @IBAction func tapFoodBtn(_ sender: UIButton) {
+    @IBAction func tapButton(_ sender: UIButton) {
 
-        // stateLabel(밥알 개수) 텍스트필드 조건 확인
-        if foodTextField.text == "" {
-            currentStatus.food += 1
+        if sender.tag == 0 {
+            buttonMethod(textField: waterTextField, button: sender)
         } else {
-            if let foodText = foodTextField.text {
-                if Int(foodText) != nil {
-                    if Int(foodText)! >= 100 || Int(foodText)! <= 0{
+            buttonMethod(textField: foodTextField, button: sender)
+        }
+    }
+
+    // 버튼 메서드
+    func buttonMethod(textField: UITextField, button: UIButton) {
+        if textField.text == "" {
+            if button.tag == 0 {
+                currentStatus.water += 1
+            } else if button.tag == 1 {
+                currentStatus.food += 1
+            }
+        } else {
+            if let text = textField.text {
+                if Int(text) != nil {
+                    if Int(text)! >= 100 || Int(text)! <= 0{
                         showAlert(title: "너무 많잖아요..")
                     } else {
-                        currentStatus.food += Int(foodText)!
+                        if button.tag == 0 {
+                            currentStatus.water += Int(text)!
+                        } else if button.tag == 1 {
+                            currentStatus.food += Int(text)!
+                        }
                     }
                 } else {
                     showAlert(title: "숫자만 입력해야합니다.")
                 }
             }
         }
-        // 이미지 세팅. 레벨을 연산프로퍼티에 의해 자동으로 연산
         currentStatus.typeNumber = "\(tamaData.number)"
         profileImageView.image = UIImage(named: currentStatus.profileImg)
         
-        // 메세지 레이블
         messageLabel.text = messages.randomElement()
         
-        // 상태 레이블 새로고침 및 저장 -> 마찬가지로 아카이빙해서 저장
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(Status(food: currentStatus.food, water: currentStatus.water)) {
             userDefaults.setValue(encoded, forKey: UserDefaultsKey.status.rawValue)
-            
-        }
- 
-        statusLabel.text = currentStatus.statusLabel
-        
-        // 텍스트필드 비워주기
-        foodTextField.text = ""
-
-        // 키보드내리기
-        view.endEditing(true)
-    }
-    
-    // 물주기 버튼
-    @IBAction func tapWaterBtn(_ sender: UIButton) {
-        
-        // stateLabel(물방울 개수) 텍스트필드 조건 확인
-        if waterTextField.text == "" {
-            currentStatus.water += 1
-        } else {
-            if let waterText = waterTextField.text {
-                if Int(waterText) != nil {
-                    if Int(waterText)! >= 100 || Int(waterText)! <= 0{
-                        showAlert(title: "너무 많잖아요..")
-                    } else {
-                        currentStatus.water += Int(waterText)!
-                    }
-                } else {
-                    showAlert(title: "숫자만 입력해야합니다.")
-                }
-            }
-        }
-        // 이미지 세팅. 레벨을 연산프로퍼티에 의해 자동으로 연산
-        currentStatus.typeNumber = "\(tamaData.number)"
-        profileImageView.image = UIImage(named: currentStatus.profileImg)
-        
-        // 메세지 레이블
-        messageLabel.text = messages.randomElement()
-        
-        // 상태 레이블 새로고침 및 저장 -> 마찬가지로 아카이빙해서 저장
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(Status(food: currentStatus.food, water: currentStatus.water)) {
-            userDefaults.setValue(encoded, forKey: UserDefaultsKey.status.rawValue)
-            
         }
         
         statusLabel.text = currentStatus.statusLabel
         
         // 텍스트필드 비워주기
-        waterTextField.text = ""
+        textField.text = ""
 
         // 키보드내리기
         view.endEditing(true)
     }
-    
     //UI세팅
     func setViewUI() {
         
@@ -285,6 +262,10 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
         waterButton.setTitle(" 물먹기", for: .normal)
         waterButton.titleLabel?.font = UIFont(name: CustomFont.bold.rawValue, size: 13)
         waterButton.setTitleColor(.sesacBorder, for: .normal)
+        
+    }
+    
+    func setUpButtonUI(button: UIButton) {
         
     }
 }
