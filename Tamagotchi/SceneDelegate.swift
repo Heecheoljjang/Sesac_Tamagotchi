@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         
         // 선택을 했으면 true값을 넣어주기때문. 값이 있으면 메인화면
-        if UserDefaults.standard.string(forKey: "name") != nil {
+        if UserDefaultsHelper.shared.name != "" {
             let sb = storyboardInit("Main")
             guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identity) as? MainViewController else { return }
 

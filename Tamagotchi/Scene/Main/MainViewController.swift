@@ -11,7 +11,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
 
     static var identity = String(describing: MainViewController.self)
     
-    let userDefaults = UserDefaults.standard
+//    let userDefaults = UserDefaults.standard
     
     let notificationCenter = UNUserNotificationCenter.current()
     
@@ -49,14 +49,21 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
         setUpNavigationBar()
         
         // 디코딩해서 데이터가져오기
-        if let savedTamagotchiData = userDefaults.object(forKey: UserDefaultsKey.tamagotchi.rawValue) as? Data, let savedStatusData = userDefaults.object(forKey: UserDefaultsKey.status.rawValue) as? Data {
+//        if let savedTamagotchiData = userDefaults.object(forKey: UserDefaultsKey.tamagotchi.rawValue) as? Data, let savedStatusData = userDefaults.object(forKey: UserDefaultsKey.status.rawValue) as? Data {
+//
+//            let decoder = JSONDecoder()
+//            if let tamagotchiData = try? decoder.decode(Tamagotchi.self, from: savedTamagotchiData), let statusData = try? decoder.decode(Status.self, from: savedStatusData)  {
+//
+//                tamaData = tamagotchiData
+//                currentStatus = statusData
+//            }
+//        }
+        let decoder = JSONDecoder()
+        if let tamagotchiData = try? decoder.decode(Tamagotchi.self, from: UserDefaultsHelper.shared.tamagotchi), let statusData = try? decoder.decode(Status.self, from: UserDefaultsHelper.shared.status) {
             
-            let decoder = JSONDecoder()
-            if let tamagotchiData = try? decoder.decode(Tamagotchi.self, from: savedTamagotchiData), let statusData = try? decoder.decode(Status.self, from: savedStatusData)  {
-                
-                tamaData = tamagotchiData
-                currentStatus = statusData
-            }
+            tamaData = tamagotchiData
+            currentStatus = statusData
+
         }
         
         // 가져온 데이터로 이미지, 이름, 상태 세팅
@@ -96,10 +103,15 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        if let name = userDefaults.string(forKey: UserDefaultsKey.name.rawValue) {
-            masterName = name
-            title = "\(name)님의 다마고치"
-        }
+//        if let name = userDefaults.string(forKey: UserDefaultsKey.name.rawValue) {
+//            masterName = name
+//            title = "\(name)님의 다마고치"
+//        }
+
+        masterName = UserDefaultsHelper.shared.name
+
+
+        title = "\(masterName!)님의 다마고치"
 
         // 확실하게 값이 있으므로 강제추출
         messages = [
@@ -126,6 +138,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
     @objc func keyboardWillChange(_ sender: Notification) {
         
         guard let keyboardFrame = sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        
         let keyboardHeight = keyboardFrame.cgRectValue.size.height
         let waterBottomSpace = view.frame.height - waterOuterView.frame.origin.y
        
@@ -205,7 +218,8 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
         
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(Status(food: currentStatus.food, water: currentStatus.water)) {
-            userDefaults.setValue(encoded, forKey: UserDefaultsKey.status.rawValue)
+//            userDefaults.setValue(encoded, forKey: UserDefaultsKey.status.rawValue)
+            UserDefaultsHelper.shared.status = encoded
         }
         
         statusLabel.text = currentStatus.statusLabel

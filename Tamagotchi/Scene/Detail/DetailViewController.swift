@@ -11,9 +11,8 @@ class DetailViewController: UIViewController, Identity {
 
     static var identity = String(describing: DetailViewController.self)
     
-    let userDefaults = UserDefaults.standard
+//    let userDefaults = UserDefaults.standard
     
-//    var tamagotchiData: Tamagotchi?
     var tamagotchiData = Tamagotchi()
     
     let initialData = Status(food: 0, water: 0)
@@ -36,7 +35,7 @@ class DetailViewController: UIViewController, Identity {
 //        }
         settingView(data: tamagotchiData)
         
-        if userDefaults.string(forKey: UserDefaultsKey.name.rawValue) == nil {
+        if UserDefaultsHelper.shared.name == "" {
             selectButton.setTitle(DetailViewButtonTitle.start.rawValue, for: .normal)
         } else {
             selectButton.setTitle(DetailViewButtonTitle.change.rawValue, for: .normal)
@@ -100,16 +99,20 @@ class DetailViewController: UIViewController, Identity {
         //UserDefaults에 선택한 다마고치 저장. 
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(tamagotchiData) {
-            userDefaults.setValue(encoded, forKey: UserDefaultsKey.tamagotchi.rawValue)
+            //setValue
+//            userDefaults.setValue(encoded, forKey: UserDefaultsKey.tamagotchi.rawValue)
+            UserDefaultsHelper.shared.tamagotchi = encoded
         }
 
         // 첫 화면이라면 name으로 대장, 초기 레벨, 밥, 물값 저장
-        if userDefaults.string(forKey: UserDefaultsKey.name.rawValue) == nil {
-            userDefaults.set("대장", forKey: UserDefaultsKey.name.rawValue)
+        if UserDefaultsHelper.shared.name == "" {
+//            userDefaults.set("대장", forKey: UserDefaultsKey.name.rawValue)
+            UserDefaultsHelper.shared.name = "대장"
             
             // 초기 상태값 저장 (1, 0, 0)
             if let encoded = try? encoder.encode(initialData) {
-                userDefaults.setValue(encoded, forKey: UserDefaultsKey.status.rawValue)
+//                userDefaults.setValue(encoded, forKey: UserDefaultsKey.status.rawValue)
+                UserDefaultsHelper.shared.status = encoded
             }
         }
         

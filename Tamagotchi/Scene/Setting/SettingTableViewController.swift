@@ -54,7 +54,8 @@ class SettingTableViewController: UITableViewController, Identity {
         cell.listTitle.text = settingList.settingLists[indexPath.row].listTitle
 
         if indexPath.row == 0 {
-            cell.detailLabel.text = userDefaults.string(forKey: UserDefaultsKey.name.rawValue)!
+//            cell.detailLabel.text = userDefaults.string(forKey: UserDefaultsKey.name.rawValue)!
+            cell.detailLabel.text = UserDefaultsHelper.shared.name
         } else {
             cell.detailLabel.text = ""
         }
@@ -69,9 +70,10 @@ class SettingTableViewController: UITableViewController, Identity {
             let sb = storyboardInit(StoryboardName.name.rawValue)
             guard let vc = sb.instantiateViewController(withIdentifier: NameViewController.identity) as? NameViewController else { return }
             
-            if let currentName = userDefaults.string(forKey: UserDefaultsKey.name.rawValue) {
-                vc.currentName = currentName
-            }
+//            if let currentName = userDefaults.string(forKey: UserDefaultsKey.name.rawValue) {
+//                vc.currentName = currentName
+//            }
+            vc.currentName = UserDefaultsHelper.shared.name
             
             navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 1 {

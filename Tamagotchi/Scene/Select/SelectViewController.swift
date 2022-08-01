@@ -24,7 +24,7 @@ class SelectViewController: UIViewController, Identity {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         // 컬렉션뷰 세팅
         setUpCollectionView()
         
@@ -33,6 +33,7 @@ class SelectViewController: UIViewController, Identity {
         
         // 알림 권한 요청
         requestAuthorization()
+        
     }
 
     //MARK: - 알림
@@ -110,11 +111,15 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
         if indexPath.item < 3 {
             cell.profileImageView.image = UIImage(named: tamagotchiList.list[indexPath.row].profileImg)
             cell.nameLabel.text = tamagotchiList.list[indexPath.row].name
-    
+//            cell.profileImageView.image = UIImage(named: TamagotchiList.allCases[indexPath.item].profileImage)
+//            cell.nameLabel.text = TamagotchiList.allCases[indexPath.item].name
+//
         } else {
             // 준비중인 셀
             cell.nameLabel.text = tamagotchiList.list[3].name
             cell.profileImageView.image = UIImage(named: tamagotchiList.list[3].profileImg)
+//            cell.nameLabel.text = TamagotchiList.allCases[3].name
+//            cell.profileImageView.image = UIImage(named: TamagotchiList.allCases[3].profileImage)
         }
         
         return cell
@@ -130,7 +135,7 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
             
             // 선택한 다마고치 데이터를 DetailVC에 넘겨줌.
             vc.tamagotchiData = tamagotchiList.list[indexPath.item]
-            
+//            vc.tamagotchiData = Tamagotchi(profileImg: TamagotchiList.allCases[indexPath.item].profileImage, name: TamagotchiList.allCases[indexPath.item].name, detail: TamagotchiList.allCases[indexPath.item].detail, number: TamagotchiList)
             // 뒤의 뷰를 반투명하게 보여주려면 over로 띄워야함.
             vc.modalPresentationStyle = .overFullScreen
             present(vc, animated: true)

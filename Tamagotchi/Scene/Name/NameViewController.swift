@@ -11,7 +11,7 @@ class NameViewController: UIViewController, Identity {
 
     static var identity = String(describing: NameViewController.self)
     
-    let userDefaults = UserDefaults.standard
+//    let userDefaults = UserDefaults.standard
     
     @IBOutlet weak var namingTextField: UITextField!
     @IBOutlet weak var bottomLine: UIView!
@@ -57,7 +57,8 @@ class NameViewController: UIViewController, Identity {
             if let newName = namingTextField.text {
                 
                 if newName.count >= 2 && newName.count <= 6 {
-                    userDefaults.set(newName, forKey: UserDefaultsKey.name.rawValue)
+//                    userDefaults.set(newName, forKey: UserDefaultsKey.name.rawValue)
+                    UserDefaultsHelper.shared.name = newName
                     navigationController?.popViewController(animated: true)
                 } else {
                     showAlert(title: "2글자 이상 6글자 이하의 이름만 가능해요!")
