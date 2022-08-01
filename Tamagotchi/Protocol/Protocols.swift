@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
-protocol Identity {
+protocol IdentifierProtocol {
     
-    static var identity: String { get }
+    static var reuseIdentifier: String { get }
 }
+

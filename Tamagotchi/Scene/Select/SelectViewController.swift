@@ -7,9 +7,7 @@
 
 import UIKit
 
-class SelectViewController: UIViewController, Identity {
-    
-    static var identity = String(describing: SelectViewController.self)
+class SelectViewController: UIViewController{
 
     var tamagotchiList = TamagotchiList()
     
@@ -90,7 +88,7 @@ class SelectViewController: UIViewController, Identity {
     func setUpNavigationBar() {
         title = navTitle
         navigationController?.navigationBar.backgroundColor = .sesacBackground
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: CustomFont.bold.rawValue, size: 17)! ]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: CustomFont.bold, size: 17)! ]
         lineView.backgroundColor = .sesacBorder
         view.backgroundColor = .sesacBackground
     }
@@ -106,7 +104,7 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectCollectionViewCell.identity, for: indexPath) as? SelectCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectCollectionViewCell.reuseIdentifier, for: indexPath) as? SelectCollectionViewCell else { return UICollectionViewCell() }
         
         if indexPath.item < 3 {
             cell.profileImageView.image = UIImage(named: tamagotchiList.list[indexPath.row].profileImg)
@@ -127,9 +125,9 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let sb = storyboardInit(StoryboardName.detail.rawValue)
+        let sb = storyboardInit(StoryboardName.detail)
         
-        guard let vc = sb.instantiateViewController(withIdentifier: DetailViewController.identity) as? DetailViewController else { return }
+        guard let vc = sb.instantiateViewController(withIdentifier: DetailViewController.reuseIdentifier) as? DetailViewController else { return }
 
         if indexPath.item < 3 {
             

@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIViewController {
+extension UIViewController: IdentifierProtocol {
     
     // alert함수
     func showAlert(title: String) {
@@ -15,5 +15,12 @@ extension UIViewController {
         let ok = UIAlertAction(title: "확인", style: .cancel , handler: nil)
         alert.addAction(ok)
         present(alert, animated: true)
+    }
+    
+    //identifier
+    static var reuseIdentifier: String {
+        get {
+            return String(describing: self)
+        }
     }
 }

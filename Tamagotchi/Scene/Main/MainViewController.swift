@@ -7,11 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITextFieldDelegate, Identity {
-
-    static var identity = String(describing: MainViewController.self)
-    
-//    let userDefaults = UserDefaults.standard
+class MainViewController: UIViewController, UITextFieldDelegate {
     
     let notificationCenter = UNUserNotificationCenter.current()
     
@@ -86,9 +82,9 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
     //MARK: - 네비게이션 바 세팅
     func setUpNavigationBar() {
         // 네비게이션 바 세팅
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: ImageName.person.rawValue), style: .plain, target: self, action: #selector(tapSettingBtn))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: ImageName.person), style: .plain, target: self, action: #selector(tapSettingBtn))
         navigationItem.backButtonTitle = ""
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: CustomFont.bold.rawValue, size: 17)! ]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: CustomFont.bold, size: 17)! ]
         
         // 네비게이션 타이틀 색
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder]
@@ -152,8 +148,8 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
     
    
     @objc func tapSettingBtn() {
-        let sb = storyboardInit(StoryboardName.setting.rawValue)
-        guard let vc = sb.instantiateViewController(withIdentifier: SettingTableViewController.identity) as? SettingTableViewController else { return }
+        let sb = storyboardInit(StoryboardName.setting)
+        guard let vc = sb.instantiateViewController(withIdentifier: SettingTableViewController.reuseIdentifier) as? SettingTableViewController else { return }
         
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -234,13 +230,13 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
     func setViewUI() {
         
         view.backgroundColor = .sesacBackground
-        messageLabel.font = UIFont(name: CustomFont.regular.rawValue, size: 14)
+        messageLabel.font = UIFont(name: CustomFont.regular, size: 14)
         messageLabel.textColor = .sesacBorder
         
         messageView.backgroundColor = .sesacBackground
         
         nameLabel.textColor = .sesacBorder
-        nameLabel.font = UIFont(name: CustomFont.bold.rawValue, size: 13)
+        nameLabel.font = UIFont(name: CustomFont.bold, size: 13)
         nameLabel.adjustsFontSizeToFitWidth = true
         nameLabel.backgroundColor = .labelBackgroundColor
         nameView.backgroundColor = .labelBackgroundColor
@@ -248,11 +244,11 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
         nameView.layer.borderWidth = 0.5
         nameView.layer.cornerRadius = 5
         
-        statusLabel.font = UIFont(name: CustomFont.bold.rawValue, size: 15)
+        statusLabel.font = UIFont(name: CustomFont.bold, size: 15)
         statusLabel.textColor = .sesacBorder
         
-        setUpButtonUI(button: foodButton, outerView: foodOuterView, lineView: foodLineView, textField: foodTextField, placeholder: "밥주세용", buttonTitle: " 밥먹기", buttonImage: ImageName.drop.rawValue)
-        setUpButtonUI(button: waterButton, outerView: waterOuterView, lineView: waterLineView, textField: waterTextField, placeholder: "물주세용", buttonTitle: " 물먹기", buttonImage: ImageName.leaf.rawValue)
+        setUpButtonUI(button: foodButton, outerView: foodOuterView, lineView: foodLineView, textField: foodTextField, placeholder: "밥주세용", buttonTitle: " 밥먹기", buttonImage: ImageName.drop)
+        setUpButtonUI(button: waterButton, outerView: waterOuterView, lineView: waterLineView, textField: waterTextField, placeholder: "물주세용", buttonTitle: " 물먹기", buttonImage: ImageName.leaf)
         
     }
     
@@ -267,7 +263,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, Identity {
         button.layer.borderColor = UIColor.sesacBorder.cgColor
         button.setImage(UIImage(systemName: buttonImage), for: .normal)
         button.setTitle(buttonTitle, for: .normal)
-        button.titleLabel?.font = UIFont(name: CustomFont.bold.rawValue, size: 13)
+        button.titleLabel?.font = UIFont(name: CustomFont.bold, size: 13)
         button.setTitleColor(.sesacBorder, for: .normal)
     }
 }

@@ -7,11 +7,7 @@
 
 import UIKit
 
-class NameViewController: UIViewController, Identity {
-
-    static var identity = String(describing: NameViewController.self)
-    
-//    let userDefaults = UserDefaults.standard
+class NameViewController: UIViewController {
     
     @IBOutlet weak var namingTextField: UITextField!
     @IBOutlet weak var bottomLine: UIView!
@@ -30,7 +26,7 @@ class NameViewController: UIViewController, Identity {
     
     func setUpNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(tapSaveBtn))
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: CustomFont.bold.rawValue, size: 17)! ]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: CustomFont.bold, size: 17)! ]
 
         title = "대장님 이름 정하기"
     }
@@ -41,7 +37,7 @@ class NameViewController: UIViewController, Identity {
         namingTextField.text = currentName
         namingTextField.placeholder = "이름을 입력해주세요!!"
         namingTextField.textColor = .sesacBorder
-        namingTextField.font = UIFont(name: CustomFont.bold.rawValue, size: 14)
+        namingTextField.font = UIFont(name: CustomFont.bold, size: 14)
         namingTextField.backgroundColor = .sesacBackground
         
         bottomLine.backgroundColor = .sesacBorder

@@ -19,14 +19,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // 선택을 했으면 true값을 넣어주기때문. 값이 있으면 메인화면
         if UserDefaultsHelper.shared.name != "" {
             let sb = storyboardInit("Main")
-            guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.identity) as? MainViewController else { return }
+            guard let vc = sb.instantiateViewController(withIdentifier: MainViewController.reuseIdentifier) as? MainViewController else { return }
 
             window?.rootViewController = UINavigationController(rootViewController: vc)
             window?.makeKeyAndVisible()
 
         } else { // 값이 없으면 선택화면
             let sb = storyboardInit("Select")
-            guard let vc = sb.instantiateViewController(withIdentifier: SelectViewController.identity) as? SelectViewController else { return }
+            guard let vc = sb.instantiateViewController(withIdentifier: SelectViewController.reuseIdentifier) as? SelectViewController else { return }
 
             vc.navTitle = "다마고치 선택하기"
 

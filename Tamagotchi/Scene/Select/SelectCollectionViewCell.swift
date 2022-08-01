@@ -7,9 +7,7 @@
 
 import UIKit
 
-class SelectCollectionViewCell: UICollectionViewCell, Identity {
-    
-    static var identity = String(describing: SelectCollectionViewCell.self)
+class SelectCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -27,7 +25,7 @@ class SelectCollectionViewCell: UICollectionViewCell, Identity {
         labelView.layer.cornerRadius = 5
         labelView.backgroundColor = .labelBackgroundColor
         //nameLabel.font = UIFont.systemFont(ofSize: 13, weight: .semibold)\
-        nameLabel.font = UIFont(name: CustomFont.bold.rawValue, size: 13)
+        nameLabel.font = UIFont(name: CustomFont.bold, size: 13)
         nameLabel.backgroundColor = .labelBackgroundColor
         nameLabel.textColor = .sesacBorder
         nameLabel.adjustsFontSizeToFitWidth = true

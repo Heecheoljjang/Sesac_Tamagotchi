@@ -7,10 +7,8 @@
 
 import UIKit
 
-class SettingTableViewCell: UITableViewCell, Identity {
+class SettingTableViewCell: UITableViewCell {
 
-    static var identity = String(describing: SettingTableViewCell.self)
-    
     @IBOutlet weak var listTitle: UILabel!
     @IBOutlet weak var listImageView: UIImageView!
     @IBOutlet weak var detailLabel: UILabel!
@@ -22,10 +20,10 @@ class SettingTableViewCell: UITableViewCell, Identity {
     
     func setCellUI() {
         backgroundColor = .sesacBackground
-        listTitle.font = UIFont(name: CustomFont.regular.rawValue, size: 13)
+        listTitle.font = UIFont(name: CustomFont.regular, size: 13)
         listImageView.tintColor = .sesacBorder
         detailLabel.text = ""
         detailLabel.textColor = .sesacBorder
-        detailLabel.font = UIFont(name: CustomFont.regular.rawValue, size: 13)
+        detailLabel.font = UIFont(name: CustomFont.regular, size: 13)
     }
 }

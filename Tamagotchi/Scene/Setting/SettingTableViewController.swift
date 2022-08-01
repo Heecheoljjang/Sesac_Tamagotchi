@@ -7,12 +7,8 @@
 
 import UIKit
 
-class SettingTableViewController: UITableViewController, Identity {
+class SettingTableViewController: UITableViewController {
 
-    static var identity = String(describing: SettingTableViewController.self)
-    
-    let userDefaults = UserDefaults.standard
-    
     var settingList = SettingLists()
     var name: String?
     
@@ -35,7 +31,7 @@ class SettingTableViewController: UITableViewController, Identity {
     
     func setUpNavigationBar() {
         title = "설정"
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: CustomFont.bold.rawValue, size: 17)! ]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.sesacBorder, .font: UIFont(name: CustomFont.bold, size: 17)! ]
         tableView.separatorColor = .sesacBorder
     }
     
@@ -48,7 +44,7 @@ class SettingTableViewController: UITableViewController, Identity {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identity, for: indexPath) as? SettingTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.reuseIdentifier, for: indexPath) as? SettingTableViewCell else { return UITableViewCell() }
                 
         cell.listImageView.image = UIImage(systemName: settingList.settingLists[indexPath.row].leftImg)
         cell.listTitle.text = settingList.settingLists[indexPath.row].listTitle
