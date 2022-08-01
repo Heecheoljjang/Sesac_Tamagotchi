@@ -7,7 +7,9 @@
 
 import Foundation
 
-enum CustomFont: String {
-    case bold = "MICEGothic OTF Bold"
-    case regular = "MICEGothic OTF"
+enum CustomFont {
+//    case bold = "MICEGothic OTF Bold"
+//    case regular = "MICEGothic OTF"
+    static let bold = "MICEGothic OTF Bold"
+    static let regular = "MICEGothic OTF"
 }

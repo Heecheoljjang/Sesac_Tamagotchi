@@ -7,7 +7,8 @@
 
 import Foundation
 
-enum DetailViewButtonTitle: String {
-    case start = "시작하기"
-    case change = "변경하기"
+enum DetailViewButtonTitle {
+
+    static let start = "시작하기"
+    static let change = "변경하기"
 }

@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum StoryboardName: String {
-    
-    case select = "Select"
-    case detail = "Detail"
-    case main = "Main"
-    case setting = "Setting"
-    case name = "Name"
+enum StoryboardName {
+
+    static let select = "Select"
+    static let detail = "Detail"
+    static let main = "Main"
+    static let setting = "Setting"
+    static let name = "Name"
     
 }

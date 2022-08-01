@@ -8,10 +8,11 @@
 import Foundation
 
 enum ImageName: String {
-    case person = "person.circle"
-    case drop = "drop.circle"
-    case leaf = "leaf.circle"
-    case pencil = "pencil"
-    case moon = "moon.fill"
-    case arrow = "arrow.clockwise"
+
+    static let person = "person.circle"
+    static let drop = "drop.circle"
+    static let leaf = "leaf.circle"
+    static let pencil = "pencil"
+    static let moon = "moon.fill"
+    static let arrow = "arrow.clockwise"
 }
