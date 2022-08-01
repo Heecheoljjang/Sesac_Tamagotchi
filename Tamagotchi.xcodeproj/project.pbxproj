@@ -13,7 +13,6 @@
 		97559F54288D757500142E2A /* SelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97559F53288D757500142E2A /* SelectCollectionViewCell.swift */; };
 		976CAE64289812AB00F3319B /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976CAE63289812AB00F3319B /* UserDefaultsHelper.swift */; };
 		976CAE6628982F4C00F3319B /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976CAE6528982F4C00F3319B /* UICollectionViewCell+Extension.swift */; };
-		976CAE6828982F9100F3319B /* UITableViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976CAE6728982F9100F3319B /* UITableViewController+Extension.swift */; };
 		976CAE6A289830D900F3319B /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976CAE69289830D900F3319B /* UITableViewCell+Extension.swift */; };
 		977DC769288A7B5800C0A253 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC768288A7B5800C0A253 /* AppDelegate.swift */; };
 		977DC76B288A7B5800C0A253 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977DC76A288A7B5800C0A253 /* SceneDelegate.swift */; };
@@ -48,7 +47,6 @@
 		97559F53288D757500142E2A /* SelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionViewCell.swift; sourceTree = "<group>"; };
 		976CAE63289812AB00F3319B /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		976CAE6528982F4C00F3319B /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
-		976CAE6728982F9100F3319B /* UITableViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+Extension.swift"; sourceTree = "<group>"; };
 		976CAE69289830D900F3319B /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		977DC765288A7B5800C0A253 /* Tamagotchi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagotchi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		977DC768288A7B5800C0A253 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 				977DC789288A89B700C0A253 /* UIColor+Extension.swift */,
 				97559F45288BF35000142E2A /* UIViewController+Extension.swift */,
 				976CAE6528982F4C00F3319B /* UICollectionViewCell+Extension.swift */,
-				976CAE6728982F9100F3319B /* UITableViewController+Extension.swift */,
 				976CAE69289830D900F3319B /* UITableViewCell+Extension.swift */,
 			);
 			path = Extension;
@@ -333,7 +330,6 @@
 				978295AD28960E1900BE2368 /* CustomFont.swift in Sources */,
 				977DC79A288AEDF700C0A253 /* SettingTableViewController.swift in Sources */,
 				977DC792288AAFDF00C0A253 /* DetailViewController.swift in Sources */,
-				976CAE6828982F9100F3319B /* UITableViewController+Extension.swift in Sources */,
 				976CAE6A289830D900F3319B /* UITableViewCell+Extension.swift in Sources */,
 				977DC796288AD92800C0A253 /* MainViewController.swift in Sources */,
 				977DC7A2288B0B7B00C0A253 /* NameViewController.swift in Sources */,

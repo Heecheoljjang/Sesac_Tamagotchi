@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ImageName: String {
+enum ImageName {
 
     static let person = "person.circle"
     static let drop = "drop.circle"

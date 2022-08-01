@@ -17,6 +17,8 @@ class UserDefaultsHelper {
     
     let userDefaults = UserDefaults.standard
     
+    let domain = Bundle.main.bundleIdentifier!
+    
     //userdefaults 키 -> rawValue로 사용
     enum Keys: String {
         case name
@@ -55,5 +57,9 @@ class UserDefaultsHelper {
         set {
             userDefaults.set(newValue, forKey: Keys.status.rawValue)
         }
+    }
+    
+    func removeAllContents() {
+        userDefaults.removePersistentDomain(forName: domain)
     }
 }
