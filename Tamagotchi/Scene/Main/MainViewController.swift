@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITextFieldDelegate {
+class MainViewController: UIViewController, UITextFieldDelegate, SetUpMethod {
     
     let notificationCenter = UNUserNotificationCenter.current()
     
@@ -41,19 +41,11 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 네비게이션 바 세팅
+        //SetUpMethod Protocol
         setUpNavigationBar()
-        
+        setUpView()
+
         // 디코딩해서 데이터가져오기
-//        if let savedTamagotchiData = userDefaults.object(forKey: UserDefaultsKey.tamagotchi.rawValue) as? Data, let savedStatusData = userDefaults.object(forKey: UserDefaultsKey.status.rawValue) as? Data {
-//
-//            let decoder = JSONDecoder()
-//            if let tamagotchiData = try? decoder.decode(Tamagotchi.self, from: savedTamagotchiData), let statusData = try? decoder.decode(Status.self, from: savedStatusData)  {
-//
-//                tamaData = tamagotchiData
-//                currentStatus = statusData
-//            }
-//        }
         let decoder = JSONDecoder()
         if let tamagotchiData = try? decoder.decode(Tamagotchi.self, from: UserDefaultsHelper.shared.tamagotchi), let statusData = try? decoder.decode(Status.self, from: UserDefaultsHelper.shared.status) {
             
@@ -63,15 +55,11 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         }
         
         // 가져온 데이터로 이미지, 이름, 상태 세팅
-
         currentStatus.typeNumber = "\(tamaData.number)"
         profileImageView.image = UIImage(named: currentStatus.profileImg)
         
         nameLabel.text = tamaData.name
         statusLabel.text = currentStatus.statusLabel
-        
-        //UI세팅
-        setViewUI()
         
         //버튼 태그 설정
         foodButton.tag = 1
@@ -98,14 +86,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         // 키보드가 올라오고 내려오는 것을 감지해서 selector에 있는 메서드 실행
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-//        if let name = userDefaults.string(forKey: UserDefaultsKey.name.rawValue) {
-//            masterName = name
-//            title = "\(name)님의 다마고치"
-//        }
 
         masterName = UserDefaultsHelper.shared.name
-
 
         title = "\(masterName!)님의 다마고치"
 
@@ -227,7 +209,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     //UI세팅
-    func setViewUI() {
+    func setUpView() {
         
         view.backgroundColor = .sesacBackground
         messageLabel.font = UIFont(name: CustomFont.regular, size: 14)
@@ -247,12 +229,12 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         statusLabel.font = UIFont(name: CustomFont.bold, size: 15)
         statusLabel.textColor = .sesacBorder
         
-        setUpButtonUI(button: foodButton, outerView: foodOuterView, lineView: foodLineView, textField: foodTextField, placeholder: "밥주세용", buttonTitle: " 밥먹기", buttonImage: ImageName.drop)
-        setUpButtonUI(button: waterButton, outerView: waterOuterView, lineView: waterLineView, textField: waterTextField, placeholder: "물주세용", buttonTitle: " 물먹기", buttonImage: ImageName.leaf)
+        setUpButton(button: foodButton, outerView: foodOuterView, lineView: foodLineView, textField: foodTextField, placeholder: "밥주세용", buttonTitle: " 밥먹기", buttonImage: ImageName.drop)
+        setUpButton(button: waterButton, outerView: waterOuterView, lineView: waterLineView, textField: waterTextField, placeholder: "물주세용", buttonTitle: " 물먹기", buttonImage: ImageName.leaf)
         
     }
     
-    func setUpButtonUI(button: UIButton, outerView: UIView, lineView: UIView, textField: UITextField, placeholder: String, buttonTitle: String, buttonImage: String) {
+    func setUpButton(button: UIButton, outerView: UIView, lineView: UIView, textField: UITextField, placeholder: String, buttonTitle: String, buttonImage: String) {
         outerView.backgroundColor = .sesacBackground
         lineView.backgroundColor = .sesacBorder
         textField.placeholder = placeholder

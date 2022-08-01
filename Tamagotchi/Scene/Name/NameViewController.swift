@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NameViewController: UIViewController {
+class NameViewController: UIViewController, SetUpMethod {
     
     @IBOutlet weak var namingTextField: UITextField!
     @IBOutlet weak var bottomLine: UIView!
@@ -18,8 +18,8 @@ class NameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //SetUpMethod Protocol
         setUpNavigationBar()
-        
         setUpView()
         
     }

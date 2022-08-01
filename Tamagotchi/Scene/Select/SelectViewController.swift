@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SelectViewController: UIViewController{
+class SelectViewController: UIViewController, SetUpMethod {
 
     var tamagotchiList = TamagotchiList()
     
@@ -23,10 +23,8 @@ class SelectViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        // 컬렉션뷰 세팅
+        // SetUpMethod Protocol
         setUpCollectionView()
-        
-        // 네비게이션 바 세팅
         setUpNavigationBar()
         
         // 알림 권한 요청

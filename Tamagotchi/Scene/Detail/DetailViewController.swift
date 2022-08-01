@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, SetUpMethod {
 
     var tamagotchiData = Tamagotchi()
     
@@ -26,20 +26,23 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        if let tamagotchiData = tamagotchiData {
-//            settingView(data: tamagotchiData)
-//        }
-        settingView(data: tamagotchiData)
+        //SetUpMethod Protocol
+        setUpView()
         
         if UserDefaultsHelper.shared.name == "" {
             selectButton.setTitle(DetailViewButtonTitle.start, for: .normal)
         } else {
             selectButton.setTitle(DetailViewButtonTitle.change, for: .normal)
         }
-
+        
+        //데이터를 이용해서 세팅하는부분
+        detailLabel.text = tamagotchiData.detail
+        profileImageView.image = UIImage(named: tamagotchiData.profileImg)
+        nameLabel.text = tamagotchiData.name
+        detailLabel.text = tamagotchiData.detail
     }
     
-    func settingView(data: Tamagotchi) {
+    func setUpView() {
         
         view.backgroundColor = .black.withAlphaComponent(0.4)
         backgroundView.backgroundColor = .sesacBackground
@@ -56,7 +59,6 @@ class DetailViewController: UIViewController {
         
         lineView.backgroundColor = .sesacBorder
         
-        detailLabel.text = data.detail
         detailLabel.font = UIFont(name: CustomFont.regular, size: 14)
         detailLabel.textColor = .sesacBorder
         detailLabel.adjustsFontSizeToFitWidth = true
@@ -73,9 +75,7 @@ class DetailViewController: UIViewController {
 
         secondLineView.backgroundColor = .systemGray4
         
-        profileImageView.image = UIImage(named: data.profileImg)
-        nameLabel.text = data.name
-        detailLabel.text = data.detail
+       
     }
     
     @IBAction func tapCancel(_ sender: UIButton) {

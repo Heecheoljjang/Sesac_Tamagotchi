@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingTableViewController: UITableViewController {
+class SettingTableViewController: UITableViewController, SetUpMethod {
 
     let userDefaults = UserDefaults.standard
     
@@ -17,6 +17,7 @@ class SettingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //SetUpMethod Protocol
         setUpNavigationBar()
         
     }
@@ -98,8 +99,6 @@ class SettingTableViewController: UITableViewController {
                 guard let vc = sb.instantiateViewController(withIdentifier: SelectViewController.reuseIdentifier) as? SelectViewController else { return }
                 
                 // 전체 userDefaults 삭제
-//                let domain = Bundle.main.bundleIdentifier!
-//                self.userDefaults.removePersistentDomain(forName: domain)
                 UserDefaultsHelper.shared.removeAllContents()
                 
                 vc.navTitle = "다마고치 선택하기"
